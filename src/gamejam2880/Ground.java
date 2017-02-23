@@ -10,7 +10,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import 
 
 
 public class Ground extends JPanel {
@@ -28,12 +27,16 @@ public class Ground extends JPanel {
         }
         
         private void loadGround() {
-            ImageIcon ii = new ImageIcon("jGround.png");
+            ImageIcon ii = new ImageIcon("rock.png");
             jGround = ii.getImage();
         }
         
-        private void creatGround(){
-                 = jGround;
-        }
+        @Override
+        public void paintComponent(Graphics g) {
+
+        g.drawImage(jGround, 0, 0, null);
+    }
+        
+
         
 }
