@@ -15,6 +15,7 @@ import java.util.*;
 
 public class Board extends JPanel implements ActionListener {
     
+    private Level level;
     private Player player;
     private final int DELAY = 10;
     private Timer timer;
@@ -26,6 +27,7 @@ public class Board extends JPanel implements ActionListener {
         
         addKeyListener(new TAdapter());
         setFocusable(true);
+        level = new Level();
         player = new Player(10,10);
         timer = new Timer(DELAY, this);
         timer.start();     
@@ -56,6 +58,7 @@ public class Board extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         player.move();
+        level.moveLevel(player);
         repaint();
     }
     

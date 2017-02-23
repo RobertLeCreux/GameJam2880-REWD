@@ -12,6 +12,10 @@ import javax.swing.JFrame;
 
 public class GameJam2880 extends JFrame{
     
+    
+    public static int WINDOW_WIDTH = 500;
+    public static int WINDOW_HEIGHT = 500;
+    
     public GameJam2880(){
         initUI();
     }
@@ -21,7 +25,7 @@ public class GameJam2880 extends JFrame{
         
         //pack();
         
-        setSize(500,500);
+        setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
         
         setTitle("GameJam2880");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
