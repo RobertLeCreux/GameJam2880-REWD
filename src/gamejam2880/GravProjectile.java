@@ -5,19 +5,24 @@
  */
 package gamejam2880;
 
-import static java.awt.event.KeyEvent.*;
-
 /**
  *
  * @author rober
  */
-public class Projectile extends NonStationary {
+public class GravProjectile extends Projectile {
     
-    public Projectile(int x, int y) {
+    private int force;
+    
+    public GravProjectile(int x, int y) {
         super(x, y);
-        this.loadImage("standardProjectile.png");
-        setDX(3);
+        this.loadImage("gravAmmo.png");
     }
     
+    public int getForce(){
+        return force;
+    }
+    public void setForce(int f){
+        force = f;
+    }
     
 }

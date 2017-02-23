@@ -8,10 +8,11 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class Player extends NonStationary {
-
+    private ArrayList<Weapon> weapon;
+    private int weaponIndex;
     
-    // private ArrayList<Missile> missiles;
-
+    
+    
     public Player(int x, int y) {
         super(x, y);
 
@@ -47,11 +48,23 @@ public class Player extends NonStationary {
     public void keyPressed(KeyEvent e) {
 
         int key = e.getKeyCode();
-        /*
-        if (key == KeyEvent.VK_SPACE) {
-            fire();
+        
+        switch(key){
+            case KeyEvent.VK_1:
+                weaponIndex = 1;
+                break;
+            case KeyEvent.VK_2:
+                weaponIndex = 2;
+                break;
+            case KeyEvent.VK_3:
+                weaponIndex = 3;
+                break;
         }
-*/
+        
+        if (key == KeyEvent.VK_SPACE) {
+            weapon.get(weaponIndex).fire();
+        }
+
         if (key == KeyEvent.VK_LEFT) {
             this.setDX(-1);
         }
@@ -65,11 +78,6 @@ public class Player extends NonStationary {
         }
 
     }
-
-    /*
-    public void fire() {
-        missiles.add(new Missile(x + width, y + height / 2));
-    }*/
 
     public void keyReleased(KeyEvent e) {
 
