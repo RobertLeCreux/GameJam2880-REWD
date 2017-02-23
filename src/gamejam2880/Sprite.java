@@ -52,6 +52,14 @@ public class Sprite {
     public int getY() {
         return y;
     }
+    
+    public int getHeight(){
+        return height;
+    }
+    
+    public int getWidth(){
+        return width;
+    }
 
     public boolean isVisible() {
         return vis;
@@ -67,6 +75,8 @@ public class Sprite {
     
     public void doDrawing(Graphics g,Board canvas){
         Graphics2D g2d = (Graphics2D) g;
+        Color color = new Color(244,0,104,1);
+        g2d.setPaint(color);
         g2d.drawImage(this.getImage(), this.getX(), this.getY(), canvas);
     }
 }

@@ -24,6 +24,8 @@ public class Board extends JPanel implements ActionListener {
     // ------Constructor-------
     public Board(){
         
+        addKeyListener(new TAdapter());
+        setFocusable(true);
         player = new Player(10,10);
         timer = new Timer(DELAY, this);
         timer.start();     
@@ -53,6 +55,22 @@ public class Board extends JPanel implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        player.move();
+        repaint();
+    }
+    
+    // ------ Class to detect user keyboard input------
+    private class TAdapter extends KeyAdapter{
         
+        @Override
+        public void keyReleased(KeyEvent e){
+            player.keyReleased(e);
+        }
+        
+        @Override
+        public void keyPressed(KeyEvent e) {
+            System.out.println("test");
+            player.keyPressed(e);
+        }
     }
 }

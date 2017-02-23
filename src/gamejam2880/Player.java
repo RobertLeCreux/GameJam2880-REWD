@@ -22,7 +22,7 @@ public class Player extends NonStationary {
     private void initPlayer() {
         
         // missiles = new ArrayList<>();
-        loadImage("stick.png");
+        loadImage("Sketch002.png");
         getImageDimensions();
         System.out.println("player image height" + height);
     }
@@ -72,11 +72,6 @@ public class Player extends NonStationary {
         if (key == KeyEvent.VK_RIGHT) {
             super.setDX(1);
         }
-
-        if (key == KeyEvent.VK_UP) {
-            setDX(1);
-        }
-
     }
 
     public void keyReleased(KeyEvent e) {
