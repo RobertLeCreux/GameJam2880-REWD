@@ -1,21 +1,39 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gamejam2880;
 
 /**
  *
- * @author rober
+ * @author Gen
  */
-public class GameJam2880 {
 
-    /**
-     * @param args the command line arguments
-     */
+import gamejam2880.Board;
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+
+
+public class GameJam2880 extends JFrame{
+    
+    public GameJam2880(){
+        initUI();
+    }
+    
+    private void initUI(){
+        add(new Board());
+        
+        setSize(250,200);
+        
+        setTitle("GameJam2880");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+    }
+    
     public static void main(String[] args) {
-        // TODO code application logic here
+        EventQueue.invokeLater(new Runnable(){
+            @Override
+            public void run(){
+                GameJam2880 game = new GameJam2880();
+                game.setVisible(true);
+            }
+        });
     }
     
 }
