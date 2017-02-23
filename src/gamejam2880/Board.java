@@ -19,7 +19,6 @@ public class Board extends JPanel implements ActionListener {
     private Player player;
     private final int DELAY = 10;
     private Timer timer;
-    private Ground ground;
     
     
     // ------Constructor-------
@@ -32,7 +31,10 @@ public class Board extends JPanel implements ActionListener {
         timer = new Timer(DELAY, this);
         timer.start();     
         
-        ground = new Ground(10, player.height);
+        // ---- add random things to test functionality---
+        level.addGround();
+        level.addGround(10,200);
+        
     }
 
     
@@ -42,7 +44,7 @@ public class Board extends JPanel implements ActionListener {
     
     private void paintAssets(Graphics g){
         player.doDrawing(g,this);
-        ground.doDrawing(g,this);
+        level.drawLevel(g, this);
     }
     
     // -------Override methods
@@ -57,7 +59,7 @@ public class Board extends JPanel implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        player.move();
+        //player.move();
         level.moveLevel(player);
         repaint();
     }
@@ -68,12 +70,13 @@ public class Board extends JPanel implements ActionListener {
         @Override
         public void keyReleased(KeyEvent e){
             player.keyReleased(e);
+            level.keyReleased(e);
         }
         
         @Override
         public void keyPressed(KeyEvent e) {
-            System.out.println("test");
             player.keyPressed(e);
+            level.keyPressed(e);
         }
     }
 }

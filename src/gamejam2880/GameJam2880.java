@@ -13,8 +13,8 @@ import javax.swing.JFrame;
 public class GameJam2880 extends JFrame{
     
     
-    public static int WINDOW_WIDTH = 500;
-    public static int WINDOW_HEIGHT = 500;
+    public static int WINDOW_WIDTH = 700;
+    public static int WINDOW_HEIGHT = 700;
     
     public GameJam2880(){
         initUI();

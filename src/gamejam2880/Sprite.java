@@ -7,7 +7,6 @@ package gamejam2880;
 
 import java.awt.*;
 import javax.swing.*;
-import java.awt.*;
 
 /**
  *
@@ -27,6 +26,7 @@ public class Sprite {
         this.x = x;
         this.y = y;
         vis = true;
+        
     }
 
     protected void getImageDimensions() {
@@ -39,10 +39,15 @@ public class Sprite {
 
         ImageIcon ii = new ImageIcon(imageName);
         image = ii.getImage();
+        getImageDimensions();
     }
     
     public Image getImage() {
         return image;
+    }
+    
+    public void setX(int var){
+        x = var;
     }
 
     public int getX() {
@@ -51,6 +56,10 @@ public class Sprite {
 
     public int getY() {
         return y;
+    }
+    
+    public void setY(int var){
+        y = var;
     }
     
     public int getHeight(){
