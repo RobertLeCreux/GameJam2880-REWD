@@ -18,6 +18,7 @@ public class Board extends JPanel implements ActionListener {
     private Player player;
     private final int DELAY = 10;
     private Timer timer;
+    private Ground ground;
     
     
     // ------Constructor-------
@@ -25,7 +26,9 @@ public class Board extends JPanel implements ActionListener {
         
         player = new Player(10,10);
         timer = new Timer(DELAY, this);
-        timer.start();        
+        timer.start();     
+        
+        ground = new Ground(10, player.height);
     }
 
     
@@ -35,6 +38,7 @@ public class Board extends JPanel implements ActionListener {
     
     private void paintAssets(Graphics g){
         player.doDrawing(g,this);
+        ground.doDrawing(g,this);
     }
     
     // -------Override methods

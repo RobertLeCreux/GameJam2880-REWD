@@ -5,38 +5,36 @@ package gamejam2880;
  *
  * @author kylechapman
  */
-import java.awt.Dimension;
-import java.awt.Graphics;
+
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 
 
-public class Ground extends JPanel {
+
+public class Ground extends Sprite {
         
-        public Image jGround; 
+        public int a;
+        public int b; 
         
-        public Ground() {
-            initGround();
+        
+        public Image jGround;
+        
+        public void setB(int a){
+            a = 50;
         }
-        private void initGround(){
-            loadGround();
-            int w = jGround.getWidth(this);
-            int h = jGround.getHeight(this);
-            setPreferredSize(new Dimension(w, h));
+        public void setA(int b){
+            b = 10;
+    }
+        
+        public Ground(int x,int y) {
+            super(x, y);
+            loadImage("rock.png");
         }
+        
         
         private void loadGround() {
             ImageIcon ii = new ImageIcon("rock.png");
             jGround = ii.getImage();
         }
-        
-        @Override
-        public void paintComponent(Graphics g) {
-
-        g.drawImage(jGround, 0, 0, null);
-    }
-        
-
-        
+            
 }
