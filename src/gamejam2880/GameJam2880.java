@@ -19,7 +19,9 @@ public class GameJam2880 extends JFrame{
     private void initUI(){
         add(new Board());
         
-        setSize(250,200);
+        pack();
+        
+        //setSize(250,200);
         
         setTitle("GameJam2880");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

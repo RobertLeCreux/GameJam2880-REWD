@@ -7,6 +7,7 @@ package gamejam2880;
 
 import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 
 /**
  *
@@ -62,5 +63,10 @@ public class Sprite {
 
     public Rectangle getBounds() {
         return new Rectangle(x, y, width, height);
+    }
+    
+    public void doDrawing(Graphics g,Board canvas){
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.drawImage(this.getImage(), this.getX(), this.getY(), canvas);
     }
 }
