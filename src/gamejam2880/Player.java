@@ -7,6 +7,11 @@ package gamejam2880;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author Robert LeCreux
+ */
+
 public class Player extends NonStationary {
     private ArrayList<Weapon> weapon;
     private int weaponIndex;
