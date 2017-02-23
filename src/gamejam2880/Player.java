@@ -21,8 +21,9 @@ public class Player extends NonStationary {
     private void initPlayer() {
         
         // missiles = new ArrayList<>();
-        loadImage("craft.png");
+        loadImage("stick.png");
         getImageDimensions();
+        System.out.println("player image height" + height);
     }
 
     public void move() {

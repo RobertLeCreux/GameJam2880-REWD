@@ -43,10 +43,12 @@ public class Board extends JPanel implements ActionListener {
         super.paintComponent(g);
         
         paintAssets(g);
+        
+        Toolkit.getDefaultToolkit().sync();
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 }
