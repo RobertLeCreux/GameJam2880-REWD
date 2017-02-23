@@ -7,19 +7,18 @@ package gamejam2880;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-public class Player extends Sprite {
+public class Player extends NonStationary {
 
-    private int dx;
-    private int dy;
+    
     // private ArrayList<Missile> missiles;
 
     public Player(int x, int y) {
         super(x, y);
 
-        initCraft();
+        initPlayer();
     }
 
-    private void initCraft() {
+    private void initPlayer() {
         
         // missiles = new ArrayList<>();
         loadImage("craft.png");
@@ -28,8 +27,8 @@ public class Player extends Sprite {
 
     public void move() {
 
-        x += dx;
-        y += dy;
+        x += this.getDX();
+        y += this.getDY();
 
         if (x < 1) {
             x = 1;
@@ -53,20 +52,17 @@ public class Player extends Sprite {
         }
 */
         if (key == KeyEvent.VK_LEFT) {
-            dx = -1;
+            this.setDX(-1);
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            dx = 1;
+            super.setDX(1);
         }
 
         if (key == KeyEvent.VK_UP) {
-            dy = -1;
+            setDX(1);
         }
 
-        if (key == KeyEvent.VK_DOWN) {
-            dy = 1;
-        }
     }
 
     /*
@@ -79,19 +75,11 @@ public class Player extends Sprite {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-            dx = 0;
+             setDX(0);
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            dx = 0;
-        }
-
-        if (key == KeyEvent.VK_UP) {
-            dy = 0;
-        }
-
-        if (key == KeyEvent.VK_DOWN) {
-            dy = 0;
+            setDX(0);
         }
     }
 }
