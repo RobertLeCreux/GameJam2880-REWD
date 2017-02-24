@@ -17,6 +17,7 @@ public class NonStationary extends Sprite{
     public NonStationary(int x, int y) {
         super(x, y);
         gravity = 9;
+        this.setVisible(true);
     }
     public NonStationary(int x, int y, String img) {
         super(x, y, img);

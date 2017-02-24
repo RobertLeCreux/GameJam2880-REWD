@@ -19,6 +19,7 @@ public class Board extends JPanel implements ActionListener {
     private Timer timer;
     private Mob mob;
     private Level level;
+    private Weapon mainGun;
     
     // ------Constructor-------
     public Board(){
@@ -26,6 +27,7 @@ public class Board extends JPanel implements ActionListener {
         addKeyListener(new TAdapter());
         setFocusable(true);
         player = new Player(10,10);
+        
         timer = new Timer(DELAY, this);
         timer.start();
         
@@ -44,6 +46,10 @@ public class Board extends JPanel implements ActionListener {
     private void paintAssets(Graphics g){
         player.doDrawing(g,this);
         level.drawLevel(g, this);
+        if (player.weapons.get(player.weaponIndex) != null){
+            (player.weapons.get(player.weaponIndex)).doDrawing(g,this);
+        }
+        
     }
         
     // -------Override methods

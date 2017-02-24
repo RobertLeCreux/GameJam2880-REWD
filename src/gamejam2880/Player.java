@@ -15,9 +15,10 @@ import java.util.ArrayList;
 public class Player extends NonStationary {
     public static int PLAYER_SPEED = 3;
     public static int JUMP_FORCE = 20;
-    private ArrayList<Weapon> weapon;
-    private int weaponIndex;
+    public ArrayList<Weapon> weapons;
+    protected int weaponIndex;
     private boolean touchedGround;
+    private Weapon mainGun;
     
     private int lives;
     
@@ -38,8 +39,9 @@ public class Player extends NonStationary {
         getImageDimensions();
         this.setX(GameJam2880.WINDOW_WIDTH / 8 - this.getWidth() / 2);
         touchedGround = true;
-        weapon = new ArrayList();
-        weapon.add(new Weapon(this.getX(), this.getDY()/2, Weapon.SHOT_GUN, "shotGun.png"));
+        weapons = new ArrayList();
+        mainGun = new Weapon(this.getX(), this.getY(), Weapon.SHOT_GUN, "mainGunRight.png");
+        weapons.add(mainGun);
     }
 
     /*
@@ -62,6 +64,10 @@ public class Player extends NonStationary {
         return missiles;
     }*/
     
+    public void addWeapon(Weapon weapon){
+        weapons.add(weapon);
+    }
+    
     public void setLives(int life){
         lives += life;
     }
@@ -79,27 +85,27 @@ public class Player extends NonStationary {
         
         switch(key){
             case KeyEvent.VK_1:
-                weaponIndex = 1;
+                weaponIndex = 0;
                 break;
             case KeyEvent.VK_2:
-                weaponIndex = 2;
+                weaponIndex = 1;
                 break;
             case KeyEvent.VK_3:
-                weaponIndex = 3;
+                weaponIndex = 2;
                 break;
             case KeyEvent.VK_4:
-                weaponIndex = 4;
+                weaponIndex = 3;
                 break;
             case KeyEvent.VK_5:
-                weaponIndex = 5;
+                weaponIndex = 4;
                 break;
             case KeyEvent.VK_6:
-                weaponIndex = 6;
+                weaponIndex = 5;
                 break;
         }
         
         if (key == KeyEvent.VK_ENTER) {
-            weapon.get(weaponIndex).fire();
+            weapons.get(weaponIndex).fire();
         }
         
         if (key == KeyEvent.VK_SPACE){
@@ -114,11 +120,13 @@ public class Player extends NonStationary {
         if (key == KeyEvent.VK_LEFT) {
             this.setDX(-PLAYER_SPEED);
             this.loadImage("AlienLeft.png");
+            weapons.get(0).loadImage("mainGunLeft.png");
         }
 
         if (key == KeyEvent.VK_RIGHT) {
             super.setDX(PLAYER_SPEED);
             this.loadImage("AlienRight.png");
+            weapons.get(0).loadImage("mainGunRight.png");
         }
         
     }
