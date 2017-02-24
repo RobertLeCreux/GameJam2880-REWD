@@ -19,7 +19,7 @@ public class GameJam2880 extends JFrame implements ActionListener{
     
     
     
-    public static int WINDOW_WIDTH = 700;
+    public static int WINDOW_WIDTH = 1000;
     public static int WINDOW_HEIGHT = 700;
     
     public GameJam2880(){
