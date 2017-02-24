@@ -171,14 +171,14 @@ public class Player extends NonStationary {
         if (key == KeyEvent.VK_LEFT) {
             this.setDX(-PLAYER_SPEED);
             this.loadImage("AlienLeft.png");
-            weapons.get(weaponIndex).loadImage(imgWeapons.get(weaponIndex + 1));
+            weapons.get(weaponIndex).loadImage(imgWeapons.get((2 * weaponIndex) + 1));
             setDirection(FACING_LEFT);
         }
 
         if (key == KeyEvent.VK_RIGHT) {
             super.setDX(PLAYER_SPEED);
             this.loadImage("AlienRight.png");
-            weapons.get(weaponIndex).loadImage(imgWeapons.get(weaponIndex));
+            weapons.get(weaponIndex).loadImage(imgWeapons.get(2 * weaponIndex));
             setDirection(FACING_RIGHT);
         }
         
