@@ -19,9 +19,13 @@ public class Player extends NonStationary {
     public static int WEAPON_Y_OFFSET = -18;
     public static int WEAPON_X_RIGHT_OFFSET = -3;
     public static int WEAPON_X_LEFT_OFFSET = -63;
+    
     public ArrayList<Weapon> weapons;
     public ArrayList<String> imgWeapons;
     protected int weaponIndex;
+    public static int IMG_WEAPONS_INDEX;
+    
+    
     public static int JUMP_FORCE = 10;
     private ArrayList<Weapon> weapon;
     private boolean touchedGround;
@@ -134,6 +138,7 @@ public class Player extends NonStationary {
 
     public void keyPressed(KeyEvent e) {
 
+        IMG_WEAPONS_INDEX = weaponIndex * 2;
         int key = e.getKeyCode();
         
         switch(key){
@@ -173,15 +178,17 @@ public class Player extends NonStationary {
         if (key == KeyEvent.VK_LEFT) {
             this.setDX(-PLAYER_SPEED);
             this.loadImage("AlienLeft.png");
-            weapons.get(weaponIndex).loadImage(imgWeapons.get((2 * weaponIndex) + 1));
+            weapons.get(weaponIndex).loadImage(imgWeapons.get(IMG_WEAPONS_INDEX + 1));
             setDirection(FACING_LEFT);
         }
 
         if (key == KeyEvent.VK_RIGHT) {
             super.setDX(PLAYER_SPEED);
             this.loadImage("AlienRight.png");
-            weapons.get(weaponIndex).loadImage(imgWeapons.get(2 * weaponIndex));
+            weapons.get(weaponIndex).loadImage(imgWeapons.get(IMG_WEAPONS_INDEX));
             setDirection(FACING_RIGHT);
+            System.out.println("weapon index: " + weaponIndex + " weapon image index: " + IMG_WEAPONS_INDEX);
+            
         }
         
     }
