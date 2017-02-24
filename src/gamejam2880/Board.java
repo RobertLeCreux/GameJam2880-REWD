@@ -34,7 +34,6 @@ public class Board extends JPanel implements ActionListener {
         
         // ---- add random things to test functionality---
         
-        mob = new Mob(240, 240);
     }
 
     
@@ -45,7 +44,6 @@ public class Board extends JPanel implements ActionListener {
     private void paintAssets(Graphics g){
         player.doDrawing(g,this);
         level.drawLevel(g, this);
-        mob.doDrawing(g, this);
     }
         
     // -------Override methods
@@ -64,10 +62,7 @@ public class Board extends JPanel implements ActionListener {
 
         level.moveLevel(player);        
         level.checkCollisions(player);
-        
-
-        mob.move();
-
+    
         repaint();
     }
     

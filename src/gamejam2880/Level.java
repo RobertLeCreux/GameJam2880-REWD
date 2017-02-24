@@ -10,13 +10,14 @@ import java.awt.event.*;
  */
 public class Level {
     private ArrayList<Ground> groundList = new ArrayList<Ground>();
-    private int furthestReached = 200;
+    private ArrayList<Mob> mobsList = new ArrayList<Mob>();
+    private int furthestReached = 0;
     private int playerLocation = 0;
     private int lastGroundPlaced = 0;
     private Ground testGround = new Ground(1000000,1000000);
+    private int lastMobAddedWidth;
     
     public Level(){
-        System.out.println("test construct" + testGround.getWidth());
         for (int i = 0; GameJam2880.WINDOW_WIDTH > i * testGround.getWidth() ;i++){
             System.out.println(i);
             groundList.add(new Ground(i*testGround.getWidth(),(GameJam2880.WINDOW_HEIGHT / 2) + 100) );
@@ -36,7 +37,7 @@ public class Level {
     
     public void moveLevel(Player player){
         playerLocation += player.getDX();
-        if (playerLocation + GameJam2880.WINDOW_WIDTH >= furthestReached){
+        if (playerLocation > furthestReached){
             if(lastGroundPlaced >= testGround.getWidth() - 10){
                 addGround();
                 lastGroundPlaced = 0;
@@ -50,11 +51,17 @@ public class Level {
             groundList.get(i).setX(groundList.get(i).getX() - player.getDX());
         }
         
-        
-        if ((playerLocation + GameJam2880.WINDOW_WIDTH > furthestReached) && player.getDX() > 0){
-            furthestReached += Player.PLAYER_SPEED;
+        for (Mob mob : mobsList){
+            mob.move();
+            mob.setX(mob.getX() - player.getDX());
         }
         
+        
+        if (playerLocation > furthestReached){
+            addMobs();
+            System.out.println("further = " + furthestReached + "\n player location: " + playerLocation);
+            furthestReached = playerLocation;
+        }  
     }
     
     
@@ -68,16 +75,31 @@ public class Level {
         groundList.add(new Ground(x,y));
     }
     
+    //dynamically add mobs to end of level
+    
+    public void addMobs(){
+        double rando = Math.random();
+        if (rando < 0.002){
+            
+            mobsList.add(new Mob(GameJam2880.WINDOW_WIDTH,10));
+            
+        }
+    }
+    
     public void drawLevel(Graphics g, Board canvas){
         for (int i = 0; i < groundList.size(); i++){
             groundList.get(i).doDrawing(g, canvas);
+        }
+        
+        for (Mob mob : mobsList){
+            mob.doDrawing(g, canvas);
         }
     }
     
     public void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
         if (key == KeyEvent.VK_W) {
-            //System.out.println("" + (playerLocation + GameJam2880.WINDOW_WIDTH) + "  " + furthestReached + " " + (furthestReached - (playerLocation + GameJam2880.WINDOW_WIDTH)));
+            System.out.println("" + (playerLocation + GameJam2880.WINDOW_WIDTH) + "  " + furthestReached + " " + (furthestReached - (playerLocation + GameJam2880.WINDOW_WIDTH)));
             System.out.println("");
         }
     }
