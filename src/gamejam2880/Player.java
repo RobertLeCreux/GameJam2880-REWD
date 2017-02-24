@@ -42,7 +42,7 @@ public class Player extends NonStationary {
     private void initPlayer() {
         
         // weapons = new ArrayList<>();
-        loadImage("AlienLeft.png");
+        loadImage("AlienRight.png");
         getImageDimensions();
         this.setX(GameJam2880.WINDOW_WIDTH / 8 - this.getWidth() / 2);
         touchedGround = true;

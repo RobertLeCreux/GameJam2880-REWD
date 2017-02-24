@@ -15,6 +15,7 @@ package gamejam2880;
 public class Mob extends NonStationary {
 
     // private String[] img = {"mob1.png", "mob2.png", "mob3.png"};
+    private static double MOB_SPAWN_RATE;
     private String img;
     
     public Mob(int x, int y) {
