@@ -31,7 +31,7 @@ public class Player extends NonStationary {
         // missiles = new ArrayList<>();
         loadImage("Sketch002.png");
         getImageDimensions();
-        this.setX(GameJam2880.WINDOW_WIDTH / 2 - this.getWidth() / 2);
+        this.setX(GameJam2880.WINDOW_WIDTH / 8 - this.getWidth() / 2);
         touchedGround = true;
     }
 
@@ -90,10 +90,12 @@ public class Player extends NonStationary {
         
         if (key == KeyEvent.VK_LEFT) {
             this.setDX(-PLAYER_SPEED);
+            System.out.println("Left");
         }
 
         if (key == KeyEvent.VK_RIGHT) {
             super.setDX(PLAYER_SPEED);
+            System.out.println("Right");
         }
         
     }
