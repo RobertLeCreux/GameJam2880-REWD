@@ -39,6 +39,16 @@ public class Level {
                 player.setY(ground.getY() - player.getHeight());
                 player.setTouchedGround(true);
             }
+            
+        for (Mob mob : mobsList){
+            for (Ground grounds : groundList){
+                Rectangle rgs = grounds.getBounds();
+                if (mob.detectCollision(rgs) == Sprite.COLLISION_BOTTOM){
+                    mob.setDY(0);
+                    mob.setY(ground.getY() - mob.getHeight());
+                }
+            }
+        }
         }
     }
     
@@ -87,7 +97,7 @@ public class Level {
     public void addMobs(Player player){
         lastMobAddedCount += player.getDX();
         double rando = Math.random();
-        if (rando < 0.999){
+        if (rando < 0.002){
             long imageIndex = Math.round(Math.random() * mobImageList.size());
             int imageIndexInt = (int) imageIndex;
             if(imageIndexInt >= mobImageList.size()){

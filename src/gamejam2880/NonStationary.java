@@ -10,25 +10,29 @@ package gamejam2880;
  * @author Robert LeCreux
  */
 public class NonStationary extends Sprite{
+    private int gravitySlower = 0;
     
-    private static int gravity;
+    
     
     
     public NonStationary(int x, int y) {
         super(x, y);
-        gravity = 9;
     }
     public NonStationary(int x, int y, String img) {
         super(x, y, img);
-        gravity = 9;
     }
     
-    public void setGravity(int grav){
-        gravity = grav;
-    }
-        
+           
     public void move(){
-        y += dy;
-        dy += Physics.GRAVITY;
+        
+        this.setY(this.getY() + this.getDY());
+        
+        if (gravitySlower == Physics.GRAVITY_SLOW_FACTOR){
+            this.setDY(this.getDY() + Physics.GRAVITY);
+            gravitySlower = 0;
+        } else{
+            gravitySlower += 1;
+        }
+        
     }
 }

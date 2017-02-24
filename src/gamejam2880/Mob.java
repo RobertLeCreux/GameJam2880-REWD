@@ -12,7 +12,7 @@ package gamejam2880;
  * @author Robert LeCreux
  */
 
-public class Mob extends Sprite {
+public class Mob extends NonStationary {
 
     private int dy;
     // private String[] img = {"mob1.png", "mob2.png", "mob3.png"};
@@ -45,8 +45,9 @@ public class Mob extends Sprite {
     }
 
     public void move() {
+        super.move();
         x -= 1;
-        y += dy;
+        
         
     }
     

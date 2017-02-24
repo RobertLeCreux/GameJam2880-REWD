@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class Player extends NonStationary {
     public static int PLAYER_SPEED = 3;
-    public static int JUMP_FORCE = 20;
+    public static int JUMP_FORCE = 10;
     private ArrayList<Weapon> weapon;
     private int weaponIndex;
     private boolean touchedGround;
