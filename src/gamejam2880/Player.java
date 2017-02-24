@@ -19,11 +19,15 @@ public class Player extends NonStationary {
     private int weaponIndex;
     private boolean touchedGround;
     
+    private int lives;
+    
+    public static final int STARTING_LIVES = 3;
+    
     
     
     public Player(int x, int y) {
         super(x, y);
-
+        lives = STARTING_LIVES;
         initPlayer();
     }
 
@@ -57,6 +61,13 @@ public class Player extends NonStationary {
     public ArrayList getMissiles() {
         return missiles;
     }*/
+    
+    public void setLives(int life){
+        lives += life;
+    }
+    public int getLives(){
+        return lives;
+    }
     
     public void setTouchedGround(Boolean bool){
         touchedGround = bool;
