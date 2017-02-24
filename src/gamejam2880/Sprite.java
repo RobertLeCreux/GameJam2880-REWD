@@ -96,10 +96,4 @@ public class Sprite {
         g2d.setPaint(color);
         g2d.drawImage(this.getImage(), this.getX(), this.getY(), canvas);
     }
-    public void doDrawing(Graphics g,Menu canvas){
-        Graphics2D g2d = (Graphics2D) g;
-        Color color = new Color(244,0,104,1);
-        g2d.setPaint(color);
-        g2d.drawImage(this.getImage(), this.getX(), this.getY(), canvas);
-    }
 }

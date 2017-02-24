@@ -11,12 +11,13 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-public class GameJam2880 extends JFrame implements ActionListener{
+public class GameJam2880 {
     
-    private JPanel panel;
-    private CardLayout card;
-    private Button button;
     
+    private MenuBetter menu;
+    private Board board;
+    private JFrame frame;
+    private JButton btnForward;
     
     
     public static int WINDOW_WIDTH = 1000;
@@ -28,36 +29,41 @@ public class GameJam2880 extends JFrame implements ActionListener{
     }
     
     private void initUI(){
-        panel = new JPanel();
-        card = new CardLayout();
-        panel.setLayout(card);
-        //panel.add(new Menu());
-        panel.add(new Board());
+        frame =  new JFrame("GameJam2880");
+        menu = new MenuBetter();
+        board = new Board();
         
-        add(panel);
+        frame.add(menu);
+        
+        btnForward = (JButton) menu.getComponent(1);
+        btnForward.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent ae){
+               frame.remove(menu);
+               frame.add(board);
+               board.requestFocus();
+               frame.revalidate();
+               frame.repaint();
+           }
+        });
+
+        
         //pack();
         
-        setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
-        
-        setTitle("GameJam2880");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+        frame.setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
+        frame.setTitle("GameJam2880");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
     
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable(){
             @Override
             public void run(){
-                GameJam2880 game = new GameJam2880();
-                game.setVisible(true);
+                new GameJam2880();
+                
             }
         });
     }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        
-        card.next(panel);
-    }
-    
 }

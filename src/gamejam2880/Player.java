@@ -90,10 +90,12 @@ public class Player extends NonStationary {
         
         if (key == KeyEvent.VK_LEFT) {
             this.setDX(-PLAYER_SPEED);
+            System.out.println("Left");
         }
 
         if (key == KeyEvent.VK_RIGHT) {
             super.setDX(PLAYER_SPEED);
+            System.out.println("Right");
         }
         
     }
