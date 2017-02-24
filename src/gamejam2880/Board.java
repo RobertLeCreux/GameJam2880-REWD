@@ -15,12 +15,10 @@ import java.util.*;
 
 public class Board extends JPanel implements ActionListener {
     
+    private Level level;
     private Player player;
     private final int DELAY = 10;
     private Timer timer;
-    private Ground ground;
-    private Mob mob;
-    Level level;
     
     
     // ------Constructor-------
@@ -28,19 +26,15 @@ public class Board extends JPanel implements ActionListener {
         
         addKeyListener(new TAdapter());
         setFocusable(true);
+        level = new Level();
         player = new Player(10,10);
         timer = new Timer(DELAY, this);
-        timer.start();
-        level = new Level();
+        timer.start();     
         
         // ---- add random things to test functionality---
         //level.addGround();
         //level.addGround(10,200);
-
         
-        ground = new Ground(10, player.height);
-        
-        mob = new Mob(240, 240);
     }
 
     
@@ -50,9 +44,7 @@ public class Board extends JPanel implements ActionListener {
     
     private void paintAssets(Graphics g){
         player.doDrawing(g,this);
-        ground.doDrawing(g,this);
-        mob.doDrawing(g, this);
-        
+        level.drawLevel(g, this);
     }
         
     // -------Override methods
@@ -68,12 +60,9 @@ public class Board extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         player.move();
-
         level.moveLevel(player);        
         level.checkCollisions(player);
         
-
-        mob.move();
         repaint();
     }
     
@@ -83,11 +72,13 @@ public class Board extends JPanel implements ActionListener {
         @Override
         public void keyReleased(KeyEvent e){
             player.keyReleased(e);
+            level.keyReleased(e);
         }
         
         @Override
         public void keyPressed(KeyEvent e) {
             player.keyPressed(e);
+            level.keyPressed(e);
         }
     }
 }

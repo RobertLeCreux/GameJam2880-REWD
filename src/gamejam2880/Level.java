@@ -16,6 +16,7 @@ public class Level {
     private Ground testGround = new Ground(1000000,1000000);
     
     public Level(){
+        System.out.println("test construct" + testGround.getWidth());
         for (int i = 0; GameJam2880.WINDOW_WIDTH > i * testGround.getWidth() ;i++){
             System.out.println(i);
             groundList.add(new Ground(i*testGround.getWidth(),GameJam2880.WINDOW_HEIGHT / 2));
