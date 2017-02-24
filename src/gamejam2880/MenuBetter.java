@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package gamejam2880;
+
+import java.awt.*;
+
 /**
  *
  * @author rober
@@ -71,8 +74,6 @@ public class MenuBetter extends javax.swing.JPanel {
                     .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(129, 129, 129))
         );
-
-        btnExit.getAccessibleContext().setAccessibleParent(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void onStart(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onStart

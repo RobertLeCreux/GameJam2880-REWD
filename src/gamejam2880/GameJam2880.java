@@ -18,6 +18,7 @@ public class GameJam2880 {
     private Board board;
     private JFrame frame;
     private JButton btnForward;
+    private JButton btnExit;
     
     
     public static int WINDOW_WIDTH = 1000;
@@ -46,7 +47,13 @@ public class GameJam2880 {
                frame.repaint();
            }
         });
-
+        btnExit = (JButton) menu.getComponent(2);
+        btnExit.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent ae){
+               System.exit(0);
+           }
+        });
         
         //pack();
         
