@@ -20,11 +20,12 @@ public class Player extends NonStationary {
     public static int WEAPON_X_RIGHT_OFFSET = -3;
     public static int WEAPON_X_LEFT_OFFSET = -63;
     public ArrayList<Weapon> weapons;
+    public ArrayList<String> imgWeapons;
     protected int weaponIndex;
     public static int JUMP_FORCE = 10;
     private ArrayList<Weapon> weapon;
     private boolean touchedGround;
-    private Weapon mainGun;
+    private Weapon mainGun, flameThrower, sprayGun, cannonGun, lightningGun, ionGun;
     private int direction = FACING_RIGHT;
     
     private int lives;
@@ -47,8 +48,37 @@ public class Player extends NonStationary {
         this.setX(GameJam2880.WINDOW_WIDTH / 8 - this.getWidth() / 2);
         touchedGround = true;
         weapons = new ArrayList();
-        mainGun = new Weapon(this.getX(), this.getY(), Weapon.SHOT_GUN, "mainGunRight.png");
+        imgWeapons = new ArrayList();
+        
+        
+        imgWeapons.add("mainGunRight.png");
+        imgWeapons.add("mainGunLeft.png");
+        imgWeapons.add("ionGunRight.png");
+        imgWeapons.add("ionGunLeft.png");
+        imgWeapons.add("flameGunRight.png");
+        imgWeapons.add("flameGunLeft.png");
+        imgWeapons.add("sprayGunRight.png");
+        imgWeapons.add("sprayGunLeft.png");
+        imgWeapons.add("lghtinGunRight.png");
+        imgWeapons.add("lghtinGunLeft.png");
+        imgWeapons.add("cannonGunRight.png");
+        imgWeapons.add("cannonGunLeft.png");
+        
+        
+        mainGun = new Weapon(this.getX(), this.getY(), Weapon.SHOT_GUN, imgWeapons.get(0));
+        flameThrower = new Weapon(this.getX(), this.getY(), Weapon.SHOT_GUN, imgWeapons.get(2));
+        sprayGun = new Weapon(this.getX(), this.getY(), Weapon.SHOT_GUN, imgWeapons.get(4));
+        cannonGun = new Weapon(this.getX(), this.getY(), Weapon.SHOT_GUN, imgWeapons.get(6));
+        lightningGun = new Weapon(this.getX(), this.getY(), Weapon.SHOT_GUN, imgWeapons.get(8));
+        ionGun= new Weapon(this.getX(), this.getY(), Weapon.SHOT_GUN, imgWeapons.get(10));
+        
         weapons.add(mainGun);
+        weapons.add(ionGun);
+        weapons.add(flameThrower);
+        weapons.add(sprayGun);
+        weapons.add(lightningGun);
+        weapons.add(cannonGun);
+        
     }
 
     /*
@@ -142,14 +172,14 @@ public class Player extends NonStationary {
         if (key == KeyEvent.VK_LEFT) {
             this.setDX(-PLAYER_SPEED);
             this.loadImage("AlienLeft.png");
-            weapons.get(0).loadImage("mainGunLeft.png");
+            weapons.get(weaponIndex).loadImage(imgWeapons.get(weaponIndex + 1));
             setDirection(FACING_LEFT);
         }
 
         if (key == KeyEvent.VK_RIGHT) {
             super.setDX(PLAYER_SPEED);
             this.loadImage("AlienRight.png");
-            weapons.get(0).loadImage("mainGunRight.png");
+            weapons.get(weaponIndex).loadImage(imgWeapons.get(weaponIndex));
             setDirection(FACING_RIGHT);
         }
         
