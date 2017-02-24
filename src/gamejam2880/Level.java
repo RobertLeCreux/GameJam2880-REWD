@@ -47,6 +47,7 @@ public class Level {
             
         for (Mob mob : mobsList){
             if (mob.detectCollision(player.getBounds()) > 0){
+                System.out.println(mob.detectCollision(player.getBounds()));
                 playerHit(player,mob);
             }
             for (Ground grounds : groundList){
@@ -89,7 +90,7 @@ public class Level {
     
     public void playerHit(Player player, Mob mob){
         player.setLives(player.getLives() - 1);
-        player.setDX(-100);
+        player.setDX(-30);
     }
     
     //dynamically add ground to the end of the level

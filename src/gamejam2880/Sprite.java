@@ -19,6 +19,7 @@ public class Sprite {
     public static int COLLISION_BOTTOM = 2;
     public static int COLLISION_RIGHT = 3;
     public static int COLLISION_LEFT = 4;
+    public static int COLLISION_INDETERMINATE = 5;
     protected int x;
     protected int y;
     protected int dx;
@@ -131,6 +132,8 @@ public class Sprite {
             return COLLISION_LEFT;
         } else if (this.getBounds().intersects(obj) && !(thisHitBoxMovedUp.intersects(obj))){
             return COLLISION_RIGHT;
+        } else if (this.getBounds().intersects(obj)){
+            return COLLISION_INDETERMINATE;
         } else{
             return NO_COLLISION;
         }
