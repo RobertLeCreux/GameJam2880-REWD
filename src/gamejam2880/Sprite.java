@@ -45,7 +45,6 @@ public class Sprite {
     }
 
     protected void loadImage(String imageName) {
-        System.out.println("image name: " + imageName);
         ImageIcon ii = new ImageIcon(imageName);
         image = ii.getImage();
         getImageDimensions();

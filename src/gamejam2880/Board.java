@@ -31,20 +31,13 @@ public class Board extends JPanel implements ActionListener {
         timer = new Timer(DELAY, this);
         timer.start();
         
-<<<<<<< HEAD
+
         level = new Level();
         
         // ---- add random things to test functionality---
-        //level.addGround();
-        //level.addGround(10,200);
-=======
-//<<<<<<< HEAD
-        // ---- add random things to test functionality---
-        //level.addGround();
-        //level.addGround(10,200);
-//=======
-//>>>>>>> origin/master
->>>>>>> origin/master
+        level.addGround();
+        level.addGround(10,200);
+
         
         ground = new Ground(10, player.height);
         
@@ -58,9 +51,8 @@ public class Board extends JPanel implements ActionListener {
     
     private void paintAssets(Graphics g){
         player.doDrawing(g,this);
-        ground.doDrawing(g,this);
+        level.drawLevel(g, this);
         mob.doDrawing(g, this);
-        
     }
         
     // -------Override methods
@@ -96,7 +88,7 @@ public class Board extends JPanel implements ActionListener {
         
         @Override
         public void keyPressed(KeyEvent e) {
-            System.out.println("test");
+            //System.out.println("test");
             player.keyPressed(e);
         }
     }
