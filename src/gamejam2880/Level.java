@@ -21,12 +21,11 @@ public class Level {
     private int lastMobAddedCount;
     
     public Level(){
-        mobImageList.add("mob1.png");
-        mobImageList.add("mob2.png");
+        mobImageList.add("vulture.png");
+        mobImageList.add("cloud1.png");
+        mobImageList.add("dragonG1.png");
         mobImageList.add("mob3.png");
-        mobImageList.add("mob4.png");
         for (int i = 0; GameJam2880.WINDOW_WIDTH > i * testGround.getWidth() ;i++){
-            System.out.println(i);
             groundList.add(new Ground(i*testGround.getWidth(),(GameJam2880.WINDOW_HEIGHT / 2) + 100) );
         }
     }
@@ -44,16 +43,19 @@ public class Level {
                     player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
                 }              
             }
+        }
             
         for (Mob mob : mobsList){
+            if (mob.detectCollision(player.getBounds()) > 0){
+                playerHit(player,mob);
+            }
             for (Ground grounds : groundList){
                 Rectangle rgs = grounds.getBounds();
                 if (mob.detectCollision(rgs) == Sprite.COLLISION_BOTTOM){
                     mob.setDY(0);
-                    mob.setY(ground.getY() - mob.getHeight());
+                    mob.setY(grounds.getY() - mob.getHeight() - 1);
                 }
             }
-        }
         }
     }
     
@@ -81,11 +83,14 @@ public class Level {
         
         if (playerLocation > furthestReached){
             addMobs(player);
-            //System.out.println("further = " + furthestReached + "\n player location: " + playerLocation);
             furthestReached = playerLocation;
         }  
     }
     
+    public void playerHit(Player player, Mob mob){
+        player.setLives(player.getLives() - 1);
+        player.setDX(-100);
+    }
     
     //dynamically add ground to the end of the level
     public void addGround(){
@@ -111,7 +116,6 @@ public class Level {
             ImageIcon tempImageIcon = new ImageIcon(mobImageList.get(imageIndexInt));
             Image tempImage = tempImageIcon.getImage();
             if (lastMobAddedCount > lastMobAddedWidth){
-                System.out.println("attempt to create mob" + mobsList.size());
                 lastMobAddedWidth = tempImage.getWidth(null);
                 lastMobAddedCount = 0;
                 mobsList.add(new Mob(GameJam2880.WINDOW_WIDTH,10,mobImageList.get(imageIndexInt)));
@@ -132,8 +136,6 @@ public class Level {
     public void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
         if (key == KeyEvent.VK_W) {
-            //System.out.println("" + (playerLocation + GameJam2880.WINDOW_WIDTH) + "  " + furthestReached + " " + (furthestReached - (playerLocation + GameJam2880.WINDOW_WIDTH)));
-            //System.out.println("");
         }
     }
     

@@ -46,13 +46,12 @@ public class Mob extends NonStationary {
 
     public void move() {
         super.move();
-        x -= 1;
+        dx = 1;
         int direction = (int) Math.floor(Math.random() * 50);
-        System.out.println(direction);
         switch (direction){
-            case 0: x += 10;
+            case 0: dx += 10;
                     break;
-            case 1: x -= 10;
+            case 1: dx -= 10;
                     break;
             case 2: dy -= 5;
                     break;
