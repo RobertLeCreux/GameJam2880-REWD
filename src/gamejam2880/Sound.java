@@ -11,11 +11,20 @@ package gamejam2880;
  */
 public enum Sound {
     
+<<<<<<< Updated upstream
 <<<<<<< HEAD
     // TODO: ZAP(""),PEW(""),KAPLOW(),ZOOSH(""),ZEW(""),FLAME("")
 =======
     //ZAP(""),PEW(""),KAPLOW(),ZOOSH(""),ZEW(""),FLAME("")
 >>>>>>> origin/master
+=======
+    ZAP(""),
+    PEW(""),
+    KAPLOW(),
+    ZOOSH(""),
+    ZEW(""),
+    FLAME("");
+>>>>>>> Stashed changes
     
     
 }
