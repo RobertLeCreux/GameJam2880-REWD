@@ -12,6 +12,7 @@ package gamejam2880;
 public class Physics {
     
     public static int GRAVITY = 1;
+    public static int GRAVITY_SLOW_FACTOR = 3;
     
     
     public static void setGravity(int g){

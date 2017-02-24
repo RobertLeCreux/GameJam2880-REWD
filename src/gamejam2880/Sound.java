@@ -9,6 +9,9 @@ package gamejam2880;
  *
  * @author kylechapman
  */
-public class Sound {
+public enum Sound {
+    
+    ZAP(""),PEW(""),KAPLOW(),ZOOSH(""),ZEW(""),FLAME("")
+    
     
 }
