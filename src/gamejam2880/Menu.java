@@ -2,7 +2,7 @@ package gamejam2880;
 
 /**
  *
- * @author Gen
+ * @author Robert LeCreux
  */
 
 import javax.swing.JPanel;
@@ -13,34 +13,22 @@ import java.util.*;
 
 
 
-public class Board extends JPanel implements ActionListener {
+public class Menu extends JPanel implements ActionListener {
     
-    private Player player;
-    private final int DELAY = 10;
-    private Timer timer;
-    private Ground ground;
-    private Mob mob;
+    private Sprite screen;
+    private Sprite button1;
+    private Sprite button2;
     
     
     // ------Constructor-------
-    public Board(){
+    public Menu(){
         
         addKeyListener(new TAdapter());
         setFocusable(true);
-        player = new Player(10,10);
-        timer = new Timer(DELAY, this);
-        timer.start();
         
-//<<<<<<< HEAD
-        // ---- add random things to test functionality---
-        //level.addGround();
-        //level.addGround(10,200);
-//=======
-//>>>>>>> origin/master
-        
-        ground = new Ground(10, player.height);
-        
-        mob = new Mob(240, 240);
+        screen = new Sprite(0, 0,"menu.png");
+        button1 = new Button(100, 250, "button1.png");
+        button2 = new Button(250, 250, "button2.png");
     }
 
     
@@ -49,12 +37,11 @@ public class Board extends JPanel implements ActionListener {
     //----- private methods------
     
     private void paintAssets(Graphics g){
-        player.doDrawing(g,this);
-        ground.doDrawing(g,this);
-        mob.doDrawing(g, this);
-        
+        screen.doDrawing(g,this);
+        button1.doDrawing(g,this);
+        button2.doDrawing(g,this);
     }
-        
+    
     // -------Override methods
     @Override
     public void paintComponent(Graphics g){
@@ -67,15 +54,8 @@ public class Board extends JPanel implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        player.move();
-<<<<<<< HEAD
-        level.moveLevel(player);        
-        level.checkCollisions(player);
-        
-=======
-        mob.move();
->>>>>>> origin/master
         repaint();
+        
     }
     
     // ------ Class to detect user keyboard input------
@@ -83,13 +63,13 @@ public class Board extends JPanel implements ActionListener {
         
         @Override
         public void keyReleased(KeyEvent e){
-            player.keyReleased(e);
+            
         }
         
         @Override
         public void keyPressed(KeyEvent e) {
-            System.out.println("test");
-            player.keyPressed(e);
+            //System.out.println("test");
+            //player.keyPressed(e);
         }
     }
 }
