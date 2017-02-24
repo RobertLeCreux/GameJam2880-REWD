@@ -13,8 +13,8 @@ public class Physics {
     
     public static int GRAVITY = 1;
     
+    
     public static void setGravity(int g){
         GRAVITY = g;
     }
-    
 }

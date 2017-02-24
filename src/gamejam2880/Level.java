@@ -24,12 +24,11 @@ public class Level {
     }
     
     public void checkCollisions(Player player){
-        Rectangle rp = player.getBounds();
         for (Ground ground : groundList){
             Rectangle rg = ground.getBounds();
-            if (rg.intersects(rp)){
+            if (player.detectCollision(rg) == Sprite.COLLISION_BOTTOM){
                 player.setDY(0);
-                player.setY(ground.getY() - player.getHeight() );
+                player.setY(ground.getY() - player.getHeight());
                 player.setTouchedGround(true);
             }
         }
