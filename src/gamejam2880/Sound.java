@@ -5,11 +5,14 @@
  */
 package gamejam2880;
 
+import java.io.*;
+import sun.audio.*;
+
 /**
  *
  * @author kylechapman
  */
-public enum Sound {
+public Sound {
 
     //ZAP("zap.aif"),
     //PEW("pew.aif"),
@@ -18,5 +21,17 @@ public enum Sound {
     //ZEW("zew.aif"),
     //FLAME("flame.aif");
 
-    
+  public static void main(String[] args) 
+  throws Exception
+  {
+    // open the sound file as a Java input stream
+    String gongFile = "";
+    InputStream in = new FileInputStream(gongFile);
+
+    // create an audiostream from the inputstream
+    AudioStream audioStream = new AudioStream(in);
+
+    // play the audio clip with the audioplayer class
+    AudioPlayer.player.start(audioStream);
+  }
 }

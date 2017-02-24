@@ -28,7 +28,7 @@ public class Ground extends Sprite {
         
         public Ground(int x,int y) {
             super(x, y);
-            loadImage("rock.png");
+            loadImage("floorRock.png");
             
         }
         
