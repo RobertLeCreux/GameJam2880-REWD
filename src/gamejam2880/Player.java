@@ -16,6 +16,9 @@ public class Player extends NonStationary {
     public static int PLAYER_SPEED = 3;
     public static int FACING_LEFT = 0;
     public static int FACING_RIGHT = 1;
+    public static int WEAPON_Y_OFFSET = -18;
+    public static int WEAPON_X_RIGHT_OFFSET = -3;
+    public static int WEAPON_X_LEFT_OFFSET = -33;
     public ArrayList<Weapon> weapons;
     protected int weaponIndex;
     public static int JUMP_FORCE = 10;

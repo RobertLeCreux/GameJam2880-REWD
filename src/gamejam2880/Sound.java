@@ -10,12 +10,8 @@ package gamejam2880;
  * @author kylechapman
  */
 public enum Sound {
-    
-<<<<<<< HEAD
     // TODO: ZAP(""),PEW(""),KAPLOW(),ZOOSH(""),ZEW(""),FLAME("")
-=======
     //ZAP(""),PEW(""),KAPLOW(),ZOOSH(""),ZEW(""),FLAME("")
->>>>>>> origin/master
-    
+
     
 }
