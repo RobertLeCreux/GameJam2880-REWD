@@ -47,7 +47,7 @@ public class GameJam2880 {
                frame.repaint();
            }
         });
-        btnExit = (JButton) menu.getComponent(2);
+        btnExit = (JButton) menu.getComponent(4);
         btnExit.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent ae){
