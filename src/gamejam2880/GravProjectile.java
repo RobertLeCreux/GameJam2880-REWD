@@ -7,7 +7,7 @@ package gamejam2880;
 
 /**
  *
- * @author rober
+ * @author Robert LeCreux
  */
 public class GravProjectile extends Projectile {
     

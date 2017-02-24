@@ -6,19 +6,31 @@ package gamejam2880;
  */
 
 import gamejam2880.Board;
-import java.awt.EventQueue;
-import javax.swing.JFrame;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 
-public class GameJam2880 extends JFrame{
+public class GameJam2880 extends JFrame implements ActionListener{
+    
+    private JPanel panel;
+    private CardLayout card;
+    private Button button;
+    
     
     public GameJam2880(){
         initUI();
+        
     }
     
     private void initUI(){
-        add(new Board());
+        panel = new JPanel();
+        card = new CardLayout();
+        panel.setLayout(card);
+        //panel.add(new Menu());
+        panel.add(new Board());
         
+        add(panel);
         //pack();
         
         setSize(500,500);
@@ -36,6 +48,12 @@ public class GameJam2880 extends JFrame{
                 game.setVisible(true);
             }
         });
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+        card.next(panel);
     }
     
 }

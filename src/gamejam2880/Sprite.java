@@ -21,12 +21,21 @@ public class Sprite {
     protected int height;
     protected boolean vis;
     protected Image image;
+    private String img;
 
     public Sprite(int x, int y) {
 
         this.x = x;
         this.y = y;
         vis = true;
+    }
+    public Sprite(int x, int y, String image) {
+
+        this.x = x;
+        this.y = y;
+        img = image;
+        vis = true;
+        loadImage(img);
     }
 
     protected void getImageDimensions() {
@@ -36,7 +45,7 @@ public class Sprite {
     }
 
     protected void loadImage(String imageName) {
-
+        System.out.println("image name: " + imageName);
         ImageIcon ii = new ImageIcon(imageName);
         image = ii.getImage();
     }
@@ -74,6 +83,12 @@ public class Sprite {
     }
     
     public void doDrawing(Graphics g,Board canvas){
+        Graphics2D g2d = (Graphics2D) g;
+        Color color = new Color(244,0,104,1);
+        g2d.setPaint(color);
+        g2d.drawImage(this.getImage(), this.getX(), this.getY(), canvas);
+    }
+    public void doDrawing(Graphics g,Menu canvas){
         Graphics2D g2d = (Graphics2D) g;
         Color color = new Color(244,0,104,1);
         g2d.setPaint(color);

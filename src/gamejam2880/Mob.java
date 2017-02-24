@@ -15,26 +15,29 @@ package gamejam2880;
 public class Mob extends Sprite {
 
     private int dy;
-    private String[] img = {"mob1.png", "mob2.png", "mob3.png"};
-
+    // private String[] img = {"mob1.png", "mob2.png", "mob3.png"};
+    private String img;
+    
     public Mob(int x, int y) {
         super(x, y);
+        this.img = "mob1.png";
 
         initMob();
-        move();
+        
     }
 
     private void initMob() {
         
-        loadImage(img[(int)(Math.random() * 2)]);
+        //loadImage(img[(int)(Math.random() * 2)]);
+        loadImage(img);
+        
         getImageDimensions();
     }
 
     public void move() {
-
         x -= 1;
         y += dy;
-
+        
     }
     
 }
