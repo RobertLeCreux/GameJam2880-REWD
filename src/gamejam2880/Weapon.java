@@ -15,12 +15,6 @@ public class Weapon extends Sprite {
     private String type;
     private ArrayList<Projectile> projectiles;
     private ArrayList<GravProjectile> gravProjectiles;
-    private ArrayList<Projectile> flameProjectiles;
-    private ArrayList<Projectile> sprayProjectiles;
-    private ArrayList<Projectile> shotProjectiles;
-    private ArrayList<Projectile> lightningProjectiles;
-    private ArrayList<Projectile> cannonProjectiles;
-    private ArrayList<Projectile> ionProjectiles;
     
     public static final String GRAV_GUN = "gravGun";
     public static final String FLAME_THROWER = "flameThrower";
@@ -51,36 +45,14 @@ public class Weapon extends Sprite {
             this.setX(player.getX() + player.getWidth() + Player.WEAPON_X_RIGHT_OFFSET);
             this.setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
         } else {
-            this.setX(player.getX() + Player.WEAPON_X_LEFT_OFFSET);
+            this.setX(player.getX() + - this.getWidth());
             this.setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
         }
     }
     
     public void fire() {
-        switch (type){
-            case "gravGun":
-                gravProjectiles.add(new GravProjectile(x + width, y + height / 2));
-                break;
-            case "flameThrower":
-                flameProjectiles.add(new Projectile(x + width, y + height / 2));
-                break;
-            case "sprayGun":
-                sprayProjectiles.add(new Projectile(x + width, y + height / 2));
-                break;
-            case "cannonGun":
-                cannonProjectiles.add(new Projectile(x + width, y + height / 2));
-                break;
-            case "lightningGun":
-                lightningProjectiles.add(new Projectile(x + width, y + height / 2));
-                break;
-            case "ionGun":
-                ionProjectiles.add(new Projectile(x + width, y + height / 2));
-                break;
-            default:
-                shotProjectiles.add(new Projectile(x + width, y + height / 2));
-                break;
-        }
-        
+        if (type == GRAV_GUN){
+                gravProjectiles.add(new GravProjectile(x + width, y + height / 2));       }
     }
     
     

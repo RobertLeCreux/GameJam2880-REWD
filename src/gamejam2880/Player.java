@@ -109,6 +109,7 @@ public class Player extends NonStationary {
         System.out.println("lives" + lives);
         lives = life;
     }
+    
     public int getLives(){
         return lives;
     }
