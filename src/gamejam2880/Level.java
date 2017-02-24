@@ -16,7 +16,22 @@ public class Level {
     private Ground testGround = new Ground(1000000,1000000);
     
     public Level(){
-        
+        System.out.println("test construct" + testGround.getWidth());
+        for (int i = 0; GameJam2880.WINDOW_WIDTH > i * testGround.getWidth() ;i++){
+            System.out.println(i);
+            groundList.add(new Ground(i*testGround.getWidth(),GameJam2880.WINDOW_HEIGHT / 2));
+        }
+    }
+    
+    public void checkCollisions(Player player){
+        Rectangle rp = player.getBounds();
+        for (Ground ground : groundList){
+            Rectangle rg = ground.getBounds();
+            if (rg.intersects(rp)){
+                player.setDY(0);
+                player.setY(ground.getY() - player.getHeight() );
+            }
+        }
     }
     
     public void moveLevel(Player player){
@@ -63,7 +78,7 @@ public class Level {
         int key = e.getKeyCode();
         if (key == KeyEvent.VK_W) {
             //System.out.println("" + (playerLocation + GameJam2880.WINDOW_WIDTH) + "  " + furthestReached + " " + (furthestReached - (playerLocation + GameJam2880.WINDOW_WIDTH)));
-            System.out.println("" + testGround.getWidth());
+            System.out.println("");
         }
     }
     

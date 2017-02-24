@@ -32,8 +32,8 @@ public class Board extends JPanel implements ActionListener {
         timer.start();     
         
         // ---- add random things to test functionality---
-        level.addGround();
-        level.addGround(10,200);
+        //level.addGround();
+        //level.addGround(10,200);
         
     }
 
@@ -46,7 +46,7 @@ public class Board extends JPanel implements ActionListener {
         player.doDrawing(g,this);
         level.drawLevel(g, this);
     }
-    
+        
     // -------Override methods
     @Override
     public void paintComponent(Graphics g){
@@ -59,8 +59,10 @@ public class Board extends JPanel implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        //player.move();
-        level.moveLevel(player);
+        player.move();
+        level.moveLevel(player);        
+        level.checkCollisions(player);
+        
         repaint();
     }
     

@@ -38,4 +38,9 @@ public class NonStationary extends Sprite{
     public void setDY(int deltaY){
         dy = deltaY;
     }
+    
+    public void move(){
+        y += dy;
+        dy += Physics.GRAVITY;
+    }
 }

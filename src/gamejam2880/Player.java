@@ -30,10 +30,10 @@ public class Player extends NonStationary {
         // missiles = new ArrayList<>();
         loadImage("Sketch002.png");
         getImageDimensions();
-        System.out.println("player image height" + height);
         this.setX(GameJam2880.WINDOW_WIDTH / 2 - this.getWidth() / 2);
     }
 
+    /*
     public void move() {
 
         x += this.getDX();
@@ -47,6 +47,7 @@ public class Player extends NonStationary {
             y = 1;
         }
     }
+    */
 /*
     public ArrayList getMissiles() {
         return missiles;
@@ -70,6 +71,13 @@ public class Player extends NonStationary {
         
         if (key == KeyEvent.VK_SPACE) {
             weapon.get(weaponIndex).fire();
+        }
+        
+        if (key == KeyEvent.VK_ENTER){
+            System.out.println("Enter pressed");
+            this.setDY(- 20);
+            //this.setY(this.getY() - 10);
+            System.out.println(getDY());
         }
 
         
