@@ -89,6 +89,7 @@ public class Level {
     }
     
     public void playerHit(Player player, Mob mob){
+        System.out.println("lives to change by: " + (player.getLives() - 1));
         player.setLives(player.getLives() - 1);
         player.setDX(-30);
     }

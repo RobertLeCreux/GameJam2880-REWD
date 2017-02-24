@@ -106,7 +106,8 @@ public class Player extends NonStationary {
     }
     
     public void setLives(int life){
-        lives += life;
+        System.out.println("lives" + lives);
+        lives = life;
     }
     public int getLives(){
         return lives;

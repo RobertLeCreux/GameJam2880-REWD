@@ -83,4 +83,8 @@ public class Weapon extends Sprite {
         
     }
     
+    
+    public void moveProjectiles(){
+        
+    }
 }
