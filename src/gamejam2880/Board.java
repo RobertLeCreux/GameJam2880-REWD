@@ -31,12 +31,12 @@ public class Board extends JPanel implements ActionListener {
         timer = new Timer(DELAY, this);
         timer.start();
         
-<<<<<<< HEAD
+//<<<<<<< HEAD
         // ---- add random things to test functionality---
         //level.addGround();
         //level.addGround(10,200);
-=======
->>>>>>> origin/master
+//=======
+//>>>>>>> origin/master
         
         ground = new Ground(10, player.height);
         
