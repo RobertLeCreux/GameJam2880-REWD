@@ -19,7 +19,7 @@ public class Level {
         System.out.println("test construct" + testGround.getWidth());
         for (int i = 0; GameJam2880.WINDOW_WIDTH > i * testGround.getWidth() ;i++){
             System.out.println(i);
-            groundList.add(new Ground(i*testGround.getWidth(),GameJam2880.WINDOW_HEIGHT / 2));
+            groundList.add(new Ground(i*testGround.getWidth(),(GameJam2880.WINDOW_HEIGHT / 2) + 100) );
         }
     }
     
@@ -30,6 +30,7 @@ public class Level {
             if (rg.intersects(rp)){
                 player.setDY(0);
                 player.setY(ground.getY() - player.getHeight() );
+                player.setTouchedGround(true);
             }
         }
     }
@@ -60,7 +61,7 @@ public class Level {
     
     //dynamically add ground to the end of the level
     public void addGround(){
-        groundList.add(new Ground(GameJam2880.WINDOW_WIDTH,GameJam2880.WINDOW_HEIGHT / 2));
+        groundList.add(new Ground(GameJam2880.WINDOW_WIDTH,(GameJam2880.WINDOW_HEIGHT / 2) + 100));
     }
     
     //add ground to a specific location

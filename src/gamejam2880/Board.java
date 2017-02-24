@@ -18,7 +18,6 @@ public class Board extends JPanel implements ActionListener {
     private Player player;
     private final int DELAY = 10;
     private Timer timer;
-    private Ground ground;
     private Mob mob;
     private Level level;
     
@@ -35,11 +34,6 @@ public class Board extends JPanel implements ActionListener {
         level = new Level();
         
         // ---- add random things to test functionality---
-        level.addGround();
-        level.addGround(10,200);
-
-        
-        ground = new Ground(10, player.height);
         
         mob = new Mob(240, 240);
     }

@@ -16,6 +16,7 @@ public class Player extends NonStationary {
     public static int PLAYER_SPEED = 3;
     private ArrayList<Weapon> weapon;
     private int weaponIndex;
+    private boolean touchedGround;
     
     
     
@@ -31,6 +32,7 @@ public class Player extends NonStationary {
         loadImage("Sketch002.png");
         getImageDimensions();
         this.setX(GameJam2880.WINDOW_WIDTH / 2 - this.getWidth() / 2);
+        touchedGround = true;
     }
 
     /*
@@ -52,6 +54,10 @@ public class Player extends NonStationary {
     public ArrayList getMissiles() {
         return missiles;
     }*/
+    
+    public void setTouchedGround(Boolean bool){
+        touchedGround = bool;
+    }
 
     public void keyPressed(KeyEvent e) {
 
@@ -74,16 +80,16 @@ public class Player extends NonStationary {
         }
         
         if (key == KeyEvent.VK_ENTER){
-            System.out.println("Enter pressed");
-            this.setDY(- 20);
-            //this.setY(this.getY() - 10);
-            System.out.println(getDY());
+            if (touchedGround){
+                this.setDY(- 20);
+                touchedGround = false;
+                //this.setY(this.getY() - 10);
+            }
         }
 
         
         if (key == KeyEvent.VK_LEFT) {
             this.setDX(-PLAYER_SPEED);
-            System.out.println("left key pressed");
         }
 
         if (key == KeyEvent.VK_RIGHT) {
