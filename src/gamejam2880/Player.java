@@ -94,7 +94,7 @@ public class Player extends NonStationary {
     @Override
     public void move(){
         super.move();
-        System.out.println("player" + getY());
+        //System.out.println("player" + getY());
         weapons.get(weaponIndex).move(this);
     }
 

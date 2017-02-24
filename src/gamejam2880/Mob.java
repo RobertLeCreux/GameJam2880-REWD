@@ -14,7 +14,6 @@ package gamejam2880;
 
 public class Mob extends NonStationary {
 
-    private int dy;
     // private String[] img = {"mob1.png", "mob2.png", "mob3.png"};
     private String img;
     
@@ -47,6 +46,18 @@ public class Mob extends NonStationary {
     public void move() {
         super.move();
         x -= 1;
+        int direction = (int) Math.floor(Math.random() * 50);
+        System.out.println(direction);
+        switch (direction){
+            case 0: x += 10;
+                    break;
+            case 1: x -= 10;
+                    break;
+            case 2: dy -= 5;
+                    break;
+            case 3: dy -= 1;
+                    break;
+        }
         
         
     }

@@ -47,7 +47,7 @@ public class Weapon extends Sprite {
         if (player.getDirection() == Player.FACING_RIGHT){
             this.setX(player.getX() + player.getWidth());
             this.setY(player.getY() + player.getHeight() / 2);
-            System.out.println(player.getY());
+            //System.out.println(player.getY());
         }
     }
     

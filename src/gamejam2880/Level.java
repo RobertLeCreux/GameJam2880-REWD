@@ -100,7 +100,7 @@ public class Level {
     public void addMobs(Player player){
         lastMobAddedCount += player.getDX();
         double rando = Math.random();
-        if (rando < 0.002){
+        if (rando < 0.02){
             long imageIndex = Math.round(Math.random() * mobImageList.size());
             int imageIndexInt = (int) imageIndex;
             if(imageIndexInt >= mobImageList.size()){
