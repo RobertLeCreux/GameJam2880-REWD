@@ -25,6 +25,16 @@ public class Mob extends Sprite {
         initMob();
         
     }
+    
+    public Mob(int x, int y, String image){         
+        super(x, y,image);
+        img = image;
+        initMob();
+        
+        
+        System.out.println("Making Sprite" + x + y);
+        
+    }
 
     private void initMob() {
         

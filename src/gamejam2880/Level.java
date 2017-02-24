@@ -3,6 +3,7 @@ package gamejam2880;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -11,13 +12,19 @@ import java.awt.event.*;
 public class Level {
     private ArrayList<Ground> groundList = new ArrayList<Ground>();
     private ArrayList<Mob> mobsList = new ArrayList<Mob>();
+    private ArrayList<String> mobImageList = new ArrayList<String>();
     private int furthestReached = 0;
     private int playerLocation = 0;
     private int lastGroundPlaced = 0;
     private Ground testGround = new Ground(1000000,1000000);
     private int lastMobAddedWidth;
+    private int lastMobAddedCount;
     
     public Level(){
+        mobImageList.add("mob1.png");
+        mobImageList.add("mob2.png");
+        mobImageList.add("mob3.png");
+        mobImageList.add("mob4.png");
         for (int i = 0; GameJam2880.WINDOW_WIDTH > i * testGround.getWidth() ;i++){
             System.out.println(i);
             groundList.add(new Ground(i*testGround.getWidth(),(GameJam2880.WINDOW_HEIGHT / 2) + 100) );
@@ -58,8 +65,8 @@ public class Level {
         
         
         if (playerLocation > furthestReached){
-            addMobs();
-            System.out.println("further = " + furthestReached + "\n player location: " + playerLocation);
+            addMobs(player);
+            //System.out.println("further = " + furthestReached + "\n player location: " + playerLocation);
             furthestReached = playerLocation;
         }  
     }
@@ -77,12 +84,23 @@ public class Level {
     
     //dynamically add mobs to end of level
     
-    public void addMobs(){
+    public void addMobs(Player player){
+        lastMobAddedCount += player.getDX();
         double rando = Math.random();
-        if (rando < 0.002){
-            
-            mobsList.add(new Mob(GameJam2880.WINDOW_WIDTH,10));
-            
+        if (rando < 0.999){
+            long imageIndex = Math.round(Math.random() * mobImageList.size());
+            int imageIndexInt = (int) imageIndex;
+            if(imageIndexInt >= mobImageList.size()){
+                imageIndexInt = mobImageList.size() - 1;
+            }
+            ImageIcon tempImageIcon = new ImageIcon(mobImageList.get(imageIndexInt));
+            Image tempImage = tempImageIcon.getImage();
+            if (lastMobAddedCount > lastMobAddedWidth){
+                System.out.println("attempt to create mob" + mobsList.size());
+                lastMobAddedWidth = tempImage.getWidth(null);
+                lastMobAddedCount = 0;
+                mobsList.add(new Mob(GameJam2880.WINDOW_WIDTH,10,mobImageList.get(imageIndexInt)));
+            }
         }
     }
     
@@ -99,8 +117,8 @@ public class Level {
     public void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
         if (key == KeyEvent.VK_W) {
-            System.out.println("" + (playerLocation + GameJam2880.WINDOW_WIDTH) + "  " + furthestReached + " " + (furthestReached - (playerLocation + GameJam2880.WINDOW_WIDTH)));
-            System.out.println("");
+            //System.out.println("" + (playerLocation + GameJam2880.WINDOW_WIDTH) + "  " + furthestReached + " " + (furthestReached - (playerLocation + GameJam2880.WINDOW_WIDTH)));
+            //System.out.println("");
         }
     }
     
