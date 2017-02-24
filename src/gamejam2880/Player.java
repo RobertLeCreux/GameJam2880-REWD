@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 public class Player extends NonStationary {
     public static int PLAYER_SPEED = 3;
+    public static int JUMP_FORCE = 20;
     private ArrayList<Weapon> weapon;
     private int weaponIndex;
     private boolean touchedGround;
@@ -75,13 +76,13 @@ public class Player extends NonStationary {
                 break;
         }
         
-        if (key == KeyEvent.VK_SPACE) {
+        if (key == KeyEvent.VK_ENTER) {
             weapon.get(weaponIndex).fire();
         }
         
-        if (key == KeyEvent.VK_ENTER){
+        if (key == KeyEvent.VK_SPACE){
             if (touchedGround){
-                this.setDY(- 20);
+                this.setDY(- (JUMP_FORCE / Physics.GRAVITY));
                 touchedGround = false;
                 //this.setY(this.getY() - 10);
             }
@@ -90,12 +91,10 @@ public class Player extends NonStationary {
         
         if (key == KeyEvent.VK_LEFT) {
             this.setDX(-PLAYER_SPEED);
-            System.out.println("Left");
         }
 
         if (key == KeyEvent.VK_RIGHT) {
             super.setDX(PLAYER_SPEED);
-            System.out.println("Right");
         }
         
     }
