@@ -20,7 +20,7 @@ public class Board extends JPanel implements ActionListener {
     private Timer timer;
     private Ground ground;
     private Mob mob;
-    
+    private Level level;
     
     // ------Constructor-------
     public Board(){
@@ -31,12 +31,11 @@ public class Board extends JPanel implements ActionListener {
         timer = new Timer(DELAY, this);
         timer.start();
         
-<<<<<<< HEAD
+        level = new Level();
+        
         // ---- add random things to test functionality---
         //level.addGround();
         //level.addGround(10,200);
-=======
->>>>>>> origin/master
         
         ground = new Ground(10, player.height);
         
@@ -68,13 +67,13 @@ public class Board extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         player.move();
-<<<<<<< HEAD
+
         level.moveLevel(player);        
         level.checkCollisions(player);
         
-=======
+
         mob.move();
->>>>>>> origin/master
+
         repaint();
     }
     
