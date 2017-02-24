@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Robert LeCreux
  */
-public class Weapon extends NonStationary {
+public class Weapon extends Sprite {
     private String type;
     private ArrayList<Projectile> projectiles;
     private ArrayList<GravProjectile> gravProjectiles;
@@ -41,6 +41,15 @@ public class Weapon extends NonStationary {
     }
     
     //----------------------------------------------------------- public methods
+    
+    
+    public void move(Player player){
+        if (player.getDirection() == Player.FACING_RIGHT){
+            this.setX(player.getX() + player.getWidth());
+            this.setY(player.getY() + player.getHeight() / 2);
+            System.out.println(player.getY());
+        }
+    }
     
     public void fire() {
         switch (type){

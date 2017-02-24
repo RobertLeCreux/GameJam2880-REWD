@@ -38,6 +38,9 @@ public class Level {
                 player.setDY(0);
                 player.setY(ground.getY() - player.getHeight());
                 player.setTouchedGround(true);
+                if (player.getDirection() == Player.FACING_RIGHT){
+                    player.weapons.get(player.weaponIndex).setY(player.getY() + player.getHeight() / 2);
+                }                
             }
             
         for (Mob mob : mobsList){

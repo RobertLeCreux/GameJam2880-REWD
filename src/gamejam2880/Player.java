@@ -14,12 +14,15 @@ import java.util.ArrayList;
 
 public class Player extends NonStationary {
     public static int PLAYER_SPEED = 3;
+    public static int FACING_LEFT = 0;
+    public static int FACING_RIGHT = 1;
     public ArrayList<Weapon> weapons;
     protected int weaponIndex;
     public static int JUMP_FORCE = 10;
     private ArrayList<Weapon> weapon;
     private boolean touchedGround;
     private Weapon mainGun;
+    private int direction = FACING_RIGHT;
     
     private int lives;
     
@@ -76,8 +79,23 @@ public class Player extends NonStationary {
         return lives;
     }
     
+    public int getDirection(){
+        return direction;
+    }
+    
+    public void setDirection(int newDirection){
+        direction = newDirection;
+    }
+    
     public void setTouchedGround(Boolean bool){
         touchedGround = bool;
+    }
+    
+    @Override
+    public void move(){
+        super.move();
+        System.out.println("player" + getY());
+        weapons.get(weaponIndex).move(this);
     }
 
     public void keyPressed(KeyEvent e) {
@@ -122,12 +140,14 @@ public class Player extends NonStationary {
             this.setDX(-PLAYER_SPEED);
             this.loadImage("AlienLeft.png");
             weapons.get(0).loadImage("mainGunLeft.png");
+            setDirection(FACING_LEFT);
         }
 
         if (key == KeyEvent.VK_RIGHT) {
             super.setDX(PLAYER_SPEED);
             this.loadImage("AlienRight.png");
             weapons.get(0).loadImage("mainGunRight.png");
+            setDirection(FACING_RIGHT);
         }
         
     }
