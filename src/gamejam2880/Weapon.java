@@ -51,12 +51,17 @@ public class Weapon extends Sprite {
     }
     
     public void fire() {
-        if (type == GRAV_GUN){
-                gravProjectiles.add(new GravProjectile(x + width, y + height / 2));       }
+        if (type.equals(GRAV_GUN)){
+                gravProjectiles.add(new GravProjectile(x + width, y + height / 2));
+        } else{
+            projectiles.add(new Projectile(x + width, y + height / 2));
+        }
     }
     
     
     public void moveProjectiles(){
-        
+        for (Projectile projectile : projectiles){
+            
+        }
     }
 }
