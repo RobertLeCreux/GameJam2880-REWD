@@ -21,9 +21,17 @@ public class Weapon extends NonStationary {
     private ArrayList<Projectile> lightningProjectiles;
     private ArrayList<Projectile> cannonProjectiles;
     private ArrayList<Projectile> ionProjectiles;
-              
-    public Weapon(int x, int y, String weaponType) {
-        super(x, y);
+    
+    public static final String GRAV_GUN = "gravGun";
+    public static final String FLAME_THROWER = "flameThrower";
+    public static final String SPRAY_GUN = "sprayGun";
+    public static final String CANNON_GUN = "cannonGun";
+    public static final String LIGHTNING_GUN = "lightningGun";
+    public static final String ION_GUN = "ionGun";
+    public static final String SHOT_GUN = "shotGun";
+    
+    public Weapon(int x, int y, String weaponType, String img) {
+        super(x, y, img);
         type = weaponType;
     }
     

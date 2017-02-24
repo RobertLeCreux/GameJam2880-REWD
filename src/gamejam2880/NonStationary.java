@@ -18,6 +18,10 @@ public class NonStationary extends Sprite{
         super(x, y);
         gravity = 9;
     }
+    public NonStationary(int x, int y, String img) {
+        super(x, y, img);
+        gravity = 9;
+    }
     
     public void setGravity(int grav){
         gravity = grav;

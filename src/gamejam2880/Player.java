@@ -29,11 +29,13 @@ public class Player extends NonStationary {
 
     private void initPlayer() {
         
-        // missiles = new ArrayList<>();
+        // weapons = new ArrayList<>();
         loadImage("AlienLeft.png");
         getImageDimensions();
         this.setX(GameJam2880.WINDOW_WIDTH / 8 - this.getWidth() / 2);
         touchedGround = true;
+        weapon = new ArrayList();
+        weapon.add(new Weapon(this.getX(), this.getDY()/2, Weapon.SHOT_GUN, "shotGun.png"));
     }
 
     /*
@@ -73,6 +75,15 @@ public class Player extends NonStationary {
                 break;
             case KeyEvent.VK_3:
                 weaponIndex = 3;
+                break;
+            case KeyEvent.VK_4:
+                weaponIndex = 4;
+                break;
+            case KeyEvent.VK_5:
+                weaponIndex = 5;
+                break;
+            case KeyEvent.VK_6:
+                weaponIndex = 6;
                 break;
         }
         
