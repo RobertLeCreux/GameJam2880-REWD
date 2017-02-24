@@ -13,7 +13,7 @@ public class Level {
     private ArrayList<Ground> groundList = new ArrayList<Ground>();
     private ArrayList<Mob> mobsList = new ArrayList<Mob>();
     private ArrayList<String> mobImageList = new ArrayList<String>();
-    private int furthestReached = 0;
+    private long furthestReached = 0;
     private int playerLocation = 0;
     private int lastGroundPlaced = 0;
     private Ground testGround = new Ground(1000000,1000000);
@@ -28,6 +28,10 @@ public class Level {
         for (int i = 0; GameJam2880.WINDOW_WIDTH > i * testGround.getWidth() ;i++){
             groundList.add(new Ground(i*testGround.getWidth(),(GameJam2880.WINDOW_HEIGHT / 2) + 100) );
         }
+    }
+    
+    public long getFurthestReached(){
+        return furthestReached;
     }
     
     public void checkCollisions(Player player){
