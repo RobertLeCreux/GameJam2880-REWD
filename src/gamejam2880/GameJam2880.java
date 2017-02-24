@@ -18,6 +18,10 @@ public class GameJam2880 extends JFrame implements ActionListener{
     private Button button;
     
     
+    
+    public static int WINDOW_WIDTH = 700;
+    public static int WINDOW_HEIGHT = 700;
+    
     public GameJam2880(){
         initUI();
         
@@ -33,7 +37,7 @@ public class GameJam2880 extends JFrame implements ActionListener{
         add(panel);
         //pack();
         
-        setSize(500,500);
+        setSize(WINDOW_WIDTH,WINDOW_HEIGHT);
         
         setTitle("GameJam2880");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

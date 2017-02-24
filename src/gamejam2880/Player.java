@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 
 public class Player extends NonStationary {
+    public static int PLAYER_SPEED = 3;
     private ArrayList<Weapon> weapon;
     private int weaponIndex;
     
@@ -30,6 +31,7 @@ public class Player extends NonStationary {
         loadImage("Sketch002.png");
         getImageDimensions();
         System.out.println("player image height" + height);
+        this.setX(GameJam2880.WINDOW_WIDTH / 2 - this.getWidth() / 2);
     }
 
     public void move() {
@@ -70,13 +72,15 @@ public class Player extends NonStationary {
             weapon.get(weaponIndex).fire();
         }
 
+        
         if (key == KeyEvent.VK_LEFT) {
-            this.setDX(-1);
+            this.setDX(-PLAYER_SPEED);
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            super.setDX(1);
+            super.setDX(PLAYER_SPEED);
         }
+        
     }
 
     public void keyReleased(KeyEvent e) {
