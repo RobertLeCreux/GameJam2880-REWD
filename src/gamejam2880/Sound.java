@@ -11,17 +11,12 @@ package gamejam2880;
  */
 public enum Sound {
 
-    // TODO: ZAP(""),PEW(""),KAPLOW(),ZOOSH(""),ZEW(""),FLAME("")
-    //ZAP(""),PEW(""),KAPLOW(),ZOOSH(""),ZEW(""),FLAME("")
-
-
-
-    //ZAP(""),
-    //PEW(""),
-    //KAPLOW(),
-    //ZOOSH(""),
-    //ZEW(""),
-    //FLAME("");
+    //ZAP("zap.aif"),
+    //PEW("pew.aif"),
+    //KAPLOW("kaplow.aif"),
+    //BANG("bang.aif"),
+    //ZEW("zew.aif"),
+    //FLAME("flame.aif");
 
     
 }
