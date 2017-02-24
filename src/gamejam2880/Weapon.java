@@ -45,12 +45,15 @@ public class Weapon extends Sprite {
     
     public void move(Player player){
         if (player.getDirection() == Player.FACING_RIGHT){
-            this.setX(player.getX() + player.getWidth());
-            this.setY(player.getY() + player.getHeight() / 2);
+            //this.setX(player.getX() + player.getWidth());
+            //this.setY(player.getY() + player.getHeight() / 2);
             //System.out.println(player.getY());
             this.setX(player.getX() + player.getWidth() + Player.WEAPON_X_RIGHT_OFFSET);
             this.setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
             System.out.println(player.getY());
+        } else {
+            this.setX(player.getX() + Player.WEAPON_X_LEFT_OFFSET);
+            this.setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
         }
     }
     
