@@ -23,6 +23,7 @@ public class NonStationary extends Sprite{
         super(x, y, img);
     }
     
+    
            
     public void move(){
         
