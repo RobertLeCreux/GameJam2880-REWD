@@ -86,6 +86,11 @@ public class Level {
         
         for (int i = 0; i < groundList.size(); i++){
             groundList.get(i).setX(groundList.get(i).getX() - player.getDX());
+            groundList.get(i).timer -= 1;
+            if (groundList.get(i).timer <= 0){
+                groundList.get(i).setDY(groundList.get(i).getDY() + Physics.GRAVITY);
+                groundList.get(i).setY(groundList.get(i).getY() + groundList.get(i).getDY());
+            }
         }
         
         for (Mob mob : mobsList){

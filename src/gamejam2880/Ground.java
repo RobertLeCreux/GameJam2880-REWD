@@ -14,7 +14,8 @@ import javax.swing.ImageIcon;
 public class Ground extends Sprite {
         
         public int a;
-        public int b; 
+        public int b;
+        public int timer = 500;
         
         
         public Image jGround;

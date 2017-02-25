@@ -21,7 +21,8 @@ public class Projectile extends NonStationary {
         ammoType = type;
         if (ammoType.equals("mainGunBullet")){
             this.loadImage("mainGunBullet.png");
-            
+            int randoDX = (int) Math.floor(Math.random() * 20);
+            setDX(randoDX);
         }
     }
     
