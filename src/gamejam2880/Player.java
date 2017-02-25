@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  * 
- * @author Robert LeCreux
+ * @author Robert LeCreux 
  */
 
 public class Player extends NonStationary {

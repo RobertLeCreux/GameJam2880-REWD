@@ -112,7 +112,11 @@ public class Level {
     }
     
     public void mobHit(Mob mob, Projectile projectile,Player player){
-        mob.setVisible(false);
+        mob.hp -= 1;
+        if (mob.hp <= 0){
+            mob.setVisible(false);
+        }
+        
         projectile.setVisible(false);
         }
     
@@ -147,7 +151,7 @@ public class Level {
     public void addMobs(Player player){
         lastMobAddedCount += player.getDX();
         double rando = Math.random();
-        if (rando < 0.02){
+        if (rando < Mob.MOB_SPAWN_FREQ){
             long imageIndex = Math.round(Math.random() * mobImageList.size());
             int imageIndexInt = (int) imageIndex;
             if(imageIndexInt >= mobImageList.size()){
@@ -158,7 +162,16 @@ public class Level {
             if (lastMobAddedCount > lastMobAddedWidth){
                 lastMobAddedWidth = tempImage.getWidth(null);
                 lastMobAddedCount = 0;
-                mobsList.add(new Mob(GameJam2880.WINDOW_WIDTH,10,mobImageList.get(imageIndexInt)));
+                String mobSelected = mobImageList.get(imageIndexInt);
+                int mobHp = 1;
+                if (mobSelected.equals("vulture.png")){
+                    mobHp = Mob.VULTURE_HP;
+                } else if (mobSelected.equals("cloud1.png")){
+                    mobHp = Mob.CLOUD_HP;
+                } else if (mobSelected.equals("dragonG1.png")){
+                    mobHp = Mob.DRAGON_HP;
+                }
+                mobsList.add(new Mob(GameJam2880.WINDOW_WIDTH,10,mobSelected,mobHp));
             }
         }
     }
