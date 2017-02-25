@@ -21,12 +21,13 @@ public class Player extends NonStationary {
     public static int WEAPON_X_RIGHT_OFFSET = -3;
     public static int WEAPON_X_LEFT_OFFSET = -63;
     
+    
     public ArrayList<Weapon> weapons;
     public ArrayList<String> imgWeapons;
     protected int weaponIndex;
     public static int IMG_WEAPONS_INDEX;
     
-    
+    public int keyPressed;
     public static int JUMP_FORCE = 10;
     private boolean touchedGround;
     private Weapon mainGun, flameThrower, sprayGun, cannonGun, lightningGun, ionGun;
@@ -139,7 +140,8 @@ public class Player extends NonStationary {
     }
 
     public void keyPressed(KeyEvent e) {
-
+        keyPressed = e.getKeyCode();
+        System.out.println("key: " + keyPressed);
         IMG_WEAPONS_INDEX = weaponIndex * 2;
         int key = e.getKeyCode();
         
@@ -164,6 +166,7 @@ public class Player extends NonStationary {
                 break;
         }
         equipped = weapons.get(weaponIndex);
+        System.out.println(equipped);
         
         if (key == KeyEvent.VK_ENTER) {
             System.out.println("attempting to fire weapon!");
