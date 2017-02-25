@@ -5,6 +5,7 @@
  */
 package gamejam2880;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Weapon extends Sprite {
     private String type;
-    private ArrayList<Projectile> projectiles;
+    private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
     private ArrayList<GravProjectile> gravProjectiles;
     
     public static final String GRAV_GUN = "gravGun";
@@ -45,23 +46,33 @@ public class Weapon extends Sprite {
             this.setX(player.getX() + player.getWidth() + Player.WEAPON_X_RIGHT_OFFSET);
             this.setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
         } else {
-            this.setX(player.getX() + - this.getWidth());
+            this.setX(player.getX() - this.getWidth());
             this.setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
         }
     }
     
-    public void fire() {
+    public void fire(Player player) {
         if (type.equals(GRAV_GUN)){
-                gravProjectiles.add(new GravProjectile(x + width, y + height / 2));
+            gravProjectiles.add(new GravProjectile(x + width, y + height / 2));
         } else{
-            projectiles.add(new Projectile(x + width, y + height / 2));
+            System.out.println("Firing weapon!");
+            //Projectile testBullet = new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight());
+            projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()));
+            //projectiles.add(testBullet);
+            System.out.println(projectiles.size());
         }
     }
     
     
     public void moveProjectiles(){
         for (Projectile projectile : projectiles){
-            
+            projectile.move();
+        }
+    }
+    
+    public void drawProjectiles(Graphics g,Board canvas){
+        for (Projectile projectile : projectiles){
+            projectile.doDrawing(g, canvas);
         }
     }
 }

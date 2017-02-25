@@ -5,6 +5,7 @@
  */
 package gamejam2880;
 
+import java.awt.Graphics;
 import static java.awt.event.KeyEvent.*;
 
 /**
@@ -17,6 +18,11 @@ public class Projectile extends NonStationary {
         super(x, y);
         this.loadImage("standardProjectile.png");
         setDX(3);
+    }
+    
+    @Override
+    public void doDrawing(Graphics g,Board canvas){
+        super.doDrawing(g, canvas);
     }
     
     

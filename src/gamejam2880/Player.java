@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package gamejam2880;
+import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
@@ -163,7 +164,8 @@ public class Player extends NonStationary {
         }
         
         if (key == KeyEvent.VK_ENTER) {
-            weapons.get(weaponIndex).fire();
+            System.out.println("attempting to fire weapon!");
+            weapons.get(weaponIndex).fire(this);
         }
         
         if (key == KeyEvent.VK_SPACE){
@@ -204,5 +206,11 @@ public class Player extends NonStationary {
         if (key == KeyEvent.VK_RIGHT) {
             setDX(0);
         }
+    }
+    
+    @Override
+    public void doDrawing(Graphics g,Board canvas){
+        super.doDrawing(g, canvas);
+        
     }
 }
