@@ -28,7 +28,8 @@ public class Weapon extends Sprite {
     public static final String ION_GUN = "ionGun";
     public static final String SHOT_GUN = "shotGun";
     
-    public int fireDelay = 100;
+    
+    public int fireDelay = 80;
     public int fireCoolDown = 0;
     
     public Weapon(int x, int y, String weaponType, String img) {
@@ -71,7 +72,7 @@ public class Weapon extends Sprite {
     }
     
     public void fire(Player player) {
-<<<<<<< HEAD
+
         if (type.equals(GRAV_GUN)){
             gravProjectiles.add(new GravProjectile(x + width, y + height / 2));
         } else{
@@ -80,8 +81,9 @@ public class Weapon extends Sprite {
             if (type.equals(SHOT_GUN)){
                 projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "mainGunBullet"));
             
+                
         try {
-            File file = new File("pew.wav");
+            File file = new File("zew.wav");
             Clip clip = AudioSystem.getClip();
             clip.open(AudioSystem.getAudioInputStream(file));
             clip.start();
@@ -90,7 +92,7 @@ public class Weapon extends Sprite {
             {
             System.err.println(e.getMessage());
             }
-=======
+
         if(fireCoolDown <= 0){
             fireCoolDown = fireDelay;
             if (type.equals(GRAV_GUN)){
@@ -102,12 +104,33 @@ public class Weapon extends Sprite {
                     projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "mainGunBullet"));
                 } else if (type.equals(ION_GUN)){
                     projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "ionGunBullet"));
+                    try {
+                    File file = new File("pew.wav");
+                    Clip clip = AudioSystem.getClip();
+                    clip.open(AudioSystem.getAudioInputStream(file));
+                    clip.start();
+            
+                    } catch (Exception e) 
+                    {
+            System.err.println(e.getMessage());
+            }
+                
                 } else if (type.equals(LIGHTNING_GUN)){
                     projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "lightningGunBullet"));
+                    try {
+                    File file = new File("zap.wav");
+                    Clip clip = AudioSystem.getClip();
+                    clip.open(AudioSystem.getAudioInputStream(file));
+                    clip.start();
+            
+                    } catch (Exception e) 
+                    {
+            System.err.println(e.getMessage());
+            }
                 }
                 //projectiles.add(testBullet);
                 System.out.println(projectiles.size());
->>>>>>> origin/master
+
             }
         }
     }

@@ -28,13 +28,13 @@ public class GameJam2880 {
     public static int WINDOW_HEIGHT = 700;
     
     public GameJam2880(){
-<<<<<<< HEAD
+
         play();
-=======
+
         frame =  new JFrame("GameJam2880");
         menu = new MenuBetter();
         
->>>>>>> origin/master
+
         initUI();
         player = board.player;
         playing = true;
@@ -90,9 +90,9 @@ public class GameJam2880 {
         frame.setVisible(true);
     }
     
-<<<<<<< HEAD
+
     
-=======
+
     public static void key(Player player){
         // System.out.println("Key pressed should exit" + player.keyPressed);
         if((player.keyPressed == 27) || (player.getLives() <= 0)){
@@ -100,7 +100,7 @@ public class GameJam2880 {
             initUI();
         }
     }
->>>>>>> origin/master
+
     
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable(){
@@ -110,23 +110,6 @@ public class GameJam2880 {
             }
         });
     }
-    // background music - I do not know if this works
-    /**
-    public static void music()
-    {
-          AudioPlayer MGP = AudioPlayer.player;
-          AudioStream BGM;
-          AudioData MD;
-          ContinuousAudioDataStream loop = null;
-          
-          try {
-          BGM = new AudioStream(new FileInputStream("Beats.wav"));
-          MD = BGM.getData();
-          loop = new ContinuousAudioDataStream(MD);
-          } catch (IOException error){}
-          
-          MGP.start(loop);
-        }
-    */
+   
      
 }
