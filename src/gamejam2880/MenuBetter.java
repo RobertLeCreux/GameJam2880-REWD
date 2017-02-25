@@ -18,8 +18,13 @@ public class MenuBetter extends javax.swing.JPanel {
      */
     public MenuBetter() {
         initComponents();
+        
     }
 
+    public void paintComponent(Graphics g){
+        background.doDrawing(g, this, 0);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,6 +41,7 @@ public class MenuBetter extends javax.swing.JPanel {
         jLayeredPane1 = new javax.swing.JLayeredPane();
 
         setBackground(new java.awt.Color(153, 153, 153));
+        setToolTipText("");
 
         lblTitle.setFont(new java.awt.Font("Viner Hand ITC", 1, 36)); // NOI18N
         lblTitle.setText("The Adventures Of Spud");
@@ -110,6 +116,7 @@ public class MenuBetter extends javax.swing.JPanel {
     }//GEN-LAST:event_onStart
 
     private int highScore = 10000;
+    Sprite background = new Sprite(this.getWidth(),this.getHeight(),"thPAF84F4Z.jpg");
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
