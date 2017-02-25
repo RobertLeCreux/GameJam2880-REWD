@@ -92,7 +92,7 @@ public class Weapon extends Sprite {
                 }   
             } 
     
-    
+    //
     
     public void moveProjectiles(){
         for (Projectile projectile : projectiles){
