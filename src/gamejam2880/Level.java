@@ -15,20 +15,22 @@ public class Level {
     private ArrayList<Ground> groundList = new ArrayList<Ground>();
     private ArrayList<Mob> mobsList = new ArrayList<Mob>();
     private ArrayList<String> mobImageList = new ArrayList<String>();
-    private long furthestReached = 0;
-    private int playerLocation = 0;
-    private int lastGroundPlaced = 0;
+    private long furthestReached;
+    private int playerLocation;
+    private int lastGroundPlaced;
     private Ground testGround = new Ground(1000000,1000000);
     private int lastMobAddedWidth;
     private int lastMobAddedCount;
     public static String score;
     
     public Level(){
-
+        furthestReached = 0;
+        playerLocation = 0;
+        lastGroundPlaced = 0;
         mobImageList.add("vulture.png");
         mobImageList.add("cloud1.png");
         mobImageList.add("dragonG1.png");
-        mobImageList.add("mob3.png");
+        mobImageList.add("killerBunny.png");
         for (int i = 0; GameJam2880.WINDOW_WIDTH > i * testGround.getWidth() ;i++){
             groundList.add(new Ground(i*testGround.getWidth(),(GameJam2880.WINDOW_HEIGHT / 2) + 100) );
         }
@@ -108,7 +110,7 @@ public class Level {
         if (playerLocation > furthestReached){
             addMobs(player);
             furthestReached = playerLocation;
-            score = "Score: " + (playerLocation / 100);
+            score = "Score: " + (furthestReached / 100);
             System.out.println(score);
         }  
     }
