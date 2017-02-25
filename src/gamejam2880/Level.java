@@ -162,7 +162,10 @@ public class Level {
     
     //add ground to a specific location
     public void addGround(int x, int y){
-        groundList.add(new Ground(x,y));
+        int randoGroundInt = (int) Math.floor(Math.random() * 10);
+        if (randoGroundInt > 0){
+            groundList.add(new Ground(x,y));
+        }
     }
     
     //dynamically add mobs to end of level

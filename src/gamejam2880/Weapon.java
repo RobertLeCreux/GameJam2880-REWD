@@ -81,10 +81,43 @@ public class Weapon extends Sprite {
                         //Projectile testBullet = new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight());
                         if (type.equals(SHOT_GUN)){
                             projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "mainGunBullet"));
+                            try 
+                            {
+                            File file = new File("pew.wav");
+                            Clip clip = AudioSystem.getClip();
+                            clip.open(AudioSystem.getAudioInputStream(file));
+                            clip.start();
+                            }
+                            catch (Exception e) 
+                            {
+                            System.err.println(e.getMessage());
+                            }
                         } else if (type.equals(ION_GUN)){
                             projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "ionGunBullet"));
+                            try 
+                            {
+                            File file = new File("zew.wav");
+                            Clip clip = AudioSystem.getClip();
+                            clip.open(AudioSystem.getAudioInputStream(file));
+                            clip.start();
+                            }
+                            catch (Exception e) 
+                            {
+                            System.err.println(e.getMessage());
+                            }
                         } else if (type.equals(LIGHTNING_GUN)){
                             projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "lightningGunBullet"));
+                            try 
+                            {
+                            File file = new File("zap.wav");
+                            Clip clip = AudioSystem.getClip();
+                            clip.open(AudioSystem.getAudioInputStream(file));
+                            clip.start();
+                            }
+                            catch (Exception e) 
+                            {
+                            System.err.println(e.getMessage());
+                            }
                         }
                         //projectiles.add(testBullet);
                         System.out.println(projectiles.size());

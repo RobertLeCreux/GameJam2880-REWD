@@ -25,7 +25,7 @@ public class Projectile extends NonStationary {
             this.loadImage("mainGunBullet.png");
             int randoDX = (int) Math.floor(Math.random() * 20);
             setDX(randoDX);
-            damage = 2;
+            damage = 3;
         }
         
         if (ammoType.equals("ionGunBullet")){
@@ -43,7 +43,7 @@ public class Projectile extends NonStationary {
         if (ammoType.equals("lightningGunBullet")){
             this.loadImage("lightinbolt.png");
             this.setDX(20);
-            damage = 10;
+            damage = 8;
         }
     }
     
