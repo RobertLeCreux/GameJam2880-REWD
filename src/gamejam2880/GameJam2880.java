@@ -29,32 +29,23 @@ public class GameJam2880 {
     
     public GameJam2880(){
 
-        play();
-
+       
+        
         frame =  new JFrame("GameJam2880");
         menu = new MenuBetter();
        
+            
         
         initUI();
         player = board.player;
         playing = true;
         
         
+        play();
+        
+        
     }
-    public static void play() {
-        try {
-            File file = new File("Beats.wav");
-            Clip clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(file));
-            clip.start();
-            } catch (Exception e) 
-            {
-            System.err.println(e.getMessage());
-            }
-            }
-            
-    
-    
+   
     private static void initUI(){
         board = new Board();
         frame.add(menu);
@@ -108,6 +99,25 @@ public class GameJam2880 {
             }
         });
     }
+    public static void play() {
+        
+    
+        
+       
+        try {
+            File file = new File("Beats.wav");
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(file));
+            clip.start();
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+            } catch (Exception e) 
+            {
+            System.err.println(e.getMessage());
+            }
+            } 
+   
+    }
+    
    
      
-}
+

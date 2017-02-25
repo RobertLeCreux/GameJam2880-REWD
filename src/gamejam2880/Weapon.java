@@ -29,18 +29,18 @@ public class Weapon extends Sprite {
     public static final String SHOT_GUN = "shotGun";
     
     
-    public int fireDelay = 80;
+    public int fireDelay = 10;
     public int fireCoolDown = 0;
     
     public Weapon(int x, int y, String weaponType, String img) {
         super(x, y, img);
         type = weaponType;
         if (type.equals(SHOT_GUN)){
-            fireDelay = 10;
+            fireDelay =1;
         } else if (type.equals(ION_GUN)){
-            fireDelay = 5;
+            fireDelay = 1;
         } else if (type.equals(LIGHTNING_GUN)){
-            fireDelay = 100;
+            fireDelay = 5;
         }
     }
     
