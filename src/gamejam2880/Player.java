@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  * 
- * @author Robert LeCreux
+ * @author Robert LeCreux 
  */
 
 public class Player extends NonStationary {
@@ -21,16 +21,17 @@ public class Player extends NonStationary {
     public static int WEAPON_X_RIGHT_OFFSET = -3;
     public static int WEAPON_X_LEFT_OFFSET = -63;
     
+    
     public ArrayList<Weapon> weapons;
     public ArrayList<String> imgWeapons;
     protected int weaponIndex;
     public static int IMG_WEAPONS_INDEX;
     
-    
+    public int keyPressed;
     public static int JUMP_FORCE = 10;
-    private ArrayList<Weapon> weapon;
     private boolean touchedGround;
     private Weapon mainGun, flameThrower, sprayGun, cannonGun, lightningGun, ionGun;
+    public Weapon equipped;
     private int direction = FACING_RIGHT;
     
     private int lives;
@@ -43,6 +44,7 @@ public class Player extends NonStationary {
         super(x, y);
         lives = STARTING_LIVES;
         initPlayer();
+        equipped = weapons.get(0);
     }
 
     private void initPlayer() {
@@ -55,7 +57,7 @@ public class Player extends NonStationary {
         weapons = new ArrayList();
         imgWeapons = new ArrayList();
         
-        
+        // TODO: fix sprites here
         imgWeapons.add("mainGunRight.png");
         imgWeapons.add("mainGunLeft.png");
         imgWeapons.add("ionGunRight.png");
@@ -138,7 +140,8 @@ public class Player extends NonStationary {
     }
 
     public void keyPressed(KeyEvent e) {
-
+        keyPressed = e.getKeyCode();
+        // System.out.println("key: " + keyPressed);
         IMG_WEAPONS_INDEX = weaponIndex * 2;
         int key = e.getKeyCode();
         
@@ -162,6 +165,14 @@ public class Player extends NonStationary {
                 weaponIndex = 5;
                 break;
         }
+        equipped = weapons.get(weaponIndex);
+        System.out.println(equipped.getType());
+        if (direction == Player.FACING_LEFT){
+            weapons.get(weaponIndex).loadImage(imgWeapons.get(IMG_WEAPONS_INDEX + 1));
+        } else if(direction == Player.FACING_RIGHT) {
+            weapons.get(weaponIndex).loadImage(imgWeapons.get(IMG_WEAPONS_INDEX));
+        }
+        
         
         if (key == KeyEvent.VK_ENTER) {
             System.out.println("attempting to fire weapon!");
@@ -215,6 +226,4 @@ public class Player extends NonStationary {
             weapon.drawProjectiles(g,canvas);
         }
     }
-}    
-    
-    
+}

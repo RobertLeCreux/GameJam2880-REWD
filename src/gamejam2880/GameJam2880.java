@@ -16,19 +16,28 @@ import javax.sound.sampled.Clip;
 public class GameJam2880 {
     
     
-    private MenuBetter menu;
-    private Board board;
-    private JFrame frame;
-    private JButton btnForward;
-    private JButton btnExit;
-    
+    private static MenuBetter menu;
+    private static Board board;
+    private static JFrame frame;
+    private static JButton btnForward;
+    private static JButton btnExit;
+    private static Player player;
+    private boolean playing;
     
     public static int WINDOW_WIDTH = 1000;
     public static int WINDOW_HEIGHT = 700;
     
     public GameJam2880(){
+<<<<<<< HEAD
         play();
+=======
+        frame =  new JFrame("GameJam2880");
+        menu = new MenuBetter();
+        
+>>>>>>> origin/master
         initUI();
+        player = board.player;
+        playing = true;
         
         
     }
@@ -46,12 +55,11 @@ public class GameJam2880 {
             
     
     
-    private void initUI(){
-        frame =  new JFrame("GameJam2880");
-        menu = new MenuBetter();
+    private static void initUI(){
         board = new Board();
-        
         frame.add(menu);
+        menu.requestFocus();
+        frame.revalidate();
         frame.setResizable(false);
         
         btnForward = (JButton) menu.getComponent(1);
@@ -82,7 +90,17 @@ public class GameJam2880 {
         frame.setVisible(true);
     }
     
+<<<<<<< HEAD
     
+=======
+    public static void key(Player player){
+        // System.out.println("Key pressed should exit" + player.keyPressed);
+        if((player.keyPressed == 27) || (player.getLives() <= 0)){
+            frame.remove(board);
+            initUI();
+        }
+    }
+>>>>>>> origin/master
     
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable(){

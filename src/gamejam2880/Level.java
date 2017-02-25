@@ -43,11 +43,12 @@ public class Level {
                 player.setDY(0);
                 player.setY(ground.getY() - player.getHeight());
                 player.setTouchedGround(true);
-                if (player.getDirection() == Player.FACING_RIGHT){
-                    player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
+                if(player.equipped.getType() == Weapon.CANNON_GUN){
+                    player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET - 20);
                 } else {
-                    player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
-                }              
+                player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
+                }
+                             
             }
         }
             
@@ -114,22 +115,34 @@ public class Level {
     }
     
     public void mobHit(Mob mob, Projectile projectile,Player player){
-        mob.setVisible(false);
+        mob.hp -= projectile.damage;
+        if (mob.hp <= 0){
+            mob.setVisible(false);
+        }
+        
         projectile.setVisible(false);
         }
     
     public void cleanUp(Player player){
         for(Weapon weapon : player.weapons){
+            weapon.fireCoolDown -= 1;
             for(int i = 0; i < weapon.projectiles.size(); i++){
-                if (weapon.projectiles.get(i).isVisible() == false){
+                weapon.projectiles.get(i).timeToLive -= 1;
+                if (weapon.projectiles.get(i).isVisible() == false || (weapon.projectiles.get(i).getY() > GameJam2880.WINDOW_HEIGHT) || (weapon.projectiles.get(i).getX() > GameJam2880.WINDOW_WIDTH || (weapon.projectiles.get(i).timeToLive < 0))){
                     weapon.projectiles.remove(i);
                 }       
             }
         }
         
         for(int i = 0; i < mobsList.size(); i++){
-            if (mobsList.get(i).isVisible() == false){
+            if ((mobsList.get(i).isVisible() == false) || (mobsList.get(i).getY() > GameJam2880.WINDOW_HEIGHT)){
                 mobsList.remove(i);
+            }
+        }
+        
+        for (int i = 0; i < groundList.size(); i++){
+            if (groundList.get(i).getY() > GameJam2880.WINDOW_HEIGHT){
+                groundList.remove(i);
             }
         }
     }
@@ -149,7 +162,7 @@ public class Level {
     public void addMobs(Player player){
         lastMobAddedCount += player.getDX();
         double rando = Math.random();
-        if (rando < 0.02){
+        if (rando < Mob.MOB_SPAWN_FREQ){
             long imageIndex = Math.round(Math.random() * mobImageList.size());
             int imageIndexInt = (int) imageIndex;
             if(imageIndexInt >= mobImageList.size()){
@@ -160,7 +173,16 @@ public class Level {
             if (lastMobAddedCount > lastMobAddedWidth){
                 lastMobAddedWidth = tempImage.getWidth(null);
                 lastMobAddedCount = 0;
-                mobsList.add(new Mob(GameJam2880.WINDOW_WIDTH,10,mobImageList.get(imageIndexInt)));
+                String mobSelected = mobImageList.get(imageIndexInt);
+                int mobHp = 1;
+                if (mobSelected.equals("vulture.png")){
+                    mobHp = Mob.VULTURE_HP;
+                } else if (mobSelected.equals("cloud1.png")){
+                    mobHp = Mob.CLOUD_HP;
+                } else if (mobSelected.equals("dragonG1.png")){
+                    mobHp = Mob.DRAGON_HP;
+                }
+                mobsList.add(new Mob(GameJam2880.WINDOW_WIDTH,10,mobSelected,mobHp));
             }
         }
     }

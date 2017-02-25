@@ -13,6 +13,12 @@ package gamejam2880;
  */
 
 public class Mob extends NonStationary {
+    
+    public int hp;
+    public static int CLOUD_HP = 10; 
+    public static int DRAGON_HP = 16;
+    public static int VULTURE_HP = 6;
+    public static double MOB_SPAWN_FREQ = 0.2;
 
     // private String[] img = {"mob1.png", "mob2.png", "mob3.png"};
     private static double MOB_SPAWN_RATE;
@@ -28,9 +34,10 @@ public class Mob extends NonStationary {
         
     }
     
-    public Mob(int x, int y, String image){         
+    public Mob(int x, int y, String image,int health){         
         super(x, y,image);
         img = image;
+        hp = health;
         initMob();
         
         

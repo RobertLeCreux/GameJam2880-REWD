@@ -14,7 +14,7 @@ import java.awt.*;
 
 public class Board extends JPanel implements ActionListener {
     
-    private Player player;
+    public Player player;
     private final int DELAY = 10;
     private Timer timer;
     private Mob mob;
@@ -49,6 +49,7 @@ public class Board extends JPanel implements ActionListener {
         if (player.weapons.get(player.weaponIndex) != null){
             (player.weapons.get(player.weaponIndex)).doDrawing(g,this);
         }
+        GameJam2880.key(player);
         
     }
         
@@ -71,11 +72,7 @@ public class Board extends JPanel implements ActionListener {
         level.cleanUp(player);
         if (player.getY()>GameJam2880.WINDOW_HEIGHT){
             player.setLives(-1);
-            System.out.println("Lives: " + player.getLives());
-            
-            if(player.getLives() <= 0){
-                System.exit(0);
-            } 
+            System.out.println("Lives: " + player.getLives()); 
         }
         
         
