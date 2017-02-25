@@ -29,8 +29,7 @@ public Sound {
     //BANG("bang.aif"),
     //ZEW("zew.aif"),
     //FLAME("flame.aif");
-=======
->>>>>>> origin/master
+
 
                if ( ! line1.isOpen() )
                {
@@ -49,8 +48,6 @@ public Sound {
 */
   
 }
-=======
->>>>>>> origin/master
 
   public static void main(String[] args) 
   throws Exception
@@ -66,4 +63,3 @@ public Sound {
     AudioPlayer.player.start(audioStream);
   }
 }
->>>>>>> origin/master
