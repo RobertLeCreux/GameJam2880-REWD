@@ -113,7 +113,7 @@ public class Player extends NonStationary {
     }
     
     public void setLives(int life){
-        System.out.println("lives" + lives);
+        //System.out.println("lives" + lives);
         lives = life;
     }
     
@@ -142,7 +142,7 @@ public class Player extends NonStationary {
     public void keyPressed(KeyEvent e) {
         keyPressed = e.getKeyCode();
         // System.out.println("key: " + keyPressed);
-        IMG_WEAPONS_INDEX = weaponIndex * 2;
+        
         int key = e.getKeyCode();
         
         switch(key){
@@ -165,6 +165,7 @@ public class Player extends NonStationary {
                 weaponIndex = 5;
                 break;
         }
+        IMG_WEAPONS_INDEX = weaponIndex * 2;
         equipped = weapons.get(weaponIndex);
         System.out.println(equipped.getType());
         if (direction == Player.FACING_LEFT){
@@ -216,6 +217,33 @@ public class Player extends NonStationary {
 
         if (key == KeyEvent.VK_RIGHT) {
             setDX(0);
+        }
+        System.out.println("weapon index: " + weaponIndex + " weapon image index: " + IMG_WEAPONS_INDEX);
+        
+        switch(key){
+            case KeyEvent.VK_1:
+                System.out.println("Switching to weapon: " + equipped.getType());
+                break;
+            case KeyEvent.VK_2:
+                System.out.println("Switching to weapon: " + equipped.getType());
+                System.out.println("weapon index: " + weaponIndex + " weapon image index: " + IMG_WEAPONS_INDEX);
+                break;
+            case KeyEvent.VK_3:
+                System.out.println("Switching to weapon: " + equipped.getType());
+                System.out.println("weapon index: " + weaponIndex + " weapon image index: " + IMG_WEAPONS_INDEX);
+                break;
+            case KeyEvent.VK_4:
+                System.out.println("Switching to weapon: " + equipped.getType());
+                System.out.println("weapon index: " + weaponIndex + " weapon image index: " + IMG_WEAPONS_INDEX);
+                break;
+            case KeyEvent.VK_5:
+                System.out.println("Switching to weapon: " + equipped.getType());
+                System.out.println("weapon index: " + weaponIndex + " weapon image index: " + IMG_WEAPONS_INDEX);
+                break;
+            case KeyEvent.VK_6:
+                System.out.println("Switching to weapon: " + equipped.getType());
+                System.out.println("weapon index: " + weaponIndex + " weapon image index: " + IMG_WEAPONS_INDEX);
+                break;
         }
     }
     

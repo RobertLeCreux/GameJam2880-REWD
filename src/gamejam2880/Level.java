@@ -5,6 +5,7 @@ import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -20,8 +21,10 @@ public class Level {
     private Ground testGround = new Ground(1000000,1000000);
     private int lastMobAddedWidth;
     private int lastMobAddedCount;
+    public static String score;
     
     public Level(){
+
         mobImageList.add("vulture.png");
         mobImageList.add("cloud1.png");
         mobImageList.add("dragonG1.png");
@@ -43,7 +46,7 @@ public class Level {
                 player.setDY(0);
                 player.setY(ground.getY() - player.getHeight());
                 player.setTouchedGround(true);
-                if(player.equipped.getType() == Weapon.CANNON_GUN){
+                if(player.equipped.getType() == Weapon.SPRAY_GUN){
                     player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET - 20);
                 } else {
                 player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
@@ -105,6 +108,8 @@ public class Level {
         if (playerLocation > furthestReached){
             addMobs(player);
             furthestReached = playerLocation;
+            score = "Score: " + (playerLocation / 100);
+            System.out.println(score);
         }  
     }
     

@@ -62,7 +62,7 @@ public class GameJam2880 {
         frame.revalidate();
         frame.setResizable(false);
         
-        btnForward = (JButton) menu.getComponent(1);
+        btnForward = (JButton) menu.getComponent(0);
         btnForward.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent ae){
@@ -73,7 +73,7 @@ public class GameJam2880 {
                frame.repaint();
            }
         });
-        btnExit = (JButton) menu.getComponent(4);
+        btnExit = (JButton) menu.getComponent(1);
         btnExit.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent ae){

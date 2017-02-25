@@ -61,7 +61,7 @@ public class Weapon extends Sprite {
         } else {
             this.setX(player.getX() - this.getWidth() + 3);
         }
-        if(type == Weapon.CANNON_GUN){
+        if(type == Weapon.SPRAY_GUN){
                 this.setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET - 20);
             } else {
                 this.setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
