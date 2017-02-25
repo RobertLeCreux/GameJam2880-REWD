@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Weapon extends Sprite {
     private String type;
-    private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
+    public ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
     private ArrayList<GravProjectile> gravProjectiles;
     
     public static final String GRAV_GUN = "gravGun";
@@ -51,6 +51,10 @@ public class Weapon extends Sprite {
 
             this.setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
         }
+        
+        for (Projectile projectile : projectiles){
+            projectile.move();
+        }
     }
     
     public void fire(Player player) {
@@ -59,7 +63,7 @@ public class Weapon extends Sprite {
         } else{
             System.out.println("Firing weapon!");
             //Projectile testBullet = new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight());
-            projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()));
+            projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2));
             //projectiles.add(testBullet);
             System.out.println(projectiles.size());
         }

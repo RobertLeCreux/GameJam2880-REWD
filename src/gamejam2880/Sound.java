@@ -14,12 +14,22 @@ import sun.audio.*;
  * @author kylechapman
  */
 public Sound {
+<<<<<<< HEAD
     //ZAP("zap.aif"),
     //PEW("pew.aif"),
     //KAPLOW("kaplow.aif"),
     //BANG("bang.aif"),
     //ZEW("zew.aif"),
     //FLAME("flame.aif");
+=======
+
+    ZAP("zap.wav"),
+    PEW("pew.wav"),
+    KAPLOW("kaplow.wav"),
+    BANG("bang.wav"),
+    ZEW("zew.wav"),
+    FLAME("flame.wav");
+>>>>>>> origin/master
 
   public static void main(String[] args) 
   throws Exception
