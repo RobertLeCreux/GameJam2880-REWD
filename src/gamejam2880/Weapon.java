@@ -77,7 +77,7 @@ public class Weapon extends Sprite {
 =======
 >>>>>>> origin/master
         if (type.equals(GRAV_GUN)){
-            gravProjectiles.add(new GravProjectile(x + width, y + height / 2));
+            gravProjectiles.add(new GravProjectile(x + width, y + height / 2,"none"));
         } else{
             System.out.println("Firing weapon!");
 <<<<<<< HEAD
@@ -151,7 +151,7 @@ public class Weapon extends Sprite {
                     }
                 fireCoolDown = fireDelay;
                 if (type.equals(GRAV_GUN)){
-                    gravProjectiles.add(new GravProjectile(x + width, y + height / 2));
+                    gravProjectiles.add(new GravProjectile(x + width, y + height / 2,"none"));
                 } else{
                     System.out.println("Firing weapon!");
                     //Projectile testBullet = new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight());

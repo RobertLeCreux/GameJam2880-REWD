@@ -13,8 +13,8 @@ public class GravProjectile extends Projectile {
     
     private int force;
     
-    public GravProjectile(int x, int y) {
-        super(x, y);
+    public GravProjectile(int x, int y, String type) {
+        super(x, y, "none");
         this.loadImage("gravAmmo.png");
     }
     

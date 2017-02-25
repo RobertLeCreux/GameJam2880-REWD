@@ -149,7 +149,10 @@ public class Level {
     
     //dynamically add ground to the end of the level
     public void addGround(){
-        groundList.add(new Ground(GameJam2880.WINDOW_WIDTH,(GameJam2880.WINDOW_HEIGHT / 2) + 100));
+        int randoGroundInt = (int) Math.floor(Math.random() * 10);
+        if (randoGroundInt > 0){
+            groundList.add(new Ground(GameJam2880.WINDOW_WIDTH,(GameJam2880.WINDOW_HEIGHT / 2) + 100));
+        }
     }
     
     //add ground to a specific location
