@@ -214,6 +214,7 @@ public class Player extends NonStationary {
         for(Weapon weapon : weapons){
             weapon.drawProjectiles(g,canvas);
         }
-        
     }
-}
+}    
+    
+    

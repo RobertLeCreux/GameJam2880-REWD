@@ -17,7 +17,7 @@ public class Projectile extends NonStationary {
     public Projectile(int x, int y) {
         super(x, y);
         this.loadImage("standardProjectile.png");
-        setDX(3);
+        setDX(12);
     }
     
     @Override
@@ -25,5 +25,8 @@ public class Projectile extends NonStationary {
         super.doDrawing(g, canvas);
     }
     
+    public void move(){
+        setX(getX() + getDX());
+    }
     
 }

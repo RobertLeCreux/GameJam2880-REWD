@@ -61,6 +61,14 @@ public class Level {
                     mob.setY(grounds.getY() - mob.getHeight() - 1);
                 }
             }
+            
+            for(Weapon weapon : player.weapons){
+                for (Projectile projectile : weapon.projectiles){
+                    if (mob.detectCollision(projectile.getBounds()) > 0){
+                        mobHit(mob,projectile,player);
+                    }
+                }
+            }
         }
     }
     
@@ -96,6 +104,27 @@ public class Level {
         System.out.println("lives to change by: " + (player.getLives() - 1));
         player.setLives(player.getLives() - 1);
         player.setDX(-30);
+    }
+    
+    public void mobHit(Mob mob, Projectile projectile,Player player){
+        mob.setVisible(false);
+        projectile.setVisible(false);
+        }
+    
+    public void cleanUp(Player player){
+        for(Weapon weapon : player.weapons){
+            for(int i = 0; i < weapon.projectiles.size(); i++){
+                if (weapon.projectiles.get(i).isVisible() == false){
+                    weapon.projectiles.remove(i);
+                }       
+            }
+        }
+        
+        for(int i = 0; i < mobsList.size(); i++){
+            if (mobsList.get(i).isVisible() == false){
+                mobsList.remove(i);
+            }
+        }
     }
     
     //dynamically add ground to the end of the level

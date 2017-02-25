@@ -68,6 +68,7 @@ public class Board extends JPanel implements ActionListener {
 
         level.moveLevel(player);        
         level.checkCollisions(player);
+        level.cleanUp(player);
         if (player.getY()>GameJam2880.WINDOW_HEIGHT){
             player.setLives(-1);
             System.out.println("Lives: " + player.getLives());
