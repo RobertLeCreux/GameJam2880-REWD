@@ -211,6 +211,9 @@ public class Player extends NonStationary {
     @Override
     public void doDrawing(Graphics g,Board canvas){
         super.doDrawing(g, canvas);
+        for(Weapon weapon : weapons){
+            weapon.drawProjectiles(g,canvas);
+        }
         
     }
 }

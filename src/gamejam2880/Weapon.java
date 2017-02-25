@@ -46,11 +46,9 @@ public class Weapon extends Sprite {
             this.setX(player.getX() + player.getWidth() + Player.WEAPON_X_RIGHT_OFFSET);
             this.setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
         } else {
-<<<<<<< HEAD
-            this.setX(player.getX() - this.getWidth());
-=======
+            
             this.setX(player.getX() - this.getWidth() + 3);
->>>>>>> origin/master
+
             this.setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
         }
     }

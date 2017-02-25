@@ -34,7 +34,7 @@ public class Ground extends Sprite {
         
         
         private void loadGround() {
-            ImageIcon ii = new ImageIcon("rock.png");
+            ImageIcon ii = new ImageIcon("floorRock.png");
             jGround = ii.getImage();
         }            
 }
