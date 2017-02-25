@@ -63,7 +63,9 @@ public class Weapon extends Sprite {
         } else{
             System.out.println("Firing weapon!");
             //Projectile testBullet = new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight());
-            projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2));
+            if (type.equals(SHOT_GUN)){
+                projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "mainGunBullet"));
+            }
             //projectiles.add(testBullet);
             System.out.println(projectiles.size());
         }

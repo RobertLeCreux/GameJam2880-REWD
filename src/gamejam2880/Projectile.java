@@ -13,11 +13,16 @@ import static java.awt.event.KeyEvent.*;
  * @author rober
  */
 public class Projectile extends NonStationary {
+    private String ammoType;
     
-    public Projectile(int x, int y) {
+    public Projectile(int x, int y,String type) {
         super(x, y);
-        this.loadImage("standardProjectile.png");
         setDX(12);
+        ammoType = type;
+        if (ammoType.equals("mainGunBullet")){
+            this.loadImage("mainGunBullet.png");
+            
+        }
     }
     
     @Override
