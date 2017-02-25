@@ -141,7 +141,7 @@ public class Player extends NonStationary {
 
     public void keyPressed(KeyEvent e) {
         keyPressed = e.getKeyCode();
-        System.out.println("key: " + keyPressed);
+        // System.out.println("key: " + keyPressed);
         IMG_WEAPONS_INDEX = weaponIndex * 2;
         int key = e.getKeyCode();
         
@@ -166,7 +166,13 @@ public class Player extends NonStationary {
                 break;
         }
         equipped = weapons.get(weaponIndex);
-        System.out.println(equipped);
+        System.out.println(equipped.getType());
+        if (direction == Player.FACING_LEFT){
+            weapons.get(weaponIndex).loadImage(imgWeapons.get(IMG_WEAPONS_INDEX + 1));
+        } else if(direction == Player.FACING_RIGHT) {
+            weapons.get(weaponIndex).loadImage(imgWeapons.get(IMG_WEAPONS_INDEX));
+        }
+        
         
         if (key == KeyEvent.VK_ENTER) {
             System.out.println("attempting to fire weapon!");

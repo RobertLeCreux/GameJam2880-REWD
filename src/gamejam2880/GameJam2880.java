@@ -71,7 +71,7 @@ public class GameJam2880 {
     }
     
     public static void key(Player player){
-        System.out.println("Key pressed should exit" + player.keyPressed);
+        // System.out.println("Key pressed should exit" + player.keyPressed);
         if((player.keyPressed == 27) || (player.getLives() <= 0)){
             frame.remove(board);
             initUI();
