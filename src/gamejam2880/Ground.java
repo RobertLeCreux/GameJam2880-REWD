@@ -14,7 +14,8 @@ import javax.swing.ImageIcon;
 public class Ground extends Sprite {
         
         public int a;
-        public int b; 
+        public int b;
+        public int timer = 500;
         
         
         public Image jGround;
@@ -28,6 +29,7 @@ public class Ground extends Sprite {
         
         public Ground(int x,int y) {
             super(x, y);
+            setDY(-12);
             loadImage("floorRock.png");
             
         }

@@ -50,7 +50,7 @@ public class Player extends NonStationary {
         // weapons = new ArrayList<>();
         loadImage("AlienRight.png");
         getImageDimensions();
-        this.setX(GameJam2880.WINDOW_WIDTH / 8 - this.getWidth() / 2);
+        this.setX((GameJam2880.WINDOW_WIDTH / 18 - this.getWidth() / 2) + 300);
         touchedGround = true;
         weapons = new ArrayList();
         imgWeapons = new ArrayList();

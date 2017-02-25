@@ -20,7 +20,8 @@ public class MenuBetter extends javax.swing.JPanel {
         initComponents();
         
     }
-
+    
+    @Override
     public void paintComponent(Graphics g){
         background.doDrawing(g, this, 0);
     }

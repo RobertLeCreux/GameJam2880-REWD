@@ -17,11 +17,13 @@ public class Mob extends NonStationary {
     // private String[] img = {"mob1.png", "mob2.png", "mob3.png"};
     private static double MOB_SPAWN_RATE;
     private String img;
+    private String type;
     
     public Mob(int x, int y) {
         super(x, y);
         this.img = "mob1.png";
-
+        this.type = this.img;
+        
         initMob();
         
     }
@@ -40,6 +42,9 @@ public class Mob extends NonStationary {
         
         //loadImage(img[(int)(Math.random() * 2)]);
         loadImage(img);
+        if (this.type == "dragonG.png"){
+            
+        }
         
         getImageDimensions();
     }
