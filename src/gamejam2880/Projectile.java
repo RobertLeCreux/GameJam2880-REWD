@@ -39,6 +39,12 @@ public class Projectile extends NonStationary {
                 setDY(-randoDY);
             }
         }
+        
+        if (ammoType.equals("lightningGunBullet")){
+            this.loadImage("lightinbolt.png");
+            this.setDX(17);
+            damage = 5;
+        }
     }
     
     @Override

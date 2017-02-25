@@ -35,6 +35,8 @@ public class Weapon extends Sprite {
             fireDelay = 15;
         } else if (type.equals(ION_GUN)){
             fireDelay = 5;
+        } else if (type.equals(LIGHTNING_GUN)){
+            fireDelay = 35;
         }
     }
     
@@ -77,6 +79,8 @@ public class Weapon extends Sprite {
                     projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "mainGunBullet"));
                 } else if (type.equals(ION_GUN)){
                     projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "ionGunBullet"));
+                } else if (type.equals(LIGHTNING_GUN)){
+                    projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "lightningGunBullet"));
                 }
                 //projectiles.add(testBullet);
                 System.out.println(projectiles.size());
