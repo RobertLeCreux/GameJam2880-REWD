@@ -36,11 +36,11 @@ public class Weapon extends Sprite {
         super(x, y, img);
         type = weaponType;
         if (type.equals(SHOT_GUN)){
-            fireDelay = 15;
+            fireDelay = 10;
         } else if (type.equals(ION_GUN)){
             fireDelay = 5;
         } else if (type.equals(LIGHTNING_GUN)){
-            fireDelay = 35;
+            fireDelay = 100;
         }
     }
     

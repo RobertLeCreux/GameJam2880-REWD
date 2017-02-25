@@ -36,7 +36,7 @@ public class Player extends NonStationary {
     
     private int lives;
     
-    public static final int STARTING_LIVES = 20;
+    public static final int STARTING_LIVES = 50;
     
     
     
