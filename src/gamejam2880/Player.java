@@ -71,11 +71,11 @@ public class Player extends NonStationary {
         
         
         mainGun = new Weapon(this.getX(), this.getY(), Weapon.SHOT_GUN, imgWeapons.get(0));
-        flameThrower = new Weapon(this.getX(), this.getY(), Weapon.SHOT_GUN, imgWeapons.get(2));
-        sprayGun = new Weapon(this.getX(), this.getY(), Weapon.SHOT_GUN, imgWeapons.get(4));
-        cannonGun = new Weapon(this.getX(), this.getY(), Weapon.SHOT_GUN, imgWeapons.get(6));
-        lightningGun = new Weapon(this.getX(), this.getY(), Weapon.SHOT_GUN, imgWeapons.get(8));
-        ionGun= new Weapon(this.getX(), this.getY(), Weapon.SHOT_GUN, imgWeapons.get(10));
+        flameThrower = new Weapon(this.getX(), this.getY(), Weapon.FLAME_THROWER, imgWeapons.get(2));
+        sprayGun = new Weapon(this.getX(), this.getY(), Weapon.SPRAY_GUN, imgWeapons.get(4));
+        cannonGun = new Weapon(this.getX(), this.getY(), Weapon.CANNON_GUN, imgWeapons.get(6));
+        lightningGun = new Weapon(this.getX(), this.getY(), Weapon.LIGHTNING_GUN, imgWeapons.get(8));
+        ionGun= new Weapon(this.getX(), this.getY(), Weapon.ION_GUN, imgWeapons.get(10));
         
         weapons.add(mainGun);
         weapons.add(ionGun);

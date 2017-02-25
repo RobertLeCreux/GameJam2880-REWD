@@ -35,6 +35,7 @@ public class GameJam2880 {
         board = new Board();
         
         frame.add(menu);
+        frame.setResizable(false);
         
         btnForward = (JButton) menu.getComponent(1);
         btnForward.addActionListener(new ActionListener(){
