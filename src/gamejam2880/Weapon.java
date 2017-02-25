@@ -44,14 +44,14 @@ public class Weapon extends Sprite {
             //this.setY(player.getY() + player.getHeight() / 2);
             //System.out.println(player.getY());
             this.setX(player.getX() + player.getWidth() + Player.WEAPON_X_RIGHT_OFFSET);
-            this.setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
         } else {
-            
             this.setX(player.getX() - this.getWidth() + 3);
-
-            this.setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
         }
-        
+        if(type == Weapon.CANNON_GUN){
+                this.setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET - 20);
+            } else {
+                this.setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
+            }
         for (Projectile projectile : projectiles){
             projectile.move();
         }

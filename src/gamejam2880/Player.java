@@ -28,9 +28,9 @@ public class Player extends NonStationary {
     
     
     public static int JUMP_FORCE = 10;
-    private ArrayList<Weapon> weapon;
     private boolean touchedGround;
     private Weapon mainGun, flameThrower, sprayGun, cannonGun, lightningGun, ionGun;
+    public Weapon equipped;
     private int direction = FACING_RIGHT;
     
     private int lives;
@@ -43,6 +43,7 @@ public class Player extends NonStationary {
         super(x, y);
         lives = STARTING_LIVES;
         initPlayer();
+        equipped = weapons.get(0);
     }
 
     private void initPlayer() {
@@ -55,7 +56,7 @@ public class Player extends NonStationary {
         weapons = new ArrayList();
         imgWeapons = new ArrayList();
         
-        
+        // TODO: fix sprites here
         imgWeapons.add("mainGunRight.png");
         imgWeapons.add("mainGunLeft.png");
         imgWeapons.add("ionGunRight.png");
@@ -162,6 +163,7 @@ public class Player extends NonStationary {
                 weaponIndex = 5;
                 break;
         }
+        equipped = weapons.get(weaponIndex);
         
         if (key == KeyEvent.VK_ENTER) {
             System.out.println("attempting to fire weapon!");
@@ -215,6 +217,4 @@ public class Player extends NonStationary {
             weapon.drawProjectiles(g,canvas);
         }
     }
-}    
-    
-    
+}
