@@ -71,104 +71,27 @@ public class Weapon extends Sprite {
         }
     }
     
-    public void fire(Player player) {
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
-        if (type.equals(GRAV_GUN)){
-            gravProjectiles.add(new GravProjectile(x + width, y + height / 2,"none"));
-        } else{
-            System.out.println("Firing weapon!");
-<<<<<<< HEAD
-            //Projectile testBullet = new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight());
-            if (type.equals(SHOT_GUN)){
-                projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "mainGunBullet"));
-            
-                
-        try {
-            File file = new File("zew.wav");
-            Clip clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(file));
-            clip.start();
-            
-            } catch (Exception e) 
-            {
-            System.err.println(e.getMessage());
-            }
-
-        if(fireCoolDown <= 0){
-            fireCoolDown = fireDelay;
-            if (type.equals(GRAV_GUN)){
-                gravProjectiles.add(new GravProjectile(x + width, y + height / 2));
-            } else{
-                System.out.println("Firing weapon!");
-                //Projectile testBullet = new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight());
-                if (type.equals(SHOT_GUN)){
-                    projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "mainGunBullet"));
-                } else if (type.equals(ION_GUN)){
-                    projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "ionGunBullet"));
-                    try {
-=======
-            //Projectile testBullet = new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight());            
+    public void fire(Player player){
             if(fireCoolDown <= 0){
-                try {
->>>>>>> origin/master
-                    File file = new File("pew.wav");
-                    Clip clip = AudioSystem.getClip();
-                    clip.open(AudioSystem.getAudioInputStream(file));
-                    clip.start();
-<<<<<<< HEAD
-            
-                    } catch (Exception e) 
-                    {
-            System.err.println(e.getMessage());
-            }
-                
-                } else if (type.equals(LIGHTNING_GUN)){
-                    projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "lightningGunBullet"));
-                    try {
-                    File file = new File("zap.wav");
-                    Clip clip = AudioSystem.getClip();
-                    clip.open(AudioSystem.getAudioInputStream(file));
-                    clip.start();
-            
-                    } catch (Exception e) 
-                    {
-            System.err.println(e.getMessage());
-            }
-                }
-                //projectiles.add(testBullet);
-                System.out.println(projectiles.size());
-
-            }
-        }
-=======
-
-                    } catch (Exception e) 
-                    {
-                    System.err.println(e.getMessage());
-                    }
                 fireCoolDown = fireDelay;
-                if (type.equals(GRAV_GUN)){
-                    gravProjectiles.add(new GravProjectile(x + width, y + height / 2,"none"));
-                } else{
-                    System.out.println("Firing weapon!");
-                    //Projectile testBullet = new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight());
-                    if (type.equals(SHOT_GUN)){
-                        projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "mainGunBullet"));
-                    } else if (type.equals(ION_GUN)){
-                        projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "ionGunBullet"));
-                    } else if (type.equals(LIGHTNING_GUN)){
-                        projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "lightningGunBullet"));
+                    if (type.equals(GRAV_GUN)){
+                        gravProjectiles.add(new GravProjectile(x + width, y + height / 2,"none"));
+                    } else{
+                        System.out.println("Firing weapon!");
+                        //Projectile testBullet = new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight());
+                        if (type.equals(SHOT_GUN)){
+                            projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "mainGunBullet"));
+                        } else if (type.equals(ION_GUN)){
+                            projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "ionGunBullet"));
+                        } else if (type.equals(LIGHTNING_GUN)){
+                            projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "lightningGunBullet"));
+                        }
+                        //projectiles.add(testBullet);
+                        System.out.println(projectiles.size());
                     }
-                    //projectiles.add(testBullet);
-                    System.out.println(projectiles.size());
-                }
-            }   
-        } 
->>>>>>> origin/master
-    }
+                }   
+            } 
+    
     
     
     public void moveProjectiles(){
