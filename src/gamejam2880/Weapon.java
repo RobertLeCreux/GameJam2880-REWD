@@ -72,11 +72,15 @@ public class Weapon extends Sprite {
     }
     
     public void fire(Player player) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
         if (type.equals(GRAV_GUN)){
             gravProjectiles.add(new GravProjectile(x + width, y + height / 2));
         } else{
             System.out.println("Firing weapon!");
+<<<<<<< HEAD
             //Projectile testBullet = new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight());
             if (type.equals(SHOT_GUN)){
                 projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "mainGunBullet"));
@@ -105,10 +109,16 @@ public class Weapon extends Sprite {
                 } else if (type.equals(ION_GUN)){
                     projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "ionGunBullet"));
                     try {
+=======
+            //Projectile testBullet = new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight());            
+            if(fireCoolDown <= 0){
+                try {
+>>>>>>> origin/master
                     File file = new File("pew.wav");
                     Clip clip = AudioSystem.getClip();
                     clip.open(AudioSystem.getAudioInputStream(file));
                     clip.start();
+<<<<<<< HEAD
             
                     } catch (Exception e) 
                     {
@@ -133,6 +143,31 @@ public class Weapon extends Sprite {
 
             }
         }
+=======
+
+                    } catch (Exception e) 
+                    {
+                    System.err.println(e.getMessage());
+                    }
+                fireCoolDown = fireDelay;
+                if (type.equals(GRAV_GUN)){
+                    gravProjectiles.add(new GravProjectile(x + width, y + height / 2));
+                } else{
+                    System.out.println("Firing weapon!");
+                    //Projectile testBullet = new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight());
+                    if (type.equals(SHOT_GUN)){
+                        projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "mainGunBullet"));
+                    } else if (type.equals(ION_GUN)){
+                        projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "ionGunBullet"));
+                    } else if (type.equals(LIGHTNING_GUN)){
+                        projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "lightningGunBullet"));
+                    }
+                    //projectiles.add(testBullet);
+                    System.out.println(projectiles.size());
+                }
+            }   
+        } 
+>>>>>>> origin/master
     }
     
     

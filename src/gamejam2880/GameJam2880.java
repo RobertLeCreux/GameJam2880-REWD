@@ -28,6 +28,7 @@ public class GameJam2880 {
     public static int WINDOW_HEIGHT = 700;
     
     public GameJam2880(){
+<<<<<<< HEAD
 
         play();
 
@@ -35,6 +36,12 @@ public class GameJam2880 {
         menu = new MenuBetter();
         
 
+=======
+        play();
+        frame =  new JFrame("GameJam2880");
+        menu = new MenuBetter();
+        
+>>>>>>> origin/master
         initUI();
         player = board.player;
         playing = true;
@@ -91,8 +98,11 @@ public class GameJam2880 {
     }
     
 
+<<<<<<< HEAD
     
 
+=======
+>>>>>>> origin/master
     public static void key(Player player){
         // System.out.println("Key pressed should exit" + player.keyPressed);
         if((player.keyPressed == 27) || (player.getLives() <= 0)){
@@ -100,7 +110,10 @@ public class GameJam2880 {
             initUI();
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
     
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable(){

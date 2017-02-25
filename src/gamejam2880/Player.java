@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 
 public class Player extends NonStationary {
-    public static int PLAYER_SPEED = 3;
+    public static int PLAYER_SPEED = 10;
     public static int FACING_LEFT = 0;
     public static int FACING_RIGHT = 1;
     public static int WEAPON_Y_OFFSET = -18;
@@ -28,7 +28,7 @@ public class Player extends NonStationary {
     public static int IMG_WEAPONS_INDEX;
     
     public int keyPressed;
-    public static int JUMP_FORCE = 10;
+    public static int JUMP_FORCE = 15;
     private boolean touchedGround;
     private Weapon mainGun, flameThrower, sprayGun, cannonGun, lightningGun, ionGun;
     public Weapon equipped;
