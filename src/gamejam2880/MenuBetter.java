@@ -116,7 +116,7 @@ public class MenuBetter extends javax.swing.JPanel {
     }//GEN-LAST:event_onStart
 
     private int highScore = 10000;
-    Sprite background = new Sprite(this.getWidth(),this.getHeight(),"thPAF84F4Z.jpg");
+    Sprite background = new Sprite(this.getWidth(),this.getHeight(),"background.png");
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
