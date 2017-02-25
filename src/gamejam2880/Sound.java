@@ -5,33 +5,33 @@
  */
 package gamejam2880;
 
+import javax.sound.sampled.*;
 import java.io.*;
-import sun.audio.*;
-
+import javax.swing.*;
 /**
  *
  * @author kylechapman
  */
-public Sound {
+Sound as1 = AudioSystem.getAudioInputStream(new java.io.FileInputStream("chickenDance.wav"));
+               AudioFormat af = as1.getFormat();
+               Clip clip1 = AudioSystem.getClip();
+               DataLine.Info info = new DataLine.Info(Clip.class, af);
 
+               Line line1 = AudioSystem.getLine(info);
+
+               if ( ! line1.isOpen() )
+               {
+                clip1.open(as1);
+                clip1.loop(Clip.LOOP_CONTINUOUSLY);
+                clip1.start();
+               }
+    /**    
     ZAP("zap.wav"),
     PEW("pew.wav"),
     KAPLOW("kaplow.wav"),
     BANG("bang.wav"),
     ZEW("zew.wav"),
     FLAME("flame.wav");
-
-  public static void main(String[] args) 
-  throws Exception
-  {
-    // open the sound file as a Java input stream
-    String gongFile = "";
-    InputStream in = new FileInputStream(gongFile);
-
-    // create an audiostream from the inputstream
-    AudioStream audioStream = new AudioStream(in);
-
-    // play the audio clip with the audioplayer class
-    AudioPlayer.player.start(audioStream);
-  }
+*/
+  
 }
