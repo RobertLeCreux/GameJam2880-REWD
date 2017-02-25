@@ -25,9 +25,17 @@ public class Weapon extends Sprite {
     public static final String ION_GUN = "ionGun";
     public static final String SHOT_GUN = "shotGun";
     
+    public int fireDelay = 100;
+    public int fireCoolDown = 0;
+    
     public Weapon(int x, int y, String weaponType, String img) {
         super(x, y, img);
         type = weaponType;
+        if (type.equals(SHOT_GUN)){
+            fireDelay = 15;
+        } else if (type.equals(ION_GUN)){
+            fireDelay = 5;
+        }
     }
     
     //---------------------------------------------- get/set methods
@@ -58,16 +66,21 @@ public class Weapon extends Sprite {
     }
     
     public void fire(Player player) {
-        if (type.equals(GRAV_GUN)){
-            gravProjectiles.add(new GravProjectile(x + width, y + height / 2));
-        } else{
-            System.out.println("Firing weapon!");
-            //Projectile testBullet = new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight());
-            if (type.equals(SHOT_GUN)){
-                projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "mainGunBullet"));
+        if(fireCoolDown <= 0){
+            fireCoolDown = fireDelay;
+            if (type.equals(GRAV_GUN)){
+                gravProjectiles.add(new GravProjectile(x + width, y + height / 2));
+            } else{
+                System.out.println("Firing weapon!");
+                //Projectile testBullet = new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight());
+                if (type.equals(SHOT_GUN)){
+                    projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "mainGunBullet"));
+                } else if (type.equals(ION_GUN)){
+                    projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "ionGunBullet"));
+                }
+                //projectiles.add(testBullet);
+                System.out.println(projectiles.size());
             }
-            //projectiles.add(testBullet);
-            System.out.println(projectiles.size());
         }
     }
     

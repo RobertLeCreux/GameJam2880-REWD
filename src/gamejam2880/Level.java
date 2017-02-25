@@ -113,7 +113,7 @@ public class Level {
     }
     
     public void mobHit(Mob mob, Projectile projectile,Player player){
-        mob.hp -= 1;
+        mob.hp -= projectile.damage;
         if (mob.hp <= 0){
             mob.setVisible(false);
         }
@@ -123,16 +123,24 @@ public class Level {
     
     public void cleanUp(Player player){
         for(Weapon weapon : player.weapons){
+            weapon.fireCoolDown -= 1;
             for(int i = 0; i < weapon.projectiles.size(); i++){
-                if (weapon.projectiles.get(i).isVisible() == false){
+                weapon.projectiles.get(i).timeToLive -= 1;
+                if (weapon.projectiles.get(i).isVisible() == false || (weapon.projectiles.get(i).getY() > GameJam2880.WINDOW_HEIGHT) || (weapon.projectiles.get(i).getX() > GameJam2880.WINDOW_WIDTH || (weapon.projectiles.get(i).timeToLive < 0))){
                     weapon.projectiles.remove(i);
                 }       
             }
         }
         
         for(int i = 0; i < mobsList.size(); i++){
-            if (mobsList.get(i).isVisible() == false){
+            if ((mobsList.get(i).isVisible() == false) || (mobsList.get(i).getY() > GameJam2880.WINDOW_HEIGHT)){
                 mobsList.remove(i);
+            }
+        }
+        
+        for (int i = 0; i < groundList.size(); i++){
+            if (groundList.get(i).getY() > GameJam2880.WINDOW_HEIGHT){
+                groundList.remove(i);
             }
         }
     }

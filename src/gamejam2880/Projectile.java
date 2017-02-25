@@ -14,6 +14,8 @@ import static java.awt.event.KeyEvent.*;
  */
 public class Projectile extends NonStationary {
     private String ammoType;
+    public int timeToLive = 500;
+    public int damage = 1;
     
     public Projectile(int x, int y,String type) {
         super(x, y);
@@ -23,6 +25,19 @@ public class Projectile extends NonStationary {
             this.loadImage("mainGunBullet.png");
             int randoDX = (int) Math.floor(Math.random() * 20);
             setDX(randoDX);
+            damage = 2;
+        }
+        
+        if (ammoType.equals("ionGunBullet")){
+            this.loadImage("ionGunBulletLeft.png");
+            setDX(15);
+            int randoDY = (int) Math.floor(Math.random() * 20);
+            int randoUpDown = (int) Math.floor(Math.random() * 2);
+            if (randoUpDown == 0){
+                setDY(randoDY);
+            } else{
+                setDY(-randoDY);
+            }
         }
     }
     
@@ -33,6 +48,7 @@ public class Projectile extends NonStationary {
     
     public void move(){
         setX(getX() + getDX());
+        setY(getY() + getDY());
     }
     
 }
