@@ -6,7 +6,10 @@
 package gamejam2880;
 
 import java.awt.Graphics;
+import java.io.File;
 import java.util.ArrayList;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 /**
  *
@@ -36,7 +39,7 @@ public class Weapon extends Sprite {
     }
     
     //----------------------------------------------------------- public methods
-    
+        
     
     public void move(Player player){
         if (player.getDirection() == Player.FACING_RIGHT){
@@ -65,6 +68,17 @@ public class Weapon extends Sprite {
             //Projectile testBullet = new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight());
             if (type.equals(SHOT_GUN)){
                 projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "mainGunBullet"));
+            
+        try {
+            File file = new File("pew.wav");
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(file));
+            clip.start();
+            
+            } catch (Exception e) 
+            {
+            System.err.println(e.getMessage());
+            }
             }
             //projectiles.add(testBullet);
             System.out.println(projectiles.size());

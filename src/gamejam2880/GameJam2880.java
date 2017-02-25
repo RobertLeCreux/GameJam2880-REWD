@@ -4,11 +4,13 @@ package gamejam2880;
  *
  * @author Gen
  */
-
 import gamejam2880.Board;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.io.*;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 
 public class GameJam2880 {
@@ -25,9 +27,24 @@ public class GameJam2880 {
     public static int WINDOW_HEIGHT = 700;
     
     public GameJam2880(){
+        play();
         initUI();
         
+        
     }
+    public static void play() {
+        try {
+            File file = new File("Beats.wav");
+            Clip clip = AudioSystem.getClip();
+            clip.open(AudioSystem.getAudioInputStream(file));
+            clip.start();
+            } catch (Exception e) 
+            {
+            System.err.println(e.getMessage());
+            }
+            }
+            
+    
     
     private void initUI(){
         frame =  new JFrame("GameJam2880");
@@ -65,14 +82,33 @@ public class GameJam2880 {
         frame.setVisible(true);
     }
     
+    
+    
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable(){
             @Override
             public void run(){
                 new GameJam2880();
-                
             }
         });
     }
-    
+    // background music - I do not know if this works
+    /**
+    public static void music()
+    {
+          AudioPlayer MGP = AudioPlayer.player;
+          AudioStream BGM;
+          AudioData MD;
+          ContinuousAudioDataStream loop = null;
+          
+          try {
+          BGM = new AudioStream(new FileInputStream("Beats.wav"));
+          MD = BGM.getData();
+          loop = new ContinuousAudioDataStream(MD);
+          } catch (IOException error){}
+          
+          MGP.start(loop);
+        }
+    */
+     
 }

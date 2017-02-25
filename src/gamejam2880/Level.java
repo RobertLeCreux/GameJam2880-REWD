@@ -1,5 +1,6 @@
 package gamejam2880;
 
+import static gamejam2880.GameJam2880.play;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -33,6 +34,7 @@ public class Level {
     public long getFurthestReached(){
         return furthestReached;
     }
+    
     
     public void checkCollisions(Player player){
         for (Ground ground : groundList){
