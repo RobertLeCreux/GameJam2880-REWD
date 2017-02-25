@@ -189,14 +189,14 @@ public class Player extends NonStationary {
         }
 
         
-        if (key == KeyEvent.VK_LEFT) {
+        if (key == KeyEvent.VK_A) {
             this.setDX(-PLAYER_SPEED);
             this.loadImage("AlienLeft.png");
             weapons.get(weaponIndex).loadImage(imgWeapons.get(IMG_WEAPONS_INDEX + 1));
             setDirection(FACING_LEFT);
         }
 
-        if (key == KeyEvent.VK_RIGHT) {
+        if (key == KeyEvent.VK_D) {
             super.setDX(PLAYER_SPEED);
             this.loadImage("AlienRight.png");
             weapons.get(weaponIndex).loadImage(imgWeapons.get(IMG_WEAPONS_INDEX));
@@ -211,11 +211,11 @@ public class Player extends NonStationary {
 
         int key = e.getKeyCode();
 
-        if (key == KeyEvent.VK_LEFT) {
+        if (key == KeyEvent.VK_A) {
              setDX(0);
         }
 
-        if (key == KeyEvent.VK_RIGHT) {
+        if (key == KeyEvent.VK_D) {
             setDX(0);
         }
         System.out.println("weapon index: " + weaponIndex + " weapon image index: " + IMG_WEAPONS_INDEX);
