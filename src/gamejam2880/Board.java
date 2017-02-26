@@ -17,7 +17,7 @@ public class Board extends JPanel implements ActionListener {
     
     public Player player;
     private final int DELAY = 10;
-    private Timer timer;
+    private static Timer timer;
     private Mob mob;
     private Level level;
     private Weapon mainGun;
@@ -28,8 +28,8 @@ public class Board extends JPanel implements ActionListener {
     public Board(){
         lblScore = new JLabel("Score: ");
         addKeyListener(new TAdapter());
-        setFocusable(true);
-        background = new Sprite(0,0,"backgroundMoutains.png");
+        this.requestFocus();
+        background = new Sprite(0,this.getHeight(),"backgroundMoutains.png");
         
         player = new Player(10,10);
         
@@ -41,6 +41,11 @@ public class Board extends JPanel implements ActionListener {
         
         // ---- add random things to test functionality---
         
+    }
+    
+    //------------------------------------------------------ get/set
+    public static Timer getTimer(){
+        return timer;
     }
 
     

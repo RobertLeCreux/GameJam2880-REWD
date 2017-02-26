@@ -33,9 +33,6 @@ public class GameJam2880 {
         
         frame =  new JFrame("GameJam2880");
         menu = new MenuBetter();
-       
-            
-        
         initUI();
         player = board.player;
         playing = true;
@@ -87,6 +84,8 @@ public class GameJam2880 {
         // System.out.println("Key pressed should exit" + player.keyPressed);
         if((player.keyPressed == 27) || (player.getLives() <= 0)){
             frame.remove(board);
+            Timer timer = Board.getTimer();
+            timer.restart();
             initUI();
         }
     }

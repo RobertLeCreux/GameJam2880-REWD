@@ -14,12 +14,15 @@ import javax.swing.*;
  */
 public class Sprite {
     
+    //--------------------------------------------------------- class constants
     public static int NO_COLLISION = 0;
     public static int COLLISION_TOP = 1;
     public static int COLLISION_BOTTOM = 2;
     public static int COLLISION_RIGHT = 3;
     public static int COLLISION_LEFT = 4;
     public static int COLLISION_INDETERMINATE = 5;
+    
+    //--------------------------------------------------------- object attributes
     protected int x;
     protected int y;
     protected int dx;
@@ -30,6 +33,7 @@ public class Sprite {
     protected Image image;
     private String img;
 
+    //--------------------------------------------------------- standard constructor
     public Sprite(int x, int y) {
 
         this.x = x;
