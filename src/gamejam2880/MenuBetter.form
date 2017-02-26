@@ -30,7 +30,7 @@
               <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="108" pref="108" max="32767" attributes="0"/>
+              <EmptySpace min="108" max="32767" attributes="0"/>
               <Component id="jLayeredPane1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
           </Group>
@@ -70,8 +70,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="171" max="-2" attributes="0"/>
+                      <Component id="jLabel5" min="-2" pref="59" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
                       <Component id="jLayeredPane1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnExit" min="-2" pref="92" max="-2" attributes="0"/>
@@ -168,7 +168,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Switch Weapons: 1,2, and 5"/>
+        <Property name="text" type="java.lang.String" value="Switch Weapons: 1,2,3,and 5"/>
       </Properties>
     </Component>
   </SubComponents>

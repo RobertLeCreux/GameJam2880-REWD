@@ -109,7 +109,7 @@ public class Weapon extends Sprite {
                             projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "flameShot"));
                             try 
                             {
-                            File file = new File("zew.wav");
+                            File file = new File("flame.wav");
                             Clip clip = AudioSystem.getClip();
                             clip.open(AudioSystem.getAudioInputStream(file));
                             clip.start();
