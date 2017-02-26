@@ -41,7 +41,7 @@ public class Mob extends NonStationary {
         initMob();
         
         
-        System.out.println("Making Sprite" + x + y);
+        //System.out.println("Making Sprite" + x + y);
         
     }
 

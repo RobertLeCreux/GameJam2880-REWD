@@ -77,7 +77,7 @@ public class Weapon extends Sprite {
                     if (type.equals(GRAV_GUN)){
                         gravProjectiles.add(new GravProjectile(x + width, y + height / 2,"none"));
                     } else{
-                        System.out.println("Firing weapon!");
+                        //System.out.println("Firing weapon!");
                         //Projectile testBullet = new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight());
                         if (type.equals(SHOT_GUN)){
                             projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "mainGunBullet"));
@@ -105,6 +105,19 @@ public class Weapon extends Sprite {
                             {
                             System.err.println(e.getMessage());
                             }
+                        }else if (type.equals(FLAME_THROWER)){
+                            projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "flameShot"));
+                            try 
+                            {
+                            File file = new File("zew.wav");
+                            Clip clip = AudioSystem.getClip();
+                            clip.open(AudioSystem.getAudioInputStream(file));
+                            clip.start();
+                            }
+                            catch (Exception e) 
+                            {
+                            System.err.println(e.getMessage());
+                            }
                         } else if (type.equals(LIGHTNING_GUN)){
                             projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "lightningGunBullet"));
                             try 
@@ -120,7 +133,7 @@ public class Weapon extends Sprite {
                             }
                         }
                         //projectiles.add(testBullet);
-                        System.out.println(projectiles.size());
+                        //System.out.println(projectiles.size());
                     }
                 }   
             } 

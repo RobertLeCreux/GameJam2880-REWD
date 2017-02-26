@@ -40,6 +40,13 @@ public class Projectile extends NonStationary {
             }
         }
         
+        if (ammoType.equals("flameShot")){
+            this.loadImage("flameShotRight.png");
+            this.setDX(5);
+            this.timeToLive = 30;
+            damage = 8;
+        }
+        
         if (ammoType.equals("lightningGunBullet")){
             this.loadImage("lightinbolt.png");
             this.setDX(20);

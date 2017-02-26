@@ -59,7 +59,7 @@ public class Level {
             
         for (Mob mob : mobsList){
             if (mob.detectCollision(player.getBounds()) > 0){
-                System.out.println(mob.detectCollision(player.getBounds()));
+                //System.out.println(mob.detectCollision(player.getBounds()));
                 playerHit(player,mob);
             }
             for (Ground grounds : groundList){
@@ -116,7 +116,7 @@ public class Level {
     }
     
     public void playerHit(Player player, Mob mob){
-        System.out.println("lives to change by: " + (player.getLives() - 1));
+        //System.out.println("lives to change by: " + (player.getLives() - 1));
         player.setLives(player.getLives() - 1);
         player.setDX(-30);
     }
