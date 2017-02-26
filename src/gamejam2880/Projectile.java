@@ -7,6 +7,7 @@ package gamejam2880;
 
 import java.awt.Graphics;
 import static java.awt.event.KeyEvent.*;
+import static java.lang.Math.random;
 
 /**
  *
@@ -41,7 +42,13 @@ public class Projectile extends NonStationary {
         }
         
         if (ammoType.equals("flameShot")){
-            this.loadImage("flameShotRight.png");
+            double img = Math.random();
+            if(img < 0.5){
+                this.loadImage("flameShotRight.png");
+            } else {
+                this.loadImage("flameShotRight2.png");
+            }
+            
             this.setDX(5);
             this.timeToLive = 30;
             damage = 8;
