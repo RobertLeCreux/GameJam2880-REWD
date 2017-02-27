@@ -21,6 +21,7 @@ public class GameJam2880 {
     private static JFrame frame;
     private static JButton btnForward;
     private static JButton btnExit;
+    private static JButton btnResume;
     private static Player player;
     private boolean playing;
     
@@ -49,6 +50,7 @@ public class GameJam2880 {
         menu.requestFocus();
         frame.revalidate();
         frame.setResizable(false);
+        Timer timer = Board.getTimer();
         
         btnForward = (JButton) menu.getComponent(0);
         btnForward.addActionListener(new ActionListener(){
@@ -61,7 +63,20 @@ public class GameJam2880 {
                frame.repaint();
            }
         });
-        btnExit = (JButton) menu.getComponent(1);
+        btnResume = (JButton) menu.getComponent(1);
+        btnResume.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent ae){
+               frame.remove(menu);
+               frame.add(board);
+               board.paused = false;
+               board.requestFocus();
+               frame.revalidate();
+               frame.repaint();
+               
+           }
+        });
+        btnExit = (JButton) menu.getComponent(2);
         btnExit.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent ae){
@@ -82,9 +97,11 @@ public class GameJam2880 {
 
     public static void key(Player player){
         // System.out.println("Key pressed should exit" + player.keyPressed);
-        if((player.keyPressed == 27) || (player.getLives() <= 0)){
+        Timer timer = Board.getTimer();
+        JButton btnResume = (JButton) menu.getComponent(1);
+        if(player.getLives() <= 0){
             frame.remove(board);
-            Timer timer = Board.getTimer();
+            btnResume.setEnabled(false);
             timer.restart();
             initUI();
         }
