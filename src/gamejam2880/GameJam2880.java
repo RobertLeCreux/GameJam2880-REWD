@@ -9,8 +9,11 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
 
 
 public class GameJam2880 {
@@ -23,15 +26,17 @@ public class GameJam2880 {
     private static JButton btnExit;
     private static JButton btnResume;
     private static Player player;
+    private static File file;
+    private static Clip clip;
     private boolean playing;
     
     public static int WINDOW_WIDTH = 1000;
     public static int WINDOW_HEIGHT = 700;
     
-    public GameJam2880(){
+    public GameJam2880() throws LineUnavailableException{
 
-       
-        
+        file = new File("Beats.wav");
+        clip = AudioSystem.getClip();
         frame =  new JFrame("GameJam2880");
         menu = new MenuBetter();
         initUI();
@@ -39,7 +44,7 @@ public class GameJam2880 {
         playing = true;
         
         
-        play();
+        //play();
         
         
     }
@@ -58,12 +63,13 @@ public class GameJam2880 {
            public void actionPerformed(ActionEvent ae){
                frame.remove(menu);
                frame.add(board);
+               play();
                board.requestFocus();
                frame.revalidate();
                frame.repaint();
            }
         });
-        btnResume = (JButton) menu.getComponent(1);
+        btnResume = (JButton) menu.getComponent(0);
         btnResume.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent ae){
@@ -76,7 +82,7 @@ public class GameJam2880 {
                
            }
         });
-        btnExit = (JButton) menu.getComponent(2);
+        btnExit = (JButton) menu.getComponent(1);
         btnExit.addActionListener(new ActionListener(){
            @Override
            public void actionPerformed(ActionEvent ae){
@@ -98,10 +104,9 @@ public class GameJam2880 {
     public static void key(Player player){
         // System.out.println("Key pressed should exit" + player.keyPressed);
         Timer timer = Board.getTimer();
-        JButton btnResume = (JButton) menu.getComponent(1);
         if(player.getLives() <= 0){
             frame.remove(board);
-            btnResume.setEnabled(false);
+            stopPlay();
             timer.restart();
             initUI();
         }
@@ -111,26 +116,37 @@ public class GameJam2880 {
         EventQueue.invokeLater(new Runnable(){
             @Override
             public void run(){
-                new GameJam2880();
+                try {
+                    new GameJam2880();
+                } catch (LineUnavailableException ex) {
+                    Logger.getLogger(GameJam2880.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
     public static void play() {
+        if(!clip.isOpen()){
+            try {
+                clip.open(AudioSystem.getAudioInputStream(file));
+            } catch (Exception e){
+                System.err.println(e.getMessage());
+            }        
+            }
         
+            clip.setMicrosecondPosition(0);
+            clip.start();
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+            } 
+   
+        public static void stopPlay() {
+            
+            clip.stop();
+            
+        } 
     
         
        
-        try {
-            File file = new File("Beats.wav");
-            Clip clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(file));
-            clip.start();
-            clip.loop(Clip.LOOP_CONTINUOUSLY);
-            } catch (Exception e) 
-            {
-            System.err.println(e.getMessage());
-            }
-            } 
+            
    
     }
     
