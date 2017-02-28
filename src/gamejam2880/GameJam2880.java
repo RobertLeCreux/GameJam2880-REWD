@@ -16,6 +16,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 
 
+
 public class GameJam2880 {
     
     
@@ -29,11 +30,14 @@ public class GameJam2880 {
     private static File file;
     private static Clip clip;
     private boolean playing;
+    public static HighScoreManager hm;
+    public static gamejam2880.Level level;
     
     public static int WINDOW_WIDTH = 1000;
     public static int WINDOW_HEIGHT = 700;
     
-    public GameJam2880() throws LineUnavailableException{
+    public GameJam2880() throws LineUnavailableException, IOException{
+        
 
         file = new File("Beats.wav");
         clip = AudioSystem.getClip();
@@ -41,6 +45,8 @@ public class GameJam2880 {
         menu = new MenuBetter();
         initUI();
         player = board.player;
+        level = board.level;
+        hm = new HighScoreManager(player);
         playing = true;
         
         
@@ -108,6 +114,9 @@ public class GameJam2880 {
             frame.remove(board);
             stopPlay();
             timer.restart();
+            String name = JOptionPane.showInputDialog("Please Enter your name:");
+            GameJam2880.hm.addScore(name, Integer.parseInt(level.score.substring(7)));
+            JOptionPane.showMessageDialog(null,"Highscores: \n\n" + hm.getHighscoreString());
             initUI();
         }
     }
@@ -119,6 +128,8 @@ public class GameJam2880 {
                 try {
                     new GameJam2880();
                 } catch (LineUnavailableException ex) {
+                    Logger.getLogger(GameJam2880.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
                     Logger.getLogger(GameJam2880.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }

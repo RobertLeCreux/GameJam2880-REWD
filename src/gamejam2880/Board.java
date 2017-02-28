@@ -19,7 +19,7 @@ public class Board extends JPanel implements ActionListener {
     private final int DELAY = 10;
     private static Timer timer;
     private Mob mob;
-    private Level level;
+    public Level level;
     private Weapon mainGun;
     private Sprite background;
     private JLabel lblScore;
