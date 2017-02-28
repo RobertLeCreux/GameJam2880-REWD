@@ -48,6 +48,11 @@ public class Level {
         for (Ground ground : groundList){
             Rectangle rg = ground.getBounds();
             //if (player.detectCollision(rg) == Sprite.COLLISION_BOTTOM){
+            if (player.getBounds().intersects(ground.getBounds())){
+                if ((Physics.detectCollisions(player.getShadow(), ground.getShadow())[0] != Physics.COLLISION_BOTTOM)){
+                    System.out.println((Physics.detectCollisions(player.getShadow(), ground.getShadow())[0]));
+                }
+            }
             if ((Physics.detectCollisions(player.getShadow(), ground.getShadow())[0] == Physics.COLLISION_BOTTOM) || (Physics.detectCollisions(player.getShadow(), ground.getShadow())[0] == Physics.COLLISION_BOTTOM_LEFT) || (Physics.detectCollisions(player.getShadow(), ground.getShadow())[0] == Physics.COLLISION_BOTTOM_RIGHT)){
                 player.setDY(0);
                 player.setY(ground.getY() - player.getHeight());
@@ -115,7 +120,7 @@ public class Level {
             addMobs(player);
             furthestReached = playerLocation;
             score = "Score: " + (furthestReached / 100);
-            System.out.println(score);
+            //System.out.println(score);
         }  
     }
     
