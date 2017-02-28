@@ -80,7 +80,7 @@ public class Weapon extends Sprite {
                         //System.out.println("Firing weapon!");
                         //Projectile testBullet = new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight());
                         if (type.equals(SHOT_GUN)){
-                            projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "mainGunBullet"));
+                            projectiles.add(new Projectile(player.getX() + player.getWidth() + this.getWidth(), this.getY(), "mainGunBullet"));
                             try 
                             {
                             File file = new File("pew.wav");
@@ -93,7 +93,7 @@ public class Weapon extends Sprite {
                             System.err.println(e.getMessage());
                             }
                         } else if (type.equals(ION_GUN)){
-                            projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "ionGunBullet"));
+                            projectiles.add(new Projectile(player.getX() + player.getWidth() + this.getWidth(), this.getY(), "ionGunBullet"));
                             try 
                             {
                             File file = new File("zew.wav");
@@ -106,7 +106,7 @@ public class Weapon extends Sprite {
                             System.err.println(e.getMessage());
                             }
                         }else if (type.equals(FLAME_THROWER)){
-                            projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "flameShot"));
+                            projectiles.add(new Projectile(player.getX() + player.getWidth() + this.getWidth(), this.getY() - this.getHeight()/2, "flameShot"));
                             try 
                             {
                             File file = new File("flame.wav");
@@ -119,7 +119,7 @@ public class Weapon extends Sprite {
                             System.err.println(e.getMessage());
                             }
                         } else if (type.equals(LIGHTNING_GUN)){
-                            projectiles.add(new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight()/2, "lightningGunBullet"));
+                            projectiles.add(new Projectile(player.getX() + player.getWidth() + this.getWidth(), this.getY(), "lightningGunBullet"));
                             try 
                             {
                             File file = new File("zap.wav");

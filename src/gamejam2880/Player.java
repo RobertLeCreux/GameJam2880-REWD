@@ -229,6 +229,14 @@ public class Player extends NonStationary {
         if (key == KeyEvent.VK_A) {
              setDX(0);
         }
+        if(key == KeyEvent.VK_ESCAPE){
+            if(Board.paused == true){
+                Board.paused = false;
+            } else {
+                Board.paused = true;
+            }
+            
+        }
 
         if (key == KeyEvent.VK_D) {
             setDX(0);

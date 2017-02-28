@@ -19,13 +19,15 @@ public class Board extends JPanel implements ActionListener {
     private final int DELAY = 10;
     private static Timer timer;
     private Mob mob;
-    private Level level;
+    public Level level;
     private Weapon mainGun;
     private Sprite background;
     private JLabel lblScore;
+    public static boolean paused;
     
     // ------Constructor-------
     public Board(){
+        paused = false;
         lblScore = new JLabel("Score: ");
         addKeyListener(new TAdapter());
         this.requestFocus();
@@ -78,18 +80,20 @@ public class Board extends JPanel implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        player.move();
+        if(!paused){
+            player.move();
 
-        level.moveLevel(player);        
-        level.checkCollisions(player);
-        level.cleanUp(player);
-        if (player.getY()>GameJam2880.WINDOW_HEIGHT){
-            player.setLives(-1);
-            // System.out.println("Lives: " + player.getLives()); 
+            level.moveLevel(player);        
+            level.checkCollisions(player);
+            level.cleanUp(player);
+            if (player.getY()>GameJam2880.WINDOW_HEIGHT){
+                player.setLives(-1);
+                // System.out.println("Lives: " + player.getLives()); 
+            }
+
+
+            repaint();
         }
-        
-        
-        repaint();
     }
     
     // ------ Class to detect user keyboard input------
