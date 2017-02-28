@@ -128,6 +128,14 @@ public class Physics {
             return new int[] {COLLISION_BOTTOM,COLLISION_TOP};
         } else if (cRight){
             return new int[] {COLLISION_RIGHT,COLLISION_LEFT};
+        } else if(cTopRight){
+            return new int[] {COLLISION_TOP_RIGHT, COLLISION_BOTTOM_LEFT};
+        } else if (cTopLeft){
+            return new int[] {COLLISION_TOP_LEFT, COLLISION_BOTTOM_RIGHT};
+        } else if (cBottomLeft){
+            return new int[] {COLLISION_BOTTOM_LEFT, COLLISION_TOP_RIGHT};
+        } else if (cBottomRight){
+            return new int[] {COLLISION_BOTTOM_RIGHT, COLLISION_TOP_LEFT};
         } else{
             return new int[] {COLLISION_INDETERMINATE};
         }

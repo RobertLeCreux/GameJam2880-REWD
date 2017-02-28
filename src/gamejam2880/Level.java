@@ -34,6 +34,9 @@ public class Level {
         for (int i = 0; GameJam2880.WINDOW_WIDTH > i * testGround.getWidth() ;i++){
             groundList.add(new Ground(i*testGround.getWidth(),(GameJam2880.WINDOW_HEIGHT / 2) + 100) );
         }
+        
+        // -- add test shit
+        groundList.add(new Ground(100,100));
     }
     
     public long getFurthestReached(){
@@ -44,7 +47,8 @@ public class Level {
     public void checkCollisions(Player player){
         for (Ground ground : groundList){
             Rectangle rg = ground.getBounds();
-            if (player.detectCollision(rg) == Sprite.COLLISION_BOTTOM){
+            //if (player.detectCollision(rg) == Sprite.COLLISION_BOTTOM){
+            if ((Physics.detectCollisions(player.getShadow(), ground.getShadow())[0] == Physics.COLLISION_BOTTOM) || (Physics.detectCollisions(player.getShadow(), ground.getShadow())[0] == Physics.COLLISION_BOTTOM_LEFT) || (Physics.detectCollisions(player.getShadow(), ground.getShadow())[0] == Physics.COLLISION_BOTTOM_RIGHT)){
                 player.setDY(0);
                 player.setY(ground.getY() - player.getHeight());
                 player.setTouchedGround(true);
@@ -52,8 +56,7 @@ public class Level {
                     player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET - 20);
                 } else {
                 player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
-                }
-                             
+                }                             
             }
         }
             
