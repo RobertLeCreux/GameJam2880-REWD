@@ -59,9 +59,10 @@ public class Level {
                 player.setTouchedGround(true);
                 if(player.equipped.getType() == Weapon.SPRAY_GUN){
                     player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET - 20);
-                } else {
-                player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
-                }                             
+                } else if(player.equipped.getType() == Weapon.CANNON_GUN){
+                    player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET - 20);
+                } else {player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
+                }                         
             }
         }
             

@@ -59,6 +59,12 @@ public class Projectile extends NonStationary {
             this.setDX(20);
             damage = 8;
         }
+        
+        if (ammoType.equals("cannonGunBullet")){
+            this.loadImage("cannonGunBullet.png");
+            this.setDX(5);
+            damage = 12;
+        }
     }
     
     @Override
