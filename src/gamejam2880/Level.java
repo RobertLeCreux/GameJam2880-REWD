@@ -64,7 +64,8 @@ public class Level {
             }
             for (Ground grounds : groundList){
                 Rectangle rgs = grounds.getBounds();
-                if (mob.detectCollision(rgs) == Sprite.COLLISION_BOTTOM){
+                //if (mob.detectCollision(rgs) == Sprite.COLLISION_BOTTOM){
+                if (Physics.detectCollisions(mob.getShadow(), grounds.getShadow())[0] == Physics.COLLISION_BOTTOM){
                     mob.setDY(0);
                     mob.setY(grounds.getY() - mob.getHeight() - 1);
                 }
