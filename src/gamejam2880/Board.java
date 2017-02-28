@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.event.*;
 import java.awt.*;
+import javax.swing.JLabel;
 
 
 
@@ -16,16 +17,22 @@ public class Board extends JPanel implements ActionListener {
     
     public Player player;
     private final int DELAY = 10;
-    private Timer timer;
+    private static Timer timer;
     private Mob mob;
-    private Level level;
+    public Level level;
     private Weapon mainGun;
+    private Sprite background;
+    private JLabel lblScore;
+    public static boolean paused;
     
     // ------Constructor-------
     public Board(){
-        
+        paused = false;
+        lblScore = new JLabel("Score: ");
         addKeyListener(new TAdapter());
-        setFocusable(true);
+        this.requestFocus();
+        background = new Sprite(0,this.getHeight(),"backgroundMoutains.png");
+        
         player = new Player(10,10);
         
         timer = new Timer(DELAY, this);
@@ -37,6 +44,11 @@ public class Board extends JPanel implements ActionListener {
         // ---- add random things to test functionality---
         
     }
+    
+    //------------------------------------------------------ get/set
+    public static Timer getTimer(){
+        return timer;
+    }
 
     
     //-----public methods-----
@@ -44,8 +56,11 @@ public class Board extends JPanel implements ActionListener {
     //----- private methods------
     
     private void paintAssets(Graphics g){
+        background.doDrawing(g, this);
         player.doDrawing(g,this);
         level.drawLevel(g, this);
+        lblScore.setText(Level.score);
+        this.add(lblScore);
         if (player.weapons.get(player.weaponIndex) != null){
             (player.weapons.get(player.weaponIndex)).doDrawing(g,this);
         }
@@ -65,18 +80,20 @@ public class Board extends JPanel implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        player.move();
+        if(!paused){
+            player.move();
 
-        level.moveLevel(player);        
-        level.checkCollisions(player);
-        level.cleanUp(player);
-        if (player.getY()>GameJam2880.WINDOW_HEIGHT){
-            player.setLives(-1);
-            System.out.println("Lives: " + player.getLives()); 
+            level.moveLevel(player);        
+            level.checkCollisions(player);
+            level.cleanUp(player);
+            if (player.getY()>GameJam2880.WINDOW_HEIGHT){
+                player.setLives(-1);
+                // System.out.println("Lives: " + player.getLives()); 
+            }
+
+
+            repaint();
         }
-        
-        
-        repaint();
     }
     
     // ------ Class to detect user keyboard input------

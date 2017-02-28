@@ -5,6 +5,7 @@ import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -14,18 +15,22 @@ public class Level {
     private ArrayList<Ground> groundList = new ArrayList<Ground>();
     private ArrayList<Mob> mobsList = new ArrayList<Mob>();
     private ArrayList<String> mobImageList = new ArrayList<String>();
-    private long furthestReached = 0;
-    private int playerLocation = 0;
-    private int lastGroundPlaced = 0;
+    private long furthestReached;
+    private int playerLocation;
+    private int lastGroundPlaced;
     private Ground testGround = new Ground(1000000,1000000);
     private int lastMobAddedWidth;
     private int lastMobAddedCount;
+    public static String score;
     
     public Level(){
+        furthestReached = 0;
+        playerLocation = 0;
+        lastGroundPlaced = 0;
         mobImageList.add("vulture.png");
         mobImageList.add("cloud1.png");
         mobImageList.add("dragonG1.png");
-        mobImageList.add("mob3.png");
+        mobImageList.add("killerBunny.png");
         for (int i = 0; GameJam2880.WINDOW_WIDTH > i * testGround.getWidth() ;i++){
             groundList.add(new Ground(i*testGround.getWidth(),(GameJam2880.WINDOW_HEIGHT / 2) + 100) );
         }
@@ -43,7 +48,7 @@ public class Level {
                 player.setDY(0);
                 player.setY(ground.getY() - player.getHeight());
                 player.setTouchedGround(true);
-                if(player.equipped.getType() == Weapon.CANNON_GUN){
+                if(player.equipped.getType() == Weapon.SPRAY_GUN){
                     player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET - 20);
                 } else {
                 player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
@@ -54,7 +59,7 @@ public class Level {
             
         for (Mob mob : mobsList){
             if (mob.detectCollision(player.getBounds()) > 0){
-                System.out.println(mob.detectCollision(player.getBounds()));
+                //System.out.println(mob.detectCollision(player.getBounds()));
                 playerHit(player,mob);
             }
             for (Ground grounds : groundList){
@@ -105,11 +110,13 @@ public class Level {
         if (playerLocation > furthestReached){
             addMobs(player);
             furthestReached = playerLocation;
+            score = "Score: " + (furthestReached / 100);
+            System.out.println(score);
         }  
     }
     
     public void playerHit(Player player, Mob mob){
-        System.out.println("lives to change by: " + (player.getLives() - 1));
+        //System.out.println("lives to change by: " + (player.getLives() - 1));
         player.setLives(player.getLives() - 1);
         player.setDX(-30);
     }
@@ -157,7 +164,10 @@ public class Level {
     
     //add ground to a specific location
     public void addGround(int x, int y){
-        groundList.add(new Ground(x,y));
+        int randoGroundInt = (int) Math.floor(Math.random() * 10);
+        if (randoGroundInt > 0){
+            groundList.add(new Ground(x,y));
+        }
     }
     
     //dynamically add mobs to end of level

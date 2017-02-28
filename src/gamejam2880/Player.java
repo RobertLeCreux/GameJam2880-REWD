@@ -24,10 +24,13 @@ public class Player extends NonStationary {
     
     public ArrayList<Weapon> weapons;
     public ArrayList<String> imgWeapons;
+    public ArrayList<String> keysPressed;
     protected int weaponIndex;
     public static int IMG_WEAPONS_INDEX;
     
     public int keyPressed;
+    private int numKeysPressed;
+    
     public static int JUMP_FORCE = 15;
     private boolean touchedGround;
     private Weapon mainGun, flameThrower, sprayGun, cannonGun, lightningGun, ionGun;
@@ -36,7 +39,7 @@ public class Player extends NonStationary {
     
     private int lives;
     
-    public static final int STARTING_LIVES = 20;
+    public static final int STARTING_LIVES = 50;
     
     
     
@@ -48,7 +51,7 @@ public class Player extends NonStationary {
     }
 
     private void initPlayer() {
-        
+        numKeysPressed = 0;
         // weapons = new ArrayList<>();
         loadImage("AlienRight.png");
         getImageDimensions();
@@ -56,6 +59,7 @@ public class Player extends NonStationary {
         touchedGround = true;
         weapons = new ArrayList();
         imgWeapons = new ArrayList();
+        keysPressed = new ArrayList();
         
         // TODO: fix sprites here
         imgWeapons.add("mainGunRight.png");
@@ -113,7 +117,7 @@ public class Player extends NonStationary {
     }
     
     public void setLives(int life){
-        System.out.println("lives" + lives);
+        //System.out.println("lives" + lives);
         lives = life;
     }
     
@@ -141,10 +145,17 @@ public class Player extends NonStationary {
 
     public void keyPressed(KeyEvent e) {
         keyPressed = e.getKeyCode();
-        // System.out.println("key: " + keyPressed);
-        IMG_WEAPONS_INDEX = weaponIndex * 2;
+        numKeysPressed++;
+        //System.out.println("key: " + keyPressed);
+        
         int key = e.getKeyCode();
         
+        if(!keysPressed.contains(KeyEvent.getKeyText(key))){
+            keysPressed.add(KeyEvent.getKeyText(key));
+        }
+        
+        //System.out.println(e.getKeyChar());
+        //System.out.println((KeyEvent.getKeyText(KeyEvent.VK_ENTER)));
         switch(key){
             case KeyEvent.VK_1:
                 weaponIndex = 0;
@@ -165,19 +176,20 @@ public class Player extends NonStationary {
                 weaponIndex = 5;
                 break;
         }
+        IMG_WEAPONS_INDEX = weaponIndex * 2;
         equipped = weapons.get(weaponIndex);
-        System.out.println(equipped.getType());
+        //System.out.println(equipped.getType());
         if (direction == Player.FACING_LEFT){
             weapons.get(weaponIndex).loadImage(imgWeapons.get(IMG_WEAPONS_INDEX + 1));
         } else if(direction == Player.FACING_RIGHT) {
             weapons.get(weaponIndex).loadImage(imgWeapons.get(IMG_WEAPONS_INDEX));
         }
         
-        
-        if (key == KeyEvent.VK_ENTER) {
-            System.out.println("attempting to fire weapon!");
+        //System.out.println(keysPressed.contains("Enter"));
+        /*if ((keysPressed.contains("Enter")) && !(this.equipped.equals(Weapon.FLAME_THROWER)))  {
+            //System.out.println("attempting to fire weapon!");
             weapons.get(weaponIndex).fire(this);
-        }
+        }*/
         
         if (key == KeyEvent.VK_SPACE){
             if (touchedGround){
@@ -188,42 +200,92 @@ public class Player extends NonStationary {
         }
 
         
-        if (key == KeyEvent.VK_LEFT) {
+        if (key == KeyEvent.VK_A) {
             this.setDX(-PLAYER_SPEED);
             this.loadImage("AlienLeft.png");
             weapons.get(weaponIndex).loadImage(imgWeapons.get(IMG_WEAPONS_INDEX + 1));
             setDirection(FACING_LEFT);
         }
 
-        if (key == KeyEvent.VK_RIGHT) {
+        if (key == KeyEvent.VK_D) {
             super.setDX(PLAYER_SPEED);
             this.loadImage("AlienRight.png");
             weapons.get(weaponIndex).loadImage(imgWeapons.get(IMG_WEAPONS_INDEX));
             setDirection(FACING_RIGHT);
-            System.out.println("weapon index: " + weaponIndex + " weapon image index: " + IMG_WEAPONS_INDEX);
+            //System.out.println("weapon index: " + weaponIndex + " weapon image index: " + IMG_WEAPONS_INDEX);
             
         }
+        
+        
         
     }
 
     public void keyReleased(KeyEvent e) {
 
         int key = e.getKeyCode();
+        keysPressed.remove(KeyEvent.getKeyText(key));
+        System.out.println("Keys Pressed: " + keysPressed.size());
 
-        if (key == KeyEvent.VK_LEFT) {
+        if (key == KeyEvent.VK_A) {
              setDX(0);
         }
+        if(key == KeyEvent.VK_ESCAPE){
+            if(Board.paused == true){
+                Board.paused = false;
+            } else {
+                Board.paused = true;
+            }
+            
+        }
 
-        if (key == KeyEvent.VK_RIGHT) {
+        if (key == KeyEvent.VK_D) {
             setDX(0);
+        }
+        //System.out.println("weapon index: " + weaponIndex + " weapon image index: " + IMG_WEAPONS_INDEX);
+        
+        switch(key){
+            case KeyEvent.VK_1:
+                //System.out.println("Switching to weapon: " + equipped.getType());
+                break;
+            case KeyEvent.VK_2:
+                //System.out.println("Switching to weapon: " + equipped.getType());
+                //System.out.println("weapon index: " + weaponIndex + " weapon image index: " + IMG_WEAPONS_INDEX);
+                break;
+            case KeyEvent.VK_3:
+                //System.out.println("Switching to weapon: " + equipped.getType());
+                //System.out.println("weapon index: " + weaponIndex + " weapon image index: " + IMG_WEAPONS_INDEX);
+                break;
+            case KeyEvent.VK_4:
+                //System.out.println("Switching to weapon: " + equipped.getType());
+                //System.out.println("weapon index: " + weaponIndex + " weapon image index: " + IMG_WEAPONS_INDEX);
+                break;
+            case KeyEvent.VK_5:
+                //System.out.println("Switching to weapon: " + equipped.getType());
+                //System.out.println("weapon index: " + weaponIndex + " weapon image index: " + IMG_WEAPONS_INDEX);
+                break;
+            case KeyEvent.VK_6:
+                //System.out.println("Switching to weapon: " + equipped.getType());
+                //System.out.println("weapon index: " + weaponIndex + " weapon image index: " + IMG_WEAPONS_INDEX);
+                break;
+        }
+        
+        if ((key == KeyEvent.VK_ENTER) && !(this.equipped.equals(Weapon.FLAME_THROWER))){
+            //System.out.println("attempting to fire weapon!");
+            weapons.get(weaponIndex).fire(this);
         }
     }
     
     @Override
     public void doDrawing(Graphics g,Board canvas){
         super.doDrawing(g, canvas);
+        
+        if (keysPressed.contains("Enter") && this.equipped.getType().equals(Weapon.FLAME_THROWER))  {
+            //System.out.println("attempting to fire weapon!");
+            weapons.get(weaponIndex).fire(this);
+        }
         for(Weapon weapon : weapons){
             weapon.drawProjectiles(g,canvas);
         }
+        
     }
 }

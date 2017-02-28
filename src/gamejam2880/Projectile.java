@@ -7,6 +7,7 @@ package gamejam2880;
 
 import java.awt.Graphics;
 import static java.awt.event.KeyEvent.*;
+import static java.lang.Math.random;
 
 /**
  *
@@ -25,7 +26,7 @@ public class Projectile extends NonStationary {
             this.loadImage("mainGunBullet.png");
             int randoDX = (int) Math.floor(Math.random() * 20);
             setDX(randoDX);
-            damage = 2;
+            damage = 3;
         }
         
         if (ammoType.equals("ionGunBullet")){
@@ -40,10 +41,23 @@ public class Projectile extends NonStationary {
             }
         }
         
+        if (ammoType.equals("flameShot")){
+            double img = Math.random();
+            if(img < 0.5){
+                this.loadImage("flameShotRight.png");
+            } else {
+                this.loadImage("flameShotRight2.png");
+            }
+            
+            this.setDX(5);
+            this.timeToLive = 30;
+            damage = 8;
+        }
+        
         if (ammoType.equals("lightningGunBullet")){
             this.loadImage("lightinbolt.png");
             this.setDX(20);
-            damage = 10;
+            damage = 8;
         }
     }
     

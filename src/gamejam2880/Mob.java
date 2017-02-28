@@ -24,11 +24,14 @@ public class Mob extends NonStationary {
     private static double MOB_SPAWN_RATE;
     private String img;
     private String type;
+    private int mobModifierX;
+    private int mobModifierY;
     
     public Mob(int x, int y) {
         super(x, y);
         this.img = "mob1.png";
         this.type = this.img;
+        
         
         initMob();
         
@@ -39,9 +42,26 @@ public class Mob extends NonStationary {
         img = image;
         hp = health;
         initMob();
+        System.out.println(image.substring(0, image.length() - 4));
+        switch(image.substring(0, image.length() - 4)){
+            case "dragonG1":
+                mobModifierX = -10;
+                mobModifierY = 3;
+            case "killerBunny":
+                mobModifierX = 100;
+                mobModifierY = 1;
+            case "vulture":
+                mobModifierX = 50;
+                mobModifierY = 6;
+            case "cloud1":
+                mobModifierX = 30;
+                mobModifierY = 0;
+            default:
+                mobModifierX = 10;
+                mobModifierY = 1;
+        }
         
-        
-        System.out.println("Making Sprite" + x + y);
+        //System.out.println("Making Sprite" + x + y);
         
     }
 
@@ -50,7 +70,7 @@ public class Mob extends NonStationary {
         //loadImage(img[(int)(Math.random() * 2)]);
         loadImage(img);
         if (this.type == "dragonG.png"){
-            
+            this.setDX(4 + ((int) Math.random() * 4));
         }
         
         getImageDimensions();
@@ -63,11 +83,11 @@ public class Mob extends NonStationary {
         switch (direction){
             case 0: dx += 1;
                     break;
-            case 1: dx -= 1;
+            case 1: dx -= mobModifierX;
                     break;
-            case 2: dy -= 5;
+            case 2: dy -= mobModifierY * 2;
                     break;
-            case 3: dy -= 1;
+            case 3: dy -= mobModifierY;
                     break;
         }
         
