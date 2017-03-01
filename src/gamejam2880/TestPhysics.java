@@ -5,7 +5,7 @@ package gamejam2880;
  *
  * @author Gen
  */
-public class Physics {
+public class TestPhysics {
     
     public static int GRAVITY = 1;
     public static int GRAVITY_SLOW_FACTOR = 3;
@@ -39,13 +39,19 @@ public class Physics {
             cRight = false;
             cTopRight = false;
             cBottomRight = false;
+            if (testing == 1){
+                System.out.println("cRight cTopRight cBottomRight eliiminated due to s1 further right than s2");
+            }
             
         } else if ((s1.getX() - s1.getDX()) - (s2.getX() - s2.getDX()) < 0){
             relDX = s1.getDX() - s2.getDX();
-            relX = (s2.getX() - s2.getDX()) - (s1.getX() - s1.getDX()) - s1.getWidth();
+            relX = (s2.getX() - s2.getDX()) - (s1.getX() - s1.getDX() - s1.getWidth());
             cLeft = false;
             cTopLeft = false;
             cBottomLeft = false;
+            if (testing == 1){
+                System.out.println("cLeft cTopLeft cBottomLeft eliiminated due to s1 further left than s2");
+            }
         } else{
             relX = 0;
             relDX = 0;
@@ -55,6 +61,9 @@ public class Physics {
             cTopRight = false;
             cBottomRight = false;
             cBottomLeft = false;
+            if (testing == 1){
+                System.out.println("x axis and all corners eliminated due to x coords being equal");
+            }
         }
         
         if ((s1.getY() - s1.getDY()) - (s2.getY() - s2.getDY()) > 0){
@@ -63,12 +72,18 @@ public class Physics {
             cBottom = false;
             cBottomRight = false;
             cBottomLeft = false;
+            if (testing == 1){
+                System.out.println("cBottom cBottomRight cBottomLeft eliminated due to s1 being lower than s2");
+            }
         } else if ((s1.getY() - s1.getDY()) - (s2.getY() - s2.getDY()) < 0){
             relDY = s1.getDY() - s2.getDY();
             relY = (s2.getY() - s2.getDY()) - (s1.getY() - s1.getDY() - s1.getHeight());
             cTop = false;
             cTopRight = false;
             cTopLeft = false;
+            if (testing == 1){
+                System.out.println("cTop cTopRight cTopLeft eliminated due to s1 being higher than s2");
+            }
         } else{
             relY = 0;
             relDY = 0;
@@ -78,6 +93,9 @@ public class Physics {
             cTopLeft = false;
             cBottomRight = false;
             cBottomLeft = false;
+            if (testing == 1){
+                System.out.println(" y axis and all corners eliminated due to y coords being equal");
+            }
         }
         if (testing ==1){
             System.out.println("relX: " + relX + " relDX: " + relDX + " relY: " + relY + " relDY: " + relDY + "");
@@ -87,29 +105,44 @@ public class Physics {
             if ((relX / relDX) > (relY / relDY)){
                 cRight = false;
                 cLeft = false;
+                if (testing == 1){
+                    System.out.println("x axis eliminated due to time");
+                }
             } else if ((relX / relDX) < (relY / relDY)){
                 cTop = false;
-                cBottom = false;            
+                cBottom = false;    
+                if (testing == 1){
+                    System.out.println("y axis aliminated due to time");
+                }
             } else{
                 cTop = false;
                 cBottom = false;
                 cRight = false;
                 cLeft = false;
+                if (testing == 1){
+                    System.out.println("must be a corner due to equal time.");
+                }
             }
-        } else if (relDX > 0 && relDY == 0){
+        } else if (relDX > 0 && relDY <= 0){
             cTop = false;
             cBottom = false;
             cTopRight = false;
             cTopLeft = false;
             cBottomLeft = false;
             cBottomRight = false;
-        } else if (relDX == 0 && relDY > 0){
+            if (testing == 1){
+                System.out.println("y axis and corners eliminated due to rely <= 0");
+            }
+        } else if (relDX <= 0 && relDY > 0){
             cRight = false;
             cLeft = false;
             cTopRight = false;
             cTopLeft = false;
             cBottomLeft = false;
             cBottomRight = false;
+            if (testing == 1){
+                System.out.println(" x axis and corners eliminated due to relx <= 0");
+            }
         } else{
             cTop = false;
             cBottom = false;
@@ -119,6 +152,9 @@ public class Physics {
             cTopLeft = false;
             cBottomLeft = false;
             cBottomRight = false;
+            if (testing == 1){
+                System.out.println("all options eliminated due to negative rv for x and y");
+            }
         }
         
         
