@@ -48,12 +48,12 @@ public class Level {
         for (Ground ground : groundList){
             Rectangle rg = ground.getBounds();
             //if (player.detectCollision(rg) == Sprite.COLLISION_BOTTOM){
-            if (player.getBounds().intersects(ground.getBounds())){
-                if ((Physics.detectCollisions(player.getShadow(), ground.getShadow())[0] != Physics.COLLISION_BOTTOM)){
-                    System.out.println((Physics.detectCollisions(player.getShadow(), ground.getShadow())[0]));
-                }
-            }
-            if ((Physics.detectCollisions(player.getShadow(), ground.getShadow())[0] == Physics.COLLISION_BOTTOM) || (Physics.detectCollisions(player.getShadow(), ground.getShadow())[0] == Physics.COLLISION_BOTTOM_LEFT) || (Physics.detectCollisions(player.getShadow(), ground.getShadow())[0] == Physics.COLLISION_BOTTOM_RIGHT)){
+            //if (player.getBounds().intersects(ground.getBounds())){
+                //if ((TestPhysics.detectCollisions(player.getShadow(), ground.getShadow(), 0)[0] != Physics.COLLISION_BOTTOM)){
+                    //System.out.println((TestPhysics.detectCollisions(player.getShadow(), ground.getShadow(), 1)[0]));
+                //}
+            //}
+            if ((TestPhysics.detectCollisions(player.getShadow(), ground.getShadow(), 0)[0] == TestPhysics.COLLISION_BOTTOM) || (TestPhysics.detectCollisions(player.getShadow(), ground.getShadow(), 0)[0] == TestPhysics.COLLISION_BOTTOM_LEFT) || (TestPhysics.detectCollisions(player.getShadow(), ground.getShadow(), 0)[0] == TestPhysics.COLLISION_BOTTOM_RIGHT)){
                 player.setDY(0);
                 player.setY(ground.getY() - player.getHeight());
                 player.setTouchedGround(true);
@@ -62,7 +62,9 @@ public class Level {
                 } else if(player.equipped.getType() == Weapon.CANNON_GUN){
                     player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET - 20);
                 } else {player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
-                }                         
+                }                       
+            } else if (player.getBounds().intersects(ground.getBounds())){
+                System.out.println("Test output: " + (TestPhysics.detectCollisions(player.getShadow(), ground.getShadow(), 1)[0]));
             }
         }
             
@@ -74,7 +76,7 @@ public class Level {
             for (Ground grounds : groundList){
                 Rectangle rgs = grounds.getBounds();
                 //if (mob.detectCollision(rgs) == Sprite.COLLISION_BOTTOM){
-                if (Physics.detectCollisions(mob.getShadow(), grounds.getShadow())[0] == Physics.COLLISION_BOTTOM){
+                if (TestPhysics.detectCollisions(mob.getShadow(), grounds.getShadow(), 0)[0] == TestPhysics.COLLISION_BOTTOM || TestPhysics.detectCollisions(mob.getShadow(), grounds.getShadow(), 0)[0] == TestPhysics.COLLISION_BOTTOM_LEFT || TestPhysics.detectCollisions(mob.getShadow(), grounds.getShadow(), 0)[0] == TestPhysics.COLLISION_BOTTOM_RIGHT){
                     mob.setDY(0);
                     mob.setY(grounds.getY() - mob.getHeight() - 1);
                 }

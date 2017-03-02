@@ -2,6 +2,31 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+<<<<<<< Updated upstream
+            <file>file:/C:/Users/rober/OneDrive/Documents/NetBeansProjects/AdventuresOfSpud/GameJam2880-REWD/src/gamejam2880/Projectile.java</file>
+            <file>file:/C:/Users/rober/OneDrive/Documents/NetBeansProjects/AdventuresOfSpud/GameJam2880-REWD/src/gamejam2880/GameJam2880.java</file>
+            <file>file:/C:/Users/rober/OneDrive/Documents/NetBeansProjects/AdventuresOfSpud/GameJam2880-REWD/src/gamejam2880/Player.java</file>
+            <file>file:/C:/Users/rober/OneDrive/Documents/NetBeansProjects/AdventuresOfSpud/GameJam2880-REWD/src/gamejam2880/Mob.java</file>
+            <file>file:/C:/Users/rober/OneDrive/Documents/NetBeansProjects/AdventuresOfSpud/GameJam2880-REWD/src/gamejam2880/HighScoreManager.java</file>
+            <file>file:/C:/Users/rober/OneDrive/Documents/NetBeansProjects/AdventuresOfSpud/GameJam2880-REWD/src/gamejam2880/scores.dat</file>
+            <file>file:/C:/Users/rober/OneDrive/Documents/NetBeansProjects/AdventuresOfSpud/GameJam2880-REWD/src/gamejam2880/NonStationary.java</file>
+            <file>file:/C:/Users/rober/OneDrive/Documents/NetBeansProjects/AdventuresOfSpud/GameJam2880-REWD/src/gamejam2880/Weapon.java</file>
+            <file>file:/C:/Users/rober/OneDrive/Documents/NetBeansProjects/AdventuresOfSpud/GameJam2880-REWD/src/gamejam2880/MenuBetter.java</file>
+            <file>file:/C:/Users/rober/OneDrive/Documents/NetBeansProjects/AdventuresOfSpud/GameJam2880-REWD/src/gamejam2880/Score.java</file>
+            <file>file:/C:/Users/rober/OneDrive/Documents/NetBeansProjects/AdventuresOfSpud/GameJam2880-REWD/src/gamejam2880/Board.java</file>
+            <file>file:/C:/Users/rober/OneDrive/Documents/NetBeansProjects/AdventuresOfSpud/GameJam2880-REWD/src/gamejam2880/Level.java</file>
+            <file>file:/C:/Users/rober/OneDrive/Documents/NetBeansProjects/AdventuresOfSpud/GameJam2880-REWD/src/gamejam2880/Sprite.java</file>
+=======
+            <file>file:/Users/kylechapman/Desktop/GameJam2880-REWD/src/gamejam2880/Physics.java</file>
+            <file>file:/Users/kylechapman/Desktop/GameJam2880-REWD/src/gamejam2880/Player.java</file>
+            <file>file:/Users/kylechapman/Desktop/GameJam2880-REWD/src/gamejam2880/NonStationary.java</file>
+            <file>file:/Users/kylechapman/Desktop/GameJam2880-REWD/src/gamejam2880/GameJam2880.java</file>
+>>>>>>> Stashed changes
+        </group>
+>>>>>>> origin/master
     </open-files>
 </project-private>

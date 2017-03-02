@@ -224,7 +224,7 @@ public class Player extends NonStationary {
 
         int key = e.getKeyCode();
         keysPressed.remove(KeyEvent.getKeyText(key));
-        System.out.println("Keys Pressed: " + keysPressed.size());
+        //System.out.println("Keys Pressed: " + keysPressed.size());
 
         if (key == KeyEvent.VK_A) {
              setDX(0);
