@@ -282,6 +282,9 @@ public class Player extends NonStationary {
         if (keysPressed.contains("Enter") && this.equipped.getType().equals(Weapon.FLAME_THROWER))  {
             //System.out.println("attempting to fire weapon!");
             weapons.get(weaponIndex).fire(this);
+        } else if (keysPressed.contains("Enter") && this.equipped.getType().equals(Weapon.SPRAY_GUN))  {
+            //System.out.println("attempting to fire weapon!");
+            weapons.get(weaponIndex).fire(this);
         }
         for(Weapon weapon : weapons){
             weapon.drawProjectiles(g,canvas);

@@ -41,6 +41,38 @@ public class Projectile extends NonStationary {
             }
         }
         
+        if (ammoType.equals("sprayBullet")){
+            int b = (int) Math.floor(Math.random() * 4);
+            String img;
+            System.out.println(b);
+            switch(b){
+                case 0:
+                    img = "sprayBullet1.png";
+                    break;
+                case 1:
+                    img = "sprayBullet2.png";
+                    break;
+                case 2:
+                    img = "sprayBullet3.png";
+                    break;
+                default:
+                    img = "sprayBullet4.png";
+                    break;
+            }
+            
+            this.loadImage(img);
+            this.setDX(3);
+            int randoDY = (int) Math.floor(Math.random() * 5);
+            int randoUpDown = (int) Math.floor(Math.random() * 2);
+            if (randoUpDown == 0){
+                setDY(randoDY);
+            } else{
+                setDY(-randoDY);
+            }
+            this.timeToLive = 40;
+            this.damage = 2;
+        }
+    
         if (ammoType.equals("flameShot")){
             double img = Math.random();
             if(img < 0.5){

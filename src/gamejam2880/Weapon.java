@@ -95,7 +95,7 @@ public class Weapon extends Sprite {
                             System.err.println(e.getMessage());
                             }
                         } else if (type.equals(ION_GUN)){
-                            projectiles.add(new Projectile(player.getX() + player.getWidth() + this.getWidth(), this.getY(), "ionGunBullet"));
+                            projectiles.add(new Projectile(player.getX() + player.getWidth() + this.getWidth(), this.getY() - this.getHeight()/2, "ionGunBullet"));
                             try 
                             {
                             File file = new File("zew.wav");
@@ -138,6 +138,23 @@ public class Weapon extends Sprite {
                             try 
                             {
                             File file = new File("zap.wav");
+                            Clip clip = AudioSystem.getClip();
+                            clip.open(AudioSystem.getAudioInputStream(file));
+                            clip.start();
+                            }
+                            catch (Exception e) 
+                            {
+                            System.err.println(e.getMessage());
+                            }
+                        } else if (type.equals(SPRAY_GUN)){
+                            for(int x = 0; x<=4;x++){
+                                int bulletOffset = (int) (Math.random() * 60);
+                                projectiles.add(new Projectile(player.getX() + player.getWidth() + this.getWidth(), this.getY() + bulletOffset, "sprayBullet"));
+                            }
+                            
+                            try 
+                            {
+                            File file = new File("flame.wav");
                             Clip clip = AudioSystem.getClip();
                             clip.open(AudioSystem.getAudioInputStream(file));
                             clip.start();
