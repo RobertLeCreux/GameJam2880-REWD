@@ -15,7 +15,7 @@ public class Ground extends Sprite {
         
         public int a;
         public int b;
-        public int timer = 1000;
+        public int timer = 1000000;
         
         
         public Image jGround;

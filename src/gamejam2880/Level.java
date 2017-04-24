@@ -34,6 +34,9 @@ public class Level {
         for (int i = 0; GameJam2880.WINDOW_WIDTH > i * testGround.getWidth() ;i++){
             groundList.add(new Ground(i*testGround.getWidth(),(GameJam2880.WINDOW_HEIGHT / 2) + 100) );
         }
+        
+        // -- add test shit
+        groundList.add(new Ground(100,100));
     }
     
     public long getFurthestReached(){
@@ -44,16 +47,24 @@ public class Level {
     public void checkCollisions(Player player){
         for (Ground ground : groundList){
             Rectangle rg = ground.getBounds();
-            if (player.detectCollision(rg) == Sprite.COLLISION_BOTTOM){
+            //if (player.detectCollision(rg) == Sprite.COLLISION_BOTTOM){
+            //if (player.getBounds().intersects(ground.getBounds())){
+                //if ((TestPhysics.detectCollisions(player.getShadow(), ground.getShadow(), 0)[0] != Physics.COLLISION_BOTTOM)){
+                    //System.out.println((TestPhysics.detectCollisions(player.getShadow(), ground.getShadow(), 1)[0]));
+                //}
+            //}
+            if ((TestPhysics.detectCollisions(player.getShadow(), ground.getShadow(), 0)[0] == TestPhysics.COLLISION_BOTTOM) || (TestPhysics.detectCollisions(player.getShadow(), ground.getShadow(), 0)[0] == TestPhysics.COLLISION_BOTTOM_LEFT) || (TestPhysics.detectCollisions(player.getShadow(), ground.getShadow(), 0)[0] == TestPhysics.COLLISION_BOTTOM_RIGHT)){
                 player.setDY(0);
                 player.setY(ground.getY() - player.getHeight());
                 player.setTouchedGround(true);
                 if(player.equipped.getType() == Weapon.SPRAY_GUN){
                     player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET - 20);
-                } else {
-                player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
-                }
-                             
+                } else if(player.equipped.getType() == Weapon.CANNON_GUN){
+                    player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET - 20);
+                } else {player.weapons.get(player.weaponIndex).setY((player.getY() + player.getHeight() / 2) + Player.WEAPON_Y_OFFSET);
+                }                       
+            } else if (player.getBounds().intersects(ground.getBounds())){
+                System.out.println("Test output: " + (TestPhysics.detectCollisions(player.getShadow(), ground.getShadow(), 1)[0]));
             }
         }
             
@@ -64,7 +75,8 @@ public class Level {
             }
             for (Ground grounds : groundList){
                 Rectangle rgs = grounds.getBounds();
-                if (mob.detectCollision(rgs) == Sprite.COLLISION_BOTTOM){
+                //if (mob.detectCollision(rgs) == Sprite.COLLISION_BOTTOM){
+                if (TestPhysics.detectCollisions(mob.getShadow(), grounds.getShadow(), 0)[0] == TestPhysics.COLLISION_BOTTOM || TestPhysics.detectCollisions(mob.getShadow(), grounds.getShadow(), 0)[0] == TestPhysics.COLLISION_BOTTOM_LEFT || TestPhysics.detectCollisions(mob.getShadow(), grounds.getShadow(), 0)[0] == TestPhysics.COLLISION_BOTTOM_RIGHT){
                     mob.setDY(0);
                     mob.setY(grounds.getY() - mob.getHeight() - 1);
                 }
@@ -111,7 +123,7 @@ public class Level {
             addMobs(player);
             furthestReached = playerLocation;
             score = "Score: " + (furthestReached / 100);
-            System.out.println(score);
+            //System.out.println(score);
         }  
     }
     

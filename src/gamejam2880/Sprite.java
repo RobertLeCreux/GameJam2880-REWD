@@ -117,6 +117,10 @@ public class Sprite {
         dy = deltaY;
     }
     
+    public SpriteShadow getShadow(){
+        return new SpriteShadow(getX(),getY(),getDX(),getDY(),getBounds());
+    }
+    
     
     public int detectCollision(Rectangle obj){
         Rectangle thisHitBox = this.getBounds();
@@ -134,7 +138,7 @@ public class Sprite {
             return COLLISION_TOP;
         } else if (this.getBounds().intersects(obj) && !(thisHitBoxMovedRight.intersects(obj))){
             return COLLISION_LEFT;
-        } else if (this.getBounds().intersects(obj) && !(thisHitBoxMovedUp.intersects(obj))){
+        } else if (this.getBounds().intersects(obj) && !(thisHitBoxMovedLeft.intersects(obj))){
             return COLLISION_RIGHT;
         } else if (this.getBounds().intersects(obj)){
             return COLLISION_INDETERMINATE;

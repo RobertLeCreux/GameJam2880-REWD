@@ -97,7 +97,7 @@ public class HighScoreManager {
             x = max;
         }
         while (i < x) {
-            highscoreString += String.format("%1$1s %2$-15s %3$10s",(i + 1) + ".",scores.get(i).getName(),scores.get(i).getScore() + "\n");
+            highscoreString += String.format("%1$-5s %2$3s %3$-20s %4$-30s",(i + 1) + "."," ",scores.get(i).getName(),scores.get(i).getScore() + "\n");
             //                               "%1$-9s %2$-14s %3$-7s %4$-1s", "Seat A", seatA.getSeatsSold(), "$" + seatA.getSeatPrice(), getSeatA()
             i++;
         }

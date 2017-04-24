@@ -19,6 +19,7 @@ import javax.sound.sampled.LineUnavailableException;
 
 public class GameJam2880 {
     
+    private static ImageIcon icon;
     
     private static MenuBetter menu;
     private static Board board;
@@ -38,7 +39,7 @@ public class GameJam2880 {
     
     public GameJam2880() throws LineUnavailableException, IOException{
         
-
+        icon = new ImageIcon("icon.png");
         file = new File("Beats.wav");
         clip = AudioSystem.getClip();
         frame =  new JFrame("GameJam2880");
@@ -61,6 +62,7 @@ public class GameJam2880 {
         menu.requestFocus();
         frame.revalidate();
         frame.setResizable(false);
+        frame.setIconImage(icon.getImage());
         Timer timer = Board.getTimer();
         
         btnForward = (JButton) menu.getComponent(0);

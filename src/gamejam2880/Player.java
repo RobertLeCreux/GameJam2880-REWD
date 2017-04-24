@@ -224,7 +224,7 @@ public class Player extends NonStationary {
 
         int key = e.getKeyCode();
         keysPressed.remove(KeyEvent.getKeyText(key));
-        System.out.println("Keys Pressed: " + keysPressed.size());
+        //System.out.println("Keys Pressed: " + keysPressed.size());
 
         if (key == KeyEvent.VK_A) {
              setDX(0);
@@ -280,6 +280,9 @@ public class Player extends NonStationary {
         super.doDrawing(g, canvas);
         
         if (keysPressed.contains("Enter") && this.equipped.getType().equals(Weapon.FLAME_THROWER))  {
+            //System.out.println("attempting to fire weapon!");
+            weapons.get(weaponIndex).fire(this);
+        } else if (keysPressed.contains("Enter") && this.equipped.getType().equals(Weapon.SPRAY_GUN))  {
             //System.out.println("attempting to fire weapon!");
             weapons.get(weaponIndex).fire(this);
         }
