@@ -82,10 +82,12 @@ public class Weapon extends Sprite {
                         //System.out.println("Firing weapon!");
                         //Projectile testBullet = new Projectile(player.getX() + player.getWidth(),player.getY() + player.getHeight());
                         if (type.equals(SHOT_GUN)){
+
                             projectiles.add(new Projectile(player.getX() + player.getWidth() + this.getWidth(), this.getY(), "mainGunBullet"));
                             try 
                             {
                             File file = new File("pew.wav");
+
                             Clip clip = AudioSystem.getClip();
                             clip.open(AudioSystem.getAudioInputStream(file));
                             clip.start();
@@ -122,6 +124,7 @@ public class Weapon extends Sprite {
                             }
                         } else if (type.equals(LIGHTNING_GUN)){
                             projectiles.add(new Projectile(player.getX() + player.getWidth() + this.getWidth(), this.getY(), "lightningGunBullet"));
+
                             try 
                             {
                             File file = new File("zap.wav");
